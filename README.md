@@ -8,7 +8,7 @@ Usage
 -------------
 
 1. Update the file `config.properties` with the directory where the mining will be made
-2. Update the file `projects.csv` with the projects to be mined, each line contains the name and URL of the project, dates of start and end of mining (there is an example for you to guide yourselves)
+2. Update the file `projects.csv` with the projects to be mined, each line contains the name and URL of the project, optionally the dates of start and end of mining (there is an example for you to guide yourselves)
 3. Run the class `App.groovy`
 4. The mining result will be in the `project/projectName/revision` folder
 
