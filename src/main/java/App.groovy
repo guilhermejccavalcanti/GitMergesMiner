@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.regex.Matcher
 
+import br.ufpe.cin.app.JFSTMerge;
 import util.LoggingOutputStream;
 import util.LoggerPrintStream;
 import util.StdOutErrLevel;
@@ -40,19 +41,45 @@ class App {
 	}
 
 	def static runNoGitminer(){
+		new File("execution.log").createNewFile()
+		
+		//read csv and clone github repositories
 		Read r = new Read("projects.csv",false)
 		def projects = r.getProjects()
 		restoreGitRepositories(projects)
 
+		//fill merge scenarios info (base,left,right)
 		projects.each {
 			Extractor e = new Extractor(it,false)
 			e.fillAncestors()
-			
-			e.extractCommits(Strategy.ALL)
-			
 			println('Project ' + it.name + " read")
 		}
-		println('Mining Finished!\n')
+
+		//download scenarios and execute analysis
+		projects.each {
+			LinkedList<MergeCommit> horizontalExecutionMergeCommits = fillMergeCommitsListForHorizontalExecution(projects)
+			for(int i=0; i<horizontalExecutionMergeCommits.size();i++){
+				MergeCommit m = horizontalExecutionMergeCommits.get(i);
+				println ('Analysing ' + ((i+1)+'/'+horizontalExecutionMergeCommits.size()) + ': ' +  m.sha)
+
+				Extractor ext = new Extractor(m)
+				ext.downloadMergeScenario(m)
+				
+				JFSTMerge merger = new JFSTMerge()
+				if(m.revisionFile != null){
+					fillExecutionLog(m) //allows execution restart from where it stopped
+
+					merger.mergeRevisions(m.revisionFile)
+
+					// deleted merged revisions
+					String revisionFolderDir = (new File(m.revisionFile)).getParent()
+					(new AntBuilder()).delete(dir:revisionFolderDir,failonerror:false)
+
+					System.gc();
+				}
+			}
+			println 'Analysis Finished!'
+		}
 	}
 
 	def static runWithCommitCsv(){
@@ -133,6 +160,53 @@ class App {
 			e.restoreWorkingFolder()
 		}
 		println('Restore finished!\n')
+	}
+
+	def private static LinkedList<MergeCommit> fillMergeCommitsListForHorizontalExecution(ArrayList<Project> projects){
+		ArrayList<String> alreadyExecutedSHAs = restoreExecutionLog();
+		LinkedList<MergeCommit> horizontalExecutionMergeCommits = new LinkedList<MergeCommit>()
+		int aux = projects.size()
+		int i 	= 0;
+		while(i < projects.size()) {
+			Project p = projects.get(i)
+			if(!p.listMergeCommit.isEmpty()){
+				MergeCommit mergeCommit = p.listMergeCommit.poll()
+				if(!alreadyExecutedSHAs.contains(mergeCommit.projectName+','+mergeCommit.sha)){
+					//if(alreadyExecutedSHAs.contains(mergeCommit.projectName+','+mergeCommit.sha)){
+					horizontalExecutionMergeCommits.add(mergeCommit)
+				}
+			}
+			if(p.listMergeCommit.isEmpty()){
+				projects.remove(i)
+			}
+			aux 	= projects.size()
+			if(aux == 0){
+				break
+			}
+			if(i >= (projects.size() - 1)){
+				i = 0;
+			} else {
+				i++;
+			}
+		}
+		return horizontalExecutionMergeCommits
+	}
+
+	def private static fillExecutionLog(MergeCommit lastMergeCommit){
+		def out = new File('execution.log')
+		out.append (lastMergeCommit.projectName+','+lastMergeCommit.sha)
+		out.append '\n'
+	}
+
+	def private static ArrayList<String> restoreExecutionLog(){
+		ArrayList<String> alreadyExecutedSHAs = new ArrayList<String>()
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("execution.log"))
+			String line  = ""
+			while ((line = br.readLine()) != null)
+				alreadyExecutedSHAs.add(line)
+		} catch (FileNotFoundException e) {}
+		return alreadyExecutedSHAs
 	}
 
 	public static void main (String[] args){
