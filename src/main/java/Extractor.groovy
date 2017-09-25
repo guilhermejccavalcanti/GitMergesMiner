@@ -801,6 +801,31 @@ class Extractor {
 		return ancestor
 	}
 
+	def public git_merge(MergeCommit m){
+		def command = null
+
+		println('Reseting to base: ' + m.ancestor)
+		command = new ProcessBuilder('git','reset','--hard', m.ancestor)
+				.directory(new File(this.repositoryDir))
+				.redirectErrorStream(true).start()
+		command.inputStream.eachLine {println it}
+		command.waitFor();
+
+		println('Merging left into base: ' + m.parent1)
+		command = new ProcessBuilder('git','merge', m.parent1)
+				.directory(new File(this.repositoryDir))
+				.redirectErrorStream(true).start()
+		command.inputStream.eachLine {println it}
+		command.waitFor();
+
+		println('Merging right into base: ' + m.parent2)
+		command = new ProcessBuilder('git','merge', m.parent2)
+				.directory(new File(this.repositoryDir))
+				.redirectErrorStream(true).start()
+		command.inputStream.eachLine {println it}
+		command.waitFor();
+
+	}
 
 	static void main (String[] args){
 		//		//testing
