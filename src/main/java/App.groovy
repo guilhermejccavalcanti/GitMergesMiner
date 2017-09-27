@@ -132,11 +132,10 @@ class App {
 			int equalconfs 	 = 0;
 
 			List<String> lines = statistics_partial.readLines();
-			statistics_files.append(lines.get(0))//header
 			for(int y = 1/*ignoring header*/; y <lines.size(); y++){
 				String[] columns = lines.get(y).split(",");
 
-				statistics_files.append(lines.get(y))
+				statistics_files.append(lines.get(y)+'\n')
 
 				ssmergeconfs += Integer.valueOf(columns[2]);
 				ssmergeloc += Integer.valueOf(columns[3]);
@@ -150,33 +149,16 @@ class App {
 				unmergetime += Long.parseLong(columns[11]);
 				ssmergetime += Long.parseLong((columns[12]));
 				unmergeduplicateddeclarationerrors += Integer.valueOf(columns[13]);
-				equalconfs += Integer.valueOf(columns[14]);	
+				equalconfs += Integer.valueOf(columns[14]);
 			}
 			unmergeorderingconfs = (unmergeconfs - ssmergeconfs) + unmergeduplicateddeclarationerrors - (ssmergetaeconfs + ssmergenereoconfs + ssmergeinitlblocksconfs);unmergeorderingconfs=(unmergeorderingconfs>0)?unmergeorderingconfs:0;
 			(new AntBuilder()).delete(file:statistics_partial.getAbsolutePath(),failonerror:false)
 
 			logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
 			statistics_partial = new File(logpath+ "jfstmerge.statistics.scenarios");
-			String loggermsg =
-					m.projectName
-			+ ";" + m.sha
-			+ ";" + m.parent1
-			+ ";" + m.ancestor
-			+ ";" + m.parent2
-			+ ";" + ssmergeconfs
-			+ ";" + ssmergeloc
-			+ ";" + ssmergerenamingconfs
-			+ ";" + ssmergedeletionconfs
-			+ ";" + ssmergetaeconfs
-			+ ";" + ssmergenereoconfs
-			+ ";" + ssmergeinitlblocksconfs
-			+ ";" + unmergeconfs
-			+ ";" + unmergeloc
-			+ ";" + unmergeorderingconfs
-			+ ";" + unmergeduplicateddeclarationerrors
-			+ ";" + equalconfs
-			+ ";" + ssmergetime
-			+ ";" + unmergetime+'\n'
+			if(!statistics_partial.exists())statistics_partial.createNewFile() //ensuring it exists
+
+			def loggermsg = m.projectName + ";" + m.sha + ";" + m.parent1 + ";" + m.ancestor + ";" + m.parent2 + ";" + ssmergeconfs + ";" + ssmergeloc + ";" + ssmergerenamingconfs + ";" + ssmergedeletionconfs + ";" + ssmergetaeconfs + ";" + ssmergenereoconfs + ";" + ssmergeinitlblocksconfs + ";" + unmergeconfs + ";" + unmergeloc + ";" + unmergeorderingconfs + ";" + unmergeduplicateddeclarationerrors + ";" + equalconfs + ";" + ssmergetime + ";" + unmergetime+'\n';
 			statistics_partial.append(loggermsg)
 		}
 	}
