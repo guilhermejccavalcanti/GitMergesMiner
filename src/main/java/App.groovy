@@ -149,9 +149,10 @@ class App {
 				unmergetime += Long.parseLong(columns[11]);
 				ssmergetime += Long.parseLong((columns[12]));
 				unmergeduplicateddeclarationerrors += Integer.valueOf(columns[13]);
-				equalconfs += Integer.valueOf(columns[14]);
+				unmergeorderingconfs += Integer.valueOf(columns[14]);
+				equalconfs += Integer.valueOf(columns[15]);
 			}
-			unmergeorderingconfs = (unmergeconfs - ssmergeconfs) + unmergeduplicateddeclarationerrors - (ssmergetaeconfs + ssmergenereoconfs + ssmergeinitlblocksconfs);unmergeorderingconfs=(unmergeorderingconfs>0)?unmergeorderingconfs:0;
+			//unmergeorderingconfs = (unmergeconfs - ssmergeconfs) + unmergeduplicateddeclarationerrors - (ssmergetaeconfs + ssmergenereoconfs + ssmergeinitlblocksconfs);unmergeorderingconfs=(unmergeorderingconfs>0)?unmergeorderingconfs:0;
 			(new AntBuilder()).delete(file:statistics_partial.getAbsolutePath(),failonerror:false)
 
 			logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
