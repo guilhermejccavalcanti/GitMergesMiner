@@ -107,7 +107,7 @@ class App {
 		String logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
 		File statistics_partial = new File(logpath+ "jfstmerge.statistics");
 		File statistics_files 	= new File(logpath+ "jfstmerge.statistics.files");
-		if(!statistics_files.exists())statistics_files.createNewFile() //ensuring it exists
+		if(!statistics_files.exists()){statistics_files.mkdirs();statistics_files.createNewFile();} //ensuring it exists
 		/*
 		 * jfstmerge.statistics contains numbers for each merged file. To compute numbers for each scenario,
 		 * we read the jfstmerge.statistics file, and then we delete this file. Thus, every time a merge scenario is merged
