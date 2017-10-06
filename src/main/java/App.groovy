@@ -107,7 +107,7 @@ class App {
 		String logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
 		File statistics_partial = new File(logpath+ "jfstmerge.statistics");
 		File statistics_files 	= new File(logpath+ "jfstmerge.statistics.files");
-		if(!statistics_files.exists()){statistics_files.mkdirs();statistics_files.createNewFile();} //ensuring it exists
+		if(!statistics_files.exists()){(new File(logpath)).mkdirs();statistics_files.createNewFile();} //ensuring it exists
 		/*
 		 * jfstmerge.statistics contains numbers for each merged file. To compute numbers for each scenario,
 		 * we read the jfstmerge.statistics file, and then we delete this file. Thus, every time a merge scenario is merged
@@ -115,53 +115,54 @@ class App {
 		 * jfstmerge.statistics content in the jfstmerge.statistics.files before deleting jfstmerge.statistics.
 		 */
 
-		if(statistics_partial.exists()){
-			int ssmergeconfs = 0;
-			int ssmergeloc 	 = 0;
-			int ssmergerenamingconfs = 0;
-			int ssmergedeletionconfs = 0;
-			int ssmergetaeconfs   = 0;
-			int ssmergenereoconfs = 0;
-			int ssmergeinitlblocksconfs = 0;
-			int unmergeconfs = 0;
-			int unmergeloc 	 = 0;
-			long unmergetime = 0;
-			long ssmergetime = 0;
-			int unmergeorderingconfs = 0;
-			int unmergeduplicateddeclarationerrors = 0;
-			int equalconfs 	 = 0;
+		int ssmergeconfs = 0;
+		int ssmergeloc 	 = 0;
+		int ssmergerenamingconfs = 0;
+		int ssmergedeletionconfs = 0;
+		int ssmergetaeconfs   = 0;
+		int ssmergenereoconfs = 0;
+		int ssmergeinitlblocksconfs = 0;
+		int ssmergeacidentalconfs = 0;
+		int unmergeconfs = 0;
+		int unmergeloc 	 = 0;
+		long unmergetime = 0;
+		long ssmergetime = 0;
+		int unmergeorderingconfs = 0;
+		int unmergeduplicateddeclarationerrors = 0;
+		int equalconfs 	 = 0;
 
-			List<String> lines = statistics_partial.readLines();
-			for(int y = 1/*ignoring header*/; y <lines.size(); y++){
-				String[] columns = lines.get(y).split(",");
+		List<String> lines = new ArrayList<String>();
+		if(statistics_partial.exists()){lines = statistics_partial.readLines();}
+		for(int y = 1/*ignoring header*/; y <lines.size(); y++){
+			String[] columns = lines.get(y).split(",");
 
-				statistics_files.append(lines.get(y)+'\n')
+			statistics_files.append(lines.get(y)+'\n')
 
-				ssmergeconfs += Integer.valueOf(columns[2]);
-				ssmergeloc += Integer.valueOf(columns[3]);
-				ssmergerenamingconfs += Integer.valueOf(columns[4]);
-				ssmergedeletionconfs += Integer.valueOf(columns[5]);
-				ssmergetaeconfs += Integer.valueOf(columns[6]);
-				ssmergenereoconfs += Integer.valueOf(columns[7]);
-				ssmergeinitlblocksconfs += Integer.valueOf(columns[8]);
-				unmergeconfs += Integer.valueOf(columns[9]);
-				unmergeloc += Integer.valueOf(columns[10]);
-				unmergetime += Long.parseLong(columns[11]);
-				ssmergetime += Long.parseLong((columns[12]));
-				unmergeduplicateddeclarationerrors += Integer.valueOf(columns[13]);
-				unmergeorderingconfs += Integer.valueOf(columns[14]);
-				equalconfs += Integer.valueOf(columns[15]);
-			}
-			//unmergeorderingconfs = (unmergeconfs - ssmergeconfs) + unmergeduplicateddeclarationerrors - (ssmergetaeconfs + ssmergenereoconfs + ssmergeinitlblocksconfs);unmergeorderingconfs=(unmergeorderingconfs>0)?unmergeorderingconfs:0;
-			(new AntBuilder()).delete(file:statistics_partial.getAbsolutePath(),failonerror:false)
-
-			logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
-			statistics_partial = new File(logpath+ "jfstmerge.statistics.scenarios");
-			if(!statistics_partial.exists())statistics_partial.createNewFile() //ensuring it exists
-
-			def loggermsg = m.projectName + ";" + m.sha + ";" + m.parent1 + ";" + m.ancestor + ";" + m.parent2 + ";" + ssmergeconfs + ";" + ssmergeloc + ";" + ssmergerenamingconfs + ";" + ssmergedeletionconfs + ";" + ssmergetaeconfs + ";" + ssmergenereoconfs + ";" + ssmergeinitlblocksconfs + ";" + unmergeconfs + ";" + unmergeloc + ";" + unmergeorderingconfs + ";" + unmergeduplicateddeclarationerrors + ";" + equalconfs + ";" + ssmergetime + ";" + unmergetime+'\n';
-			statistics_partial.append(loggermsg)
+			ssmergeconfs += Integer.valueOf(columns[2]);
+			ssmergeloc 	 += Integer.valueOf(columns[3]);
+			ssmergerenamingconfs += Integer.valueOf(columns[4]);
+			ssmergedeletionconfs += Integer.valueOf(columns[5]);
+			ssmergetaeconfs   += Integer.valueOf(columns[6]);
+			ssmergenereoconfs += Integer.valueOf(columns[7]);
+			ssmergeinitlblocksconfs += Integer.valueOf(columns[8]);
+			ssmergeacidentalconfs 	+= Integer.valueOf(columns[9]);
+			unmergeconfs += Integer.valueOf(columns[10]);
+			unmergeloc 	 += Integer.valueOf(columns[11]);
+			unmergetime  += Long.parseLong(columns[12]);
+			ssmergetime  += Long.parseLong((columns[13]));
+			unmergeduplicateddeclarationerrors += Integer.valueOf(columns[14]);
+			unmergeorderingconfs += Integer.valueOf(columns[15]);
+			equalconfs 	 += Integer.valueOf(columns[16]);
 		}
+		//unmergeorderingconfs = (unmergeconfs - ssmergeconfs) + unmergeduplicateddeclarationerrors - (ssmergetaeconfs + ssmergenereoconfs + ssmergeinitlblocksconfs);unmergeorderingconfs=(unmergeorderingconfs>0)?unmergeorderingconfs:0;
+		(new AntBuilder()).delete(file:statistics_partial.getAbsolutePath(),failonerror:false)
+
+		logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
+		File statistics_scenarios = new File(logpath+ "jfstmerge.statistics.scenarios");
+		if(!statistics_scenarios.exists())statistics_scenarios.createNewFile() //ensuring it exists
+
+		def loggermsg = m.projectName + ";" + m.sha + ";" + m.parent1 + ";" + m.ancestor + ";" + m.parent2 + ";" + ssmergeconfs + ";" + ssmergeloc + ";" + ssmergerenamingconfs + ";" + ssmergedeletionconfs + ";" + ssmergetaeconfs + ";" + ssmergenereoconfs + ";" + ssmergeinitlblocksconfs + ";" + ssmergeacidentalconfs + ";" + unmergeconfs + ";" + unmergeloc + ";" + unmergeorderingconfs + ";" + unmergeduplicateddeclarationerrors + ";" + equalconfs + ";" + ssmergetime + ";" + unmergetime+'\n';
+		statistics_scenarios.append(loggermsg)
 	}
 
 	public static void main (String[] args){

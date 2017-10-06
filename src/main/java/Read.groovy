@@ -71,8 +71,12 @@ class Read {
 					project.miningSinceDate = info[2]
 					project.miningUntilDate = info[3]
 				}
-				if(withGitMiner)
+				if(!withGitMiner && info.length == 3) {
+					project.miningUntilDate = info[2]
+				}
+				if(withGitMiner){
 					project.graph 	= info[2]
+				}
 
 				this.listProject.add(project)
 
