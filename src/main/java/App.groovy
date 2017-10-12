@@ -42,7 +42,7 @@ class App {
 
 	def static runNoGitminer(){
 		new File("execution.log").createNewFile()
-		
+
 		//read csv and clone github repositories
 		Read r = new Read("projects.csv",false)
 		def projects = r.getProjects()
@@ -56,30 +56,28 @@ class App {
 		}
 
 		//download scenarios and execute analysis
-		projects.each {
-			LinkedList<MergeCommit> horizontalExecutionMergeCommits = fillMergeCommitsListForHorizontalExecution(projects)
-			for(int i=0; i<horizontalExecutionMergeCommits.size();i++){
-				MergeCommit m = horizontalExecutionMergeCommits.get(i);
-				println ('Analysing ' + ((i+1)+'/'+horizontalExecutionMergeCommits.size()) + ': ' +  m.sha)
+		LinkedList<MergeCommit> horizontalExecutionMergeCommits = fillMergeCommitsListForHorizontalExecution(projects)
+		for(int i=0; i<horizontalExecutionMergeCommits.size();i++){
+			MergeCommit m = horizontalExecutionMergeCommits.get(i);
+			println ('Analysing ' + ((i+1)+'/'+horizontalExecutionMergeCommits.size()) + ': ' +  m.sha)
 
-				Extractor ext = new Extractor(m)
-				ext.downloadMergeScenario(m)
-				
-				JFSTMerge merger = new JFSTMerge()
-				if(m.revisionFile != null){
-					fillExecutionLog(m) //allows execution restart from where it stopped
+			Extractor ext = new Extractor(m)
+			ext.downloadMergeScenario(m)
 
-					merger.mergeRevisions(m.revisionFile)
+			JFSTMerge merger = new JFSTMerge()
+			if(m.revisionFile != null){
+				fillExecutionLog(m) //allows execution restart from where it stopped
 
-					// deleted merged revisions
-					String revisionFolderDir = (new File(m.revisionFile)).getParent()
-					(new AntBuilder()).delete(dir:revisionFolderDir,failonerror:false)
+				merger.mergeRevisions(m.revisionFile)
 
-					System.gc();
-				}
+				// deleted merged revisions
+				String revisionFolderDir = (new File(m.revisionFile)).getParent()
+				(new AntBuilder()).delete(dir:revisionFolderDir,failonerror:false)
+
+				System.gc();
 			}
-			println 'Analysis Finished!'
 		}
+		println 'Analysis Finished!'
 	}
 
 	def static runWithCommitCsv(){
