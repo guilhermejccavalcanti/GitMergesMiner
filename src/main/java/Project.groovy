@@ -12,6 +12,9 @@ class Project {
 	
 	def setMergeCommits(mergeCommits){
 		this.listMergeCommit = mergeCommits
+		if(mergeCommits.size() > 500){
+			Collections.shuffle(this.listMergeCommit);
+			this.listMergeCommit = this.listMergeCommit.subList(0, 200);
+		}
 	}
-
 }
