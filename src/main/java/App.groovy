@@ -122,6 +122,7 @@ class App {
 		int ssmergeloc 	 = 0;
 		int ssmergerenamingconfs = 0;
 		int ssmergedeletionconfs = 0;
+		int ssmergeinnerdeletionconfs = 0;
 		int ssmergetaeconfs   = 0;
 		int ssmergenereoconfs = 0;
 		int ssmergeinitlblocksconfs = 0;
@@ -145,17 +146,18 @@ class App {
 			ssmergeloc 	 += Integer.valueOf(columns[3]);
 			ssmergerenamingconfs += Integer.valueOf(columns[4]);
 			ssmergedeletionconfs += Integer.valueOf(columns[5]);
-			ssmergetaeconfs   += Integer.valueOf(columns[6]);
-			ssmergenereoconfs += Integer.valueOf(columns[7]);
-			ssmergeinitlblocksconfs += Integer.valueOf(columns[8]);
-			ssmergeacidentalconfs 	+= Integer.valueOf(columns[9]);
-			unmergeconfs += Integer.valueOf(columns[10]);
-			unmergeloc 	 += Integer.valueOf(columns[11]);
-			unmergetime  += Long.parseLong(columns[12]);
-			ssmergetime  += Long.parseLong((columns[13]));
-			unmergeduplicateddeclarationerrors += Integer.valueOf(columns[14]);
-			unmergeorderingconfs += Integer.valueOf(columns[15]);
-			equalconfs 	 += Integer.valueOf(columns[16]);
+			ssmergeinnerdeletionconfs += Integer.valueOf(columns[6]);
+			ssmergetaeconfs   += Integer.valueOf(columns[7]);
+			ssmergenereoconfs += Integer.valueOf(columns[8]);
+			ssmergeinitlblocksconfs += Integer.valueOf(columns[9]);
+			ssmergeacidentalconfs 	+= Integer.valueOf(columns[10]);
+			unmergeconfs += Integer.valueOf(columns[11]);
+			unmergeloc 	 += Integer.valueOf(columns[12]);
+			unmergetime  += Long.parseLong(columns[13]);
+			ssmergetime  += Long.parseLong((columns[14]));
+			unmergeduplicateddeclarationerrors += Integer.valueOf(columns[15]);
+			unmergeorderingconfs += Integer.valueOf(columns[16]);
+			equalconfs 	 += Integer.valueOf(columns[17]);
 		}
 		//unmergeorderingconfs = (unmergeconfs - ssmergeconfs) + unmergeduplicateddeclarationerrors - (ssmergetaeconfs + ssmergenereoconfs + ssmergeinitlblocksconfs);unmergeorderingconfs=(unmergeorderingconfs>0)?unmergeorderingconfs:0;
 		(new AntBuilder()).delete(file:statistics_partial.getAbsolutePath(),failonerror:false)
@@ -164,7 +166,7 @@ class App {
 		File statistics_scenarios = new File(logpath+ "jfstmerge.statistics.scenarios");
 		if(!statistics_scenarios.exists())statistics_scenarios.createNewFile() //ensuring it exists
 
-		def loggermsg = m.projectName + ";" + m.sha + ";" + m.parent1 + ";" + m.ancestor + ";" + m.parent2 + ";" + ssmergeconfs + ";" + ssmergeloc + ";" + ssmergerenamingconfs + ";" + ssmergedeletionconfs + ";" + ssmergetaeconfs + ";" + ssmergenereoconfs + ";" + ssmergeinitlblocksconfs + ";" + ssmergeacidentalconfs + ";" + unmergeconfs + ";" + unmergeloc + ";" + unmergeorderingconfs + ";" + unmergeduplicateddeclarationerrors + ";" + equalconfs + ";" + ssmergetime + ";" + unmergetime+'\n';
+		def loggermsg = m.projectName + ";" + m.sha + ";" + m.parent1 + ";" + m.ancestor + ";" + m.parent2 + ";" + ssmergeconfs + ";" + ssmergeloc + ";" + ssmergerenamingconfs + ";" + ssmergedeletionconfs + ";" + ssmergeinnerdeletionconfs + ";" + ssmergetaeconfs + ";" + ssmergenereoconfs + ";" + ssmergeinitlblocksconfs + ";" + ssmergeacidentalconfs + ";" + unmergeconfs + ";" + unmergeloc + ";" + unmergeorderingconfs + ";" + unmergeduplicateddeclarationerrors + ";" + equalconfs + ";" + ssmergetime + ";" + unmergetime+'\n';
 		statistics_scenarios.append(loggermsg)
 		logSummary()
 	}
@@ -199,17 +201,17 @@ class App {
 				ssmergeloc 	 += Integer.valueOf(columns[3]);
 				ssmergerenamingconfs += Integer.valueOf(columns[4]);
 				ssmergedeletionconfs += Integer.valueOf(columns[5]);
-				ssmergetaeconfs   += Integer.valueOf(columns[6]);
-				ssmergenereoconfs += Integer.valueOf(columns[7]);
-				ssmergeinitlblocksconfs += Integer.valueOf(columns[8]);
-				ssmergeacidentalconfs 	+= Integer.valueOf(columns[9]);
-				unmergeconfs += Integer.valueOf(columns[10]);
-				unmergeloc 	 += Integer.valueOf(columns[11]);
-				unmergetime  += Long.parseLong(columns[12]);
-				ssmergetime  += Long.parseLong((columns[13]));
-				duplicateddeclarationerrors += Integer.valueOf(columns[14]);
-				unmergeorderingconfs += Integer.valueOf(columns[15]);
-				equalconfs 	 += Integer.valueOf(columns[16]);
+				ssmergetaeconfs   += Integer.valueOf(columns[7]);
+				ssmergenereoconfs += Integer.valueOf(columns[8]);
+				ssmergeinitlblocksconfs += Integer.valueOf(columns[9]);
+				ssmergeacidentalconfs 	+= Integer.valueOf(columns[10]);
+				unmergeconfs += Integer.valueOf(columns[11]);
+				unmergeloc 	 += Integer.valueOf(columns[12]);
+				unmergetime  += Long.parseLong(columns[13]);
+				ssmergetime  += Long.parseLong((columns[14]));
+				duplicateddeclarationerrors += Integer.valueOf(columns[15]);
+				unmergeorderingconfs += Integer.valueOf(columns[16]);
+				equalconfs 	 += Integer.valueOf(columns[17]);
 			}
 
 			//summarizing retrieved statistics
