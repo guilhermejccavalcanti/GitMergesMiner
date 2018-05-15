@@ -63,7 +63,12 @@ class Extractor {
 		this.listMergeCommit 	= this.project.listMergeCommit
 		this.remoteUrl 			= this.project.url
 		this.tempdir			= this.workingDirectory + "/temp/" + this.project.name+"/git"
-		this.repositoryDir		= this.projectsDirectory + this.project.name + "/git"
+		if(new File(this.project.url).exists()){
+			this.repositoryDir	= this.project.url
+		} else {
+			println 'The path informed ' + this.project.url + ' is not a valid git repository'
+			System.exit(-1)
+		}
 		this.CONFLICTS 			= 0
 		this.ERROR				= 0
 		this.setup()
@@ -88,7 +93,12 @@ class Extractor {
 		loadProperties()
 		this.remoteUrl 			= mergeCommit.projectURL
 		this.tempdir			= this.workingDirectory + "/temp/" + mergeCommit.projectName +"/git"
-		this.repositoryDir		= this.projectsDirectory + mergeCommit.projectName + "/git"
+		if(new File(mergeCommit.projectURL).exists()){
+			this.repositoryDir	= mergeCommit.projectURL
+		} else {
+			println 'The path informed ' + mergeCommit.projectURL + ' is not a valid git repository'
+			System.exit(-1)
+		}
 		this.CONFLICTS 			= 0
 		this.ERROR				= 0
 		this.setup()
@@ -356,11 +366,13 @@ class Extractor {
 		command = new ProcessBuilder('git','reset','--hard', base)
 				.directory(new File(this.repositoryDir))
 				.redirectErrorStream(true).start()
+		command.inputStream.eachLine{}
 		command.waitFor();
 
 		command = new ProcessBuilder('git','merge', left)
 				.directory(new File(this.repositoryDir))
 				.redirectErrorStream(true).start()
+		command.inputStream.eachLine{}
 		command.waitFor();
 
 		println('Diffing left base right: ' + right)
@@ -378,7 +390,6 @@ class Extractor {
 			}
 			changedFiles.add(file)
 		}
-		command.waitFor();
 		return changedFiles;
 	}
 
@@ -626,8 +637,9 @@ class Extractor {
 			this.renameMainBranchIfNeeded(repository)
 			return git
 		} catch(org.eclipse.jgit.errors.RepositoryNotFoundException e){
-			this.cloneRepository()
-			this.openRepository()
+			println 'The path informed ' + repositoryDir + ' is not a valid git repository'
+			e.printStackTrace()
+			System.exit(-1)
 		}
 	}
 

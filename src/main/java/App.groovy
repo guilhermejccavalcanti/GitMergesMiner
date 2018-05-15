@@ -13,6 +13,7 @@ import java.util.regex.Matcher
 import util.LoggingOutputStream;
 import util.LoggerPrintStream;
 import util.StdOutErrLevel;
+import br.ufpe.cin.app.JFSTMerge;
 
 class App {
 
@@ -20,7 +21,6 @@ class App {
 		//read csv and clone github repositories
 		Read r = new Read("projects.csv",false)
 		def projects = r.getProjects()
-		restoreGitRepositories(projects)
 
 		//fill merge scenarios info (base,left,right)
 		projects.each {
@@ -36,8 +36,15 @@ class App {
 			println ('Analysing ' + ((i+1)+'/'+horizontalExecutionMergeCommits.size()) + ': ' +  m.sha)
 			Extractor ext = new Extractor(m)
 			ext.download_merge_scenario(m)
+
+
+			JFSTMerge merger = new JFSTMerge()
+			if(m.revisionFile != null){
+				fillExecutionLog(m) //allows execution restart from where it stopped
+				merger.mergeRevisions(m.revisionFile)
+			}
 		}
-		println 'Analysis Finished!'
+		println 'Analysis Finished! Results in ' + System.getProperty("user.home") + File.separator + ".jfstmerge"
 	}
 
 	def private static restoreGitRepositories(ArrayList<Project> projects){
