@@ -222,11 +222,12 @@ class Extractor {
 		}
 	}
 
-	def public restoreWorkingFolder(){
-		println "Restoring Git repository " + this.remoteUrl +"..."
-		String workingFolder = (new File(this.repositoryDir)).getParent()
-		new AntBuilder().delete(dir:workingFolder,failonerror:false)
-		new AntBuilder().copy(todir:this.repositoryDir) {fileset(dir:this.tempdir , defaultExcludes: false){}}
+	def public backupRepository(Project p){
+		println "Backup Git repository " + this.remoteUrl +"..."
+		def local = this.workingDirectory + 'repositories' + File.separator + p.name
+		new AntBuilder().delete(dir:local,failonerror:false)
+		new AntBuilder().copy(todir:local) {fileset(dir:this.repositoryDir , defaultExcludes: false){}}
+		p.url = local
 	}
 
 	def fillAncestors(){
@@ -823,13 +824,7 @@ class Extractor {
 	}
 
 	def private setup(){
-		//keeping a backup dir
 		this.openRepository()
-		if(!(new File(this.tempdir)).exists()){
-			println "Setupping..."
-			new AntBuilder().copy(todir:this.tempdir) {fileset(dir:this.repositoryDir, defaultExcludes: false){}}
-			println "----------------------"
-		}
 	}
 
 	def private restoreGitRepository(){

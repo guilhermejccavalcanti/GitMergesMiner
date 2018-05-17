@@ -21,6 +21,7 @@ class App {
 		//read csv and clone github repositories
 		Read r = new Read("projects.csv",false)
 		def projects = r.getProjects()
+		backupGitRepositories(projects)
 
 		//fill merge scenarios info (base,left,right)
 		projects.each {
@@ -55,7 +56,16 @@ class App {
 		println('Restore finished!\n')
 	}
 
+	def private static backupGitRepositories(ArrayList<Project> projects){
+		projects.each {
+			Extractor e = new Extractor(it,true)
+			e.backupRepository(it)
+		}
+		println('Backup finished!\n')
+	}
+
 	def private static LinkedList<MergeCommit> fillMergeCommitsListForHorizontalExecution(ArrayList<Project> projects){
+		ArrayList<String> alreadyExecutedSHAs = restoreExecutionLog();
 		LinkedList<MergeCommit> horizontalExecutionMergeCommits = new LinkedList<MergeCommit>()
 		int aux = projects.size()
 		int i 	= 0;
@@ -63,7 +73,9 @@ class App {
 			Project p = projects.get(i)
 			if(!p.listMergeCommit.isEmpty()){
 				MergeCommit mergeCommit = p.listMergeCommit.poll()
-				horizontalExecutionMergeCommits.add(mergeCommit)
+				if(!alreadyExecutedSHAs.contains(mergeCommit.projectName+','+mergeCommit.sha)){
+					horizontalExecutionMergeCommits.add(mergeCommit)
+				}
 			}
 			if(p.listMergeCommit.isEmpty()){
 				projects.remove(i)
@@ -90,6 +102,17 @@ class App {
 		def out = new File('execution.log')
 		out.append (lastMergeCommit.projectName+','+lastMergeCommit.sha)
 		out.append '\n'
+	}
+
+	def private static ArrayList<String> restoreExecutionLog(){
+		ArrayList<String> alreadyExecutedSHAs = new ArrayList<String>()
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("execution.log"))
+			String line  = ""
+			while ((line = br.readLine()) != null)
+				alreadyExecutedSHAs.add(line)
+		} catch (FileNotFoundException e) {}
+		return alreadyExecutedSHAs
 	}
 
 	public static void main (String[] args){
