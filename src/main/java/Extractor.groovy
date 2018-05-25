@@ -635,7 +635,7 @@ class Extractor {
 			File gitWorkDir = new File(repositoryDir)
 			Git git = Git.open(gitWorkDir)
 			Repository repository = git.getRepository()
-			this.renameMainBranchIfNeeded(repository)
+			//this.renameMainBranchIfNeeded(repository)
 			return git
 		} catch(org.eclipse.jgit.errors.RepositoryNotFoundException e){
 			println 'The path informed ' + repositoryDir + ' is not a valid git repository'
