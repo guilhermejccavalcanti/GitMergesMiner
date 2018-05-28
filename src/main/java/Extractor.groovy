@@ -63,7 +63,12 @@ class Extractor {
 		this.listMergeCommit 	= this.project.listMergeCommit
 		this.remoteUrl 			= this.project.url
 		this.tempdir			= this.workingDirectory + "/temp/" + this.project.name+"/git"
-		this.repositoryDir		= this.projectsDirectory + this.project.name + "/git"
+		if(new File(this.project.url).exists()){
+			this.repositoryDir	= this.project.url
+		} else {
+			println 'The path informed ' + this.project.url + ' is not a valid git repository'
+			System.exit(-1)
+		}
 		this.CONFLICTS 			= 0
 		this.ERROR				= 0
 		this.setup()
@@ -88,7 +93,12 @@ class Extractor {
 		loadProperties()
 		this.remoteUrl 			= mergeCommit.projectURL
 		this.tempdir			= this.workingDirectory + "/temp/" + mergeCommit.projectName +"/git"
-		this.repositoryDir		= this.projectsDirectory + mergeCommit.projectName + "/git"
+		if(new File(mergeCommit.projectURL).exists()){
+			this.repositoryDir	= mergeCommit.projectURL
+		} else {
+			println 'The path informed ' + mergeCommit.projectURL + ' is not a valid git repository'
+			System.exit(-1)
+		}
 		this.CONFLICTS 			= 0
 		this.ERROR				= 0
 		this.setup()
@@ -232,82 +242,6 @@ class Extractor {
 		}
 	}
 
-	def private downloadAllFiles(parent1, parent2, ancestor) {
-		// folder of the revisions being tested
-		def allRevFolder = this.projectsDirectory + this.project.name + "/revisions/rev_" + parent1.substring(0, 7) + "_" + parent2.substring(0, 7)
-		try{
-			// opening the working directory
-			this.git = openRepository();
-			// git reset --hard SHA1_1
-			this.resetCommand(this.git, parent1)
-
-			// copy files for parent1 revision
-			def destinationDir = allRevFolder + "/rev_left_" + parent1.substring(0, 7)
-			this.copyFiles(this.repositoryDir, destinationDir, "")
-			def rec = new RecursiveFileList()
-			rec.removeFiles(new File(destinationDir))
-
-			// git clean -f
-			CleanCommand cleanCommandgit = this.git.clean()
-			cleanCommandgit.call()
-
-			// git checkout -b new SHA1_2
-			def refNew = checkoutAndCreateBranch("new", parent2)
-			// copy files for parent2 revision
-			destinationDir = allRevFolder + "/rev_right_" + parent2.substring(0, 7)
-			def excludeDir = "**/" + allRevFolder + "/**"
-			this.copyFiles(this.repositoryDir, destinationDir, excludeDir)
-			rec.removeFiles(new File(destinationDir))
-
-
-			cleanCommandgit = this.git.clean()
-			cleanCommandgit.call()
-			// git checkout -b ancestor ANCESTOR
-
-			checkoutMasterBranch()
-			cleanCommandgit = this.git.clean()
-			cleanCommandgit.call()
-
-			def refAncestor = checkoutAndCreateBranch("ancestor", ancestor)
-			// copy files for ancestor revision
-			destinationDir = allRevFolder + "/rev_base_" + ancestor.substring(0, 7)
-			excludeDir	   = "**/" + allRevFolder + "/**"
-			this.copyFiles(this.repositoryDir, destinationDir, excludeDir)
-			rec.removeFiles(new File(destinationDir))
-
-			this.writeRevisionsFile(parent1.substring(0, 7), parent2.substring(0, 7), ancestor.substring(0, 7), allRevFolder)
-
-			// avoiding references issues
-			checkoutMasterBranch()
-			this.deleteBranch("ancestor")
-			this.deleteBranch("new")
-
-		} catch(org.eclipse.jgit.api.errors.CheckoutConflictException e){
-			println "ERROR: " + e
-			// reseting
-			this.restoreGitRepository()
-		}catch(org.eclipse.jgit.api.errors.JGitInternalException f){
-			println "ERROR: " + f
-			// reseting
-			this.restoreGitRepository()
-		} catch(org.eclipse.jgit.dircache.InvalidPathException g){
-			println "ERROR: " + g
-			// reseting
-			this.restoreGitRepository()
-		} catch(org.eclipse.jgit.api.errors.RefNotFoundException h){
-			println "ERROR: " + h
-			// reseting
-			this.restoreGitRepository()
-		} catch(java.lang.NullPointerException i){
-			println "ERROR: " + i
-			// reseting
-			this.restoreGitRepository()
-		} finally {
-			// closing git repository
-			this.git.getRepository().close()
-		}
-	}
-
 	def public downloadMergeScenario(MergeCommit mergeCommit) {
 		// folder of the revisions being tested
 		def allRevFolder = this.projectsDirectory + mergeCommit.projectName + "/revisions/rev_" + mergeCommit.parent1.substring(0, 7) + "_" + mergeCommit.parent2.substring(0, 7)
@@ -364,6 +298,82 @@ class Extractor {
 			// reseting
 			this.restoreGitRepository()
 		} catch(org.eclipse.jgit.api.errors.JGitInternalException f){
+			println "ERROR: " + f
+			// reseting
+			this.restoreGitRepository()
+		} catch(org.eclipse.jgit.dircache.InvalidPathException g){
+			println "ERROR: " + g
+			// reseting
+			this.restoreGitRepository()
+		} catch(org.eclipse.jgit.api.errors.RefNotFoundException h){
+			println "ERROR: " + h
+			// reseting
+			this.restoreGitRepository()
+		} catch(java.lang.NullPointerException i){
+			println "ERROR: " + i
+			// reseting
+			this.restoreGitRepository()
+		} finally {
+			// closing git repository
+			this.git.getRepository().close()
+		}
+	}
+
+	def private downloadAllFiles(parent1, parent2, ancestor) {
+		// folder of the revisions being tested
+		def allRevFolder = this.projectsDirectory + this.project.name + "/revisions/rev_" + parent1.substring(0, 7) + "_" + parent2.substring(0, 7)
+		try{
+			// opening the working directory
+			this.git = openRepository();
+			// git reset --hard SHA1_1
+			this.resetCommand(this.git, parent1)
+
+			// copy files for parent1 revision
+			def destinationDir = allRevFolder + "/rev_left_" + parent1.substring(0, 7)
+			this.copyFiles(this.repositoryDir, destinationDir, "")
+			def rec = new RecursiveFileList()
+			rec.removeFiles(new File(destinationDir))
+
+			// git clean -f
+			CleanCommand cleanCommandgit = this.git.clean()
+			cleanCommandgit.call()
+
+			// git checkout -b new SHA1_2
+			def refNew = checkoutAndCreateBranch("new", parent2)
+			// copy files for parent2 revision
+			destinationDir = allRevFolder + "/rev_right_" + parent2.substring(0, 7)
+			def excludeDir = "**/" + allRevFolder + "/**"
+			this.copyFiles(this.repositoryDir, destinationDir, excludeDir)
+			rec.removeFiles(new File(destinationDir))
+
+
+			cleanCommandgit = this.git.clean()
+			cleanCommandgit.call()
+			// git checkout -b ancestor ANCESTOR
+
+			checkoutMasterBranch()
+			cleanCommandgit = this.git.clean()
+			cleanCommandgit.call()
+
+			def refAncestor = checkoutAndCreateBranch("ancestor", ancestor)
+			// copy files for ancestor revision
+			destinationDir = allRevFolder + "/rev_base_" + ancestor.substring(0, 7)
+			excludeDir	   = "**/" + allRevFolder + "/**"
+			this.copyFiles(this.repositoryDir, destinationDir, excludeDir)
+			rec.removeFiles(new File(destinationDir))
+
+			this.writeRevisionsFile(parent1.substring(0, 7), parent2.substring(0, 7), ancestor.substring(0, 7), allRevFolder)
+
+			// avoiding references issues
+			checkoutMasterBranch()
+			this.deleteBranch("ancestor")
+			this.deleteBranch("new")
+
+		} catch(org.eclipse.jgit.api.errors.CheckoutConflictException e){
+			println "ERROR: " + e
+			// reseting
+			this.restoreGitRepository()
+		}catch(org.eclipse.jgit.api.errors.JGitInternalException f){
 			println "ERROR: " + f
 			// reseting
 			this.restoreGitRepository()
@@ -550,11 +560,11 @@ class Extractor {
 			File gitWorkDir = new File(repositoryDir)
 			Git git = Git.open(gitWorkDir)
 			Repository repository = git.getRepository()
-			this.renameMainBranchIfNeeded(repository)
 			return git
 		} catch(org.eclipse.jgit.errors.RepositoryNotFoundException e){
-			this.cloneRepository()
-			this.openRepository()
+			println 'The path informed ' + repositoryDir + ' is not a valid git repository'
+			e.printStackTrace()
+			System.exit(-1)
 		}
 	}
 
@@ -825,6 +835,14 @@ class Extractor {
 		command.inputStream.eachLine {println it}
 		command.waitFor();
 
+	}
+
+	def public backupRepository(Project p){
+		println "Backup Git repository " + this.remoteUrl +"..."
+		def local = this.workingDirectory + 'repositories' + File.separator + p.name
+		new AntBuilder().delete(dir:local,failonerror:false)
+		new AntBuilder().copy(todir:local) {fileset(dir:this.repositoryDir , defaultExcludes: false){}}
+		p.url = local
 	}
 
 	static void main (String[] args){
