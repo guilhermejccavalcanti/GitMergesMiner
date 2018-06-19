@@ -40,9 +40,7 @@ public class MergeCommitsRetriever {
 		try{
 			ProcessBuilder pb = this.getProcessBuilder()
 			pb.directory(new File(this.clonePath))
-			//pb.redirectOutput(ProcessBuilder.Redirect.INHERIT)
 			Process p = pb.start()
-			//p.waitFor()
 
 			BufferedReader buf = new BufferedReader(new InputStreamReader(p.getInputStream()))
 			String line = ""

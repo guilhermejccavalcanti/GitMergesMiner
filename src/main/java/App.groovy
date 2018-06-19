@@ -31,13 +31,14 @@ class App {
 
 		//download scenarios
 		LinkedList<MergeCommit> horizontalExecutionMergeCommits = fillMergeCommitsListForHorizontalExecution(projects)
+		//horizontalExecutionMergeCommits = filter(horizontalExecutionMergeCommits)
 		for(int i=0; i<horizontalExecutionMergeCommits.size();i++){
 			MergeCommit m = horizontalExecutionMergeCommits.get(i);
-			println ('Analysing ' + ((i+1)+'/'+horizontalExecutionMergeCommits.size()) + ': ' +  m.sha)
+			println ('Downloading ' + ((i+1)+'/'+horizontalExecutionMergeCommits.size()) + ': ' +  m.sha)
 			Extractor ext = new Extractor(m)
 			ext.download_merge_scenario(m)
 		}
-		println 'Analysis Finished!'
+		println 'Downloads Finished!'
 	}
 
 	def private static restoreGitRepositories(ArrayList<Project> projects){
@@ -83,6 +84,31 @@ class App {
 		def out = new File('execution.log')
 		out.append (lastMergeCommit.projectName+','+lastMergeCommit.sha)
 		out.append '\n'
+
+		String a;
+		a.equalsIgnoreCase(a)
+	}
+
+	def private static filter(List<MergeCommit> mergeCommits){
+		//TODO IMPLEMENT BELOW YOUR CRITERIA FOR FILTERING MERGE COMMITS
+		List<MergeCommit> filtered = new ArrayList<>()
+		File f = new File('filter.csv')
+		if(!f.exists() ) {
+			println "Filter file does not exist!"
+		} else {
+			for(MergeCommit m : mergeCommits){
+				f.eachLine { line ->
+					String[] a = line.split(';')
+					String pname = a[0]
+					String right = a[1]
+					String left  = a[2]
+					if(m.projectName.equalsIgnoreCase(pname) && m.parent2.startsWith(right) && m.parent1.startsWith(left)){
+						filtered.add(m)
+					}
+				}
+			}
+		}
+		return filtered
 	}
 
 	public static void main (String[] args){

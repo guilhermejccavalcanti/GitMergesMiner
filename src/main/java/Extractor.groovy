@@ -357,11 +357,15 @@ class Extractor {
 				.directory(new File(this.repositoryDir))
 				.redirectErrorStream(true).start()
 		command.waitFor();
+		command.inputStream.eachLine{}
+			
 
 		command = new ProcessBuilder('git','merge', left)
 				.directory(new File(this.repositoryDir))
 				.redirectErrorStream(true).start()
 		command.waitFor();
+		command.inputStream.eachLine{}
+		
 
 		println('Diffing left base right: ' + right)
 		command = new ProcessBuilder('git','diff','--name-only', right)
@@ -623,7 +627,7 @@ class Extractor {
 			File gitWorkDir = new File(repositoryDir)
 			Git git = Git.open(gitWorkDir)
 			Repository repository = git.getRepository()
-			this.renameMainBranchIfNeeded(repository)
+			//this.renameMainBranchIfNeeded(repository)
 			return git
 		} catch(org.eclipse.jgit.errors.RepositoryNotFoundException e){
 			this.cloneRepository()
