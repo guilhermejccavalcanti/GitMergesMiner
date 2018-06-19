@@ -22,7 +22,7 @@ class Printer {
 		}
 	}
 	
-	public void writeCSV(String projectName, ArrayList<MergeCommit> listMC){
+	public void writeCSV(String projectName, List<MergeCommit> listMC){
 		new File('commits/').mkdirs()
 		def out = new File('commits/commits_'+projectName+'.csv')
 
@@ -31,13 +31,13 @@ class Printer {
 
 		out = new File('commits/commits_'+projectName+'.csv')
 
-		def firstRow = ["Merge commit", "Parent 1", "Parent 2"]
-		out.append firstRow.join(',')
+		def firstRow = ["Project","Merge commit","Parent 1","Ancestor","Parent 2"]
+		out.append firstRow.join(';')
 		out.append '\n'
 
 		listMC.each {
-			def row = [it.sha, it.parent1, it.parent2]
-			out.append row.join(',')
+			def row = [projectName, it.sha, it.parent1, it.ancestor,it.parent2]
+			out.append row.join(';')
 			out.append '\n'
 		}
 	}

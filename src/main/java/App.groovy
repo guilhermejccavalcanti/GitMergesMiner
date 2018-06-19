@@ -75,21 +75,19 @@ class App {
 	}
 
 	def static collectMergeCommits(){
-		Read r = new Read("projects.csv",true)
+		Read r = new Read("projects.csv",false)
 		def projects = r.getProjects()
-		println('Reader Finished!')
+		restoreGitRepositories(projects)
 
 		projects.each {
-			GremlinQuery gq = new GremlinQuery(it.graph)
-
+			Extractor e = new Extractor(it,false)
+			e.fillAncestors()
+			println('Project ' + it.name + " read")
+			
 			Printer p = new Printer()
-			p.writeCSV(it.name,gq.getMergeCommitsList())
-			p.writeNumberOfMergeCommits(it.name,gq.getMergeCommitsList());
+			p.writeCSV(it.name,it.listMergeCommit)
 			println('Printer Finished!')
 			println("----------------------")
-
-			it.setMergeCommits(gq.getMergeCommitsList())
-			gq.graph.shutdown();
 		}
 	}
 
@@ -136,6 +134,7 @@ class App {
 	}
 
 	public static void main (String[] args){
-		runNoGitminer()
+		//runNoGitminer()
+		collectMergeCommits()
 	}
 }
