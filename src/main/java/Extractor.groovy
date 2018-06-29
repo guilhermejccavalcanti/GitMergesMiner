@@ -52,12 +52,6 @@ class Extractor {
 	private final int NUM_MAX_TRIES = 1
 
 	public Extractor(Project project, boolean withGitMiner){
-		//this.projectsDirectory	= "/mnt/e/Mestrado/FPFNAnalysis/projects/"
-		//this.projectsDirectory	= "/home/local/CIN/gjcc/fpfnanalysis/projects/"
-		//this.projectsDirectory	= "E:/Mestrado/FPFNAnalysis/projects/"
-		//this.tempdir			= this.projectsDirectory + "temp/" +this.project.name+"/git"
-		//this.tempdir			= "/home/local/CIN/gjcc/fpfnanalysis/temp/" +this.project.name+"/git"
-
 		loadProperties()
 		this.project			= project
 		this.listMergeCommit 	= this.project.listMergeCommit
@@ -84,12 +78,6 @@ class Extractor {
 	}
 
 	public Extractor(MergeCommit mergeCommit){
-		//this.projectsDirectory	= "E:/Mestrado/FPFNAnalysis/projects/"
-		//this.projectsDirectory	= "/mnt/e/Mestrado/FPFNAnalysis/projects/"
-		//this.projectsDirectory	= "/home/local/CIN/gjcc/fpfnanalysis/projects/"
-		//this.tempdir			= this.projectsDirectory + "temp/" + mergeCommit.projectName +"/git"
-		//this.tempdir			= "/home/local/CIN/gjcc/fpfnanalysis/temp/" + mergeCommit.projectName +"/git"
-
 		loadProperties()
 		this.remoteUrl 			= mergeCommit.projectURL
 		this.tempdir			= this.workingDirectory + "/temp/" + mergeCommit.projectName +"/git"
@@ -739,13 +727,14 @@ class Extractor {
 	}
 
 	def private setup(){
-		//keeping a backup dir
 		this.openRepository()
-		if(!(new File(this.tempdir)).exists()){
-			println "Setupping..."
-			new AntBuilder().copy(todir:this.tempdir) {fileset(dir:this.repositoryDir, defaultExcludes: false){}}
-			println "----------------------"
-		}
+		
+		//keeping a backup dir
+		/*		if(!(new File(this.tempdir)).exists()){
+		 println "Setupping..."
+		 new AntBuilder().copy(todir:this.tempdir) {fileset(dir:this.repositoryDir, defaultExcludes: false){}}
+		 println "----------------------"
+		 }*/
 	}
 
 	def private restoreGitRepository(){

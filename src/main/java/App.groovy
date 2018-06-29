@@ -111,7 +111,7 @@ class App {
 		String logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
 		File statistics_partial = new File(logpath+ "jfstmerge.statistics");
 		File statistics_files 	= new File(logpath+ "jfstmerge.statistics.files");
-		def header = 'date,files,ssmergeconfs,ssmergeloc,ssmergerenamingconfs,ssmergedeletionconfs,ssmergeinnerdeletionconfs,ssmergetaeconfs,ssmergenereoconfs,ssmergeinitlblocksconfs,ssmergeacidentalconfs,unmergeconfs,unmergeloc,unmergetime,ssmergetime,unmergeduplicateddeclarationerrors,unmergeorderingconfs,equalconfs\n';
+		def header = 'date;files;ssmergeconfs;ssmergeloc;ssmergerenamingconfs;ssmergedeletionconfs;ssmergeinnerdeletionconfs;ssmergetaeconfs;ssmergenereoconfs;ssmergeinitlblocksconfs;ssmergeacidentalconfs;unmergeconfs;unmergeloc;unmergetime;ssmergetime;unmergeduplicateddeclarationerrors;unmergeorderingconfs;equalconfs\n';
 		if(!statistics_files.exists()){(new File(logpath)).mkdirs();statistics_files.createNewFile(); statistics_files.append(header)} //ensuring it exists
 		/*
 		 * jfstmerge.statistics contains numbers for each merged file. To compute numbers for each scenario,
@@ -142,7 +142,7 @@ class App {
 		for(int y = 1/*ignoring header*/; y <lines.size(); y++){
 			String[] columns = lines.get(y).split(",");
 
-			statistics_files.append(lines.get(y)+'\n')
+			statistics_files.append(((lines.get(y)).replaceAll(",", ";"))+'\n')
 
 			ssmergeconfs += Integer.valueOf(columns[2]);
 			ssmergeloc 	 += Integer.valueOf(columns[3]);
