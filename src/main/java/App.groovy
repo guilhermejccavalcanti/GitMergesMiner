@@ -13,6 +13,7 @@ import java.util.regex.Matcher
 import util.LoggingOutputStream;
 import util.LoggerPrintStream;
 import util.StdOutErrLevel;
+import util.TravisFinder;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -45,7 +46,19 @@ class App {
 			e.git_merge(m)
 
 			//compute statistics related to each scenario
-			computeStatistics(m)
+			MergeResult result = computeStatistics(m)
+
+			if(result.sucessfullmerge){
+				//if((result.ssmergeConf == 0 && result.jdimeConf>0){//travis only necessary when tools differ (result.ssmergeConf > 0 && result.jdimeConf==0)
+					//push to fork, build fork
+					String new_sha = e.git_push()
+					result.travisStatus = TravisFinder.findStatus(new_sha, result.commit.projectName)
+					//TODO testar
+				//}
+			}
+
+			//log statistics related to each scenario
+			logStatistics(result)
 		}
 		println 'Analysis Finished!'
 	}
@@ -105,7 +118,11 @@ class App {
 		return alreadyExecutedSHAs
 	}
 
-	def private static computeStatistics(MergeCommit m){
+	def private static MergeResult computeStatistics(MergeCommit m){
+		//wrapper
+		MergeResult result = new MergeResult()
+		result.commit = m;
+
 		//retrieving statistics
 		String logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
 		File statistics_partial = new File(logpath+ "numbers-current-file.csv");
@@ -121,27 +138,6 @@ class App {
 		 * numbers-current-file content in the numbers-files before deleting numbers-current-file.
 		 */
 
-		int consecutiveLinesonly = 0;
-		int spacingonly 	 = 0;
-		int samePositiononly = 0;
-		int sameStmtonly 	 = 0;
-		int otheronly 		 = 0;
-		int consecutiveLinesAndSamePosition = 0;
-		int consecutiveLinesAndsameStmt 	= 0;
-		int otherAndsamePosition 	= 0;
-		int otherAndsameStmt 		= 0;
-		int spacingAndSamePosition 	= 0;
-		int spacingAndSameStmt = 0;
-		int ssmergeConf = 0;
-		int jdimeConf   = 0;
-		int textualConf = 0;
-		long ssmergetime = 0L;
-		long unmergetime = 0L;
-		long jdimetime   = 0L;
-		boolean isSsEqualsToUn = true;
-		boolean isStEqualsToUn = true;
-		boolean sucessfullmerge= true;
-
 		List<String> lines = new ArrayList<String>();
 		if(statistics_partial.exists()){lines = statistics_partial.readLines();}
 		for(int y = 1/*ignoring header*/; y <lines.size(); y++){
@@ -149,38 +145,41 @@ class App {
 
 			statistics_files.append(m.projectURL +';'+m.sha+';'+lines.get(y)+'\n')
 
-			consecutiveLinesonly += Integer.valueOf(columns[1]);
-			spacingonly 	 += Integer.valueOf(columns[2]);
-			samePositiononly += Integer.valueOf(columns[3]);
-			sameStmtonly 	 += Integer.valueOf(columns[4]);
-			otheronly 		 += Integer.valueOf(columns[5]);
-			consecutiveLinesAndSamePosition += Integer.valueOf(columns[6]);
-			consecutiveLinesAndsameStmt 	+= Integer.valueOf(columns[7]);
-			otherAndsamePosition 	+= Integer.valueOf(columns[8]);
-			otherAndsameStmt 		+= Integer.valueOf(columns[9]);
-			spacingAndSamePosition 	+= Integer.valueOf(columns[10]);
-			spacingAndSameStmt += Integer.valueOf(columns[11]);
-			ssmergeConf += Integer.valueOf(columns[12]);
-			jdimeConf   += Integer.valueOf(columns[13]);
-			textualConf += Integer.valueOf(columns[14]);
-			ssmergetime += Long.parseLong(columns[15]);
-			unmergetime += Long.parseLong(columns[16]);
-			jdimetime   += Long.parseLong(columns[17]);
-			sucessfullmerge= sucessfullmerge&& Boolean.parseBoolean(columns[18]);
-			isSsEqualsToUn = isSsEqualsToUn && Boolean.parseBoolean(columns[19]);
-			isStEqualsToUn = isStEqualsToUn && Boolean.parseBoolean(columns[20]);
+			result.consecutiveLinesonly += Integer.valueOf(columns[1]);
+			result.spacingonly 	 += Integer.valueOf(columns[2]);
+			result.samePositiononly += Integer.valueOf(columns[3]);
+			result.sameStmtonly 	 += Integer.valueOf(columns[4]);
+			result.otheronly 		 += Integer.valueOf(columns[5]);
+			result.consecutiveLinesAndSamePosition += Integer.valueOf(columns[6]);
+			result.consecutiveLinesAndsameStmt 	+= Integer.valueOf(columns[7]);
+			result.otherAndsamePosition 	+= Integer.valueOf(columns[8]);
+			result.otherAndsameStmt 		+= Integer.valueOf(columns[9]);
+			result.spacingAndSamePosition 	+= Integer.valueOf(columns[10]);
+			result.spacingAndSameStmt += Integer.valueOf(columns[11]);
+			result.ssmergeConf += Integer.valueOf(columns[12]);
+			result.jdimeConf   += Integer.valueOf(columns[13]);
+			result.textualConf += Integer.valueOf(columns[14]);
+			result.ssmergetime += Long.parseLong(columns[15]);
+			result.unmergetime += Long.parseLong(columns[16]);
+			result.jdimetime   += Long.parseLong(columns[17]);
+			result.sucessfullmerge= result.sucessfullmerge&& Boolean.parseBoolean(columns[18]);
+			result.isSsEqualsToUn = result.isSsEqualsToUn && Boolean.parseBoolean(columns[19]);
+			result.isStEqualsToUn = result.isStEqualsToUn && Boolean.parseBoolean(columns[20]);
 		}
 		(new AntBuilder()).delete(file:statistics_partial.getAbsolutePath(),failonerror:false)
+		return result
+	}
 
-		logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
+	private static logStatistics(MergeResult result) {
+		String logpath = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
 		File statistics_scenarios = new File(logpath+ "numbers-scenarios.csv");
 		if(!statistics_scenarios.exists()){
-			def header = "project;mergecommit;consecutiveLinesonly;spacingonly;samePositiononly;sameStmtonly;otheronly;consecutiveLinesAndSamePosition;consecutiveLinesAndsameStmt;otherAndsamePosition;otherAndsameStmt;spacingAndSamePosition;spacingAndSameStmt;ssmergeConf;textualConf;jdimeConfs;smergeTime;textualTime;jdimeTime;sucessfullMerge;isSsEqualsToUn;isStEqualsToUn"
+			def header = "project;mergecommit;consecutiveLinesonly;spacingonly;samePositiononly;sameStmtonly;otheronly;consecutiveLinesAndSamePosition;consecutiveLinesAndsameStmt;otherAndsamePosition;otherAndsameStmt;spacingAndSamePosition;spacingAndSameStmt;ssmergeConf;textualConf;jdimeConfs;smergeTime;textualTime;jdimeTime;sucessfullMerge;isSsEqualsToUn;isStEqualsToUn;travisStatus"
 			statistics_scenarios.append(header+'\n')
 			statistics_scenarios.createNewFile()
 		} //ensuring it exists
 
-		def loggermsg = m.projectURL + ';' + m.sha + ';'+ consecutiveLinesonly + ';'+ spacingonly + ';'+ samePositiononly + ';'+ sameStmtonly + ';'+ otheronly + ';'+ consecutiveLinesAndSamePosition + ';'	+ consecutiveLinesAndsameStmt + ';'+ otherAndsamePosition + ';'+ otherAndsameStmt + ';'+ spacingAndSamePosition + ';'+ spacingAndSameStmt + ';'+ ssmergeConf + ';'+ textualConf + ';'+ jdimeConf + ';'+ ssmergetime + ';'+ unmergetime + ';'+ jdimetime + ';'+ sucessfullmerge+ ';'+ isSsEqualsToUn + ';'+ isStEqualsToUn;
+		def loggermsg = result.commit.projectName + ';' + result.commit.sha + ';'+ result.consecutiveLinesonly + ';'+ result.spacingonly + ';'+ result.samePositiononly + ';'+ result.sameStmtonly + ';'+ result.otheronly + ';'+ result.consecutiveLinesAndSamePosition + ';'	+ result.consecutiveLinesAndsameStmt + ';'+ result.otherAndsamePosition + ';'+ result.otherAndsameStmt + ';'+ result.spacingAndSamePosition + ';'+ result.spacingAndSameStmt + ';'+ result.ssmergeConf + ';'+ result.textualConf + ';'+ result.jdimeConf + ';'+ result.ssmergetime + ';'+ result.unmergetime + ';'+ result.jdimetime + ';'+ result.sucessfullmerge+ ';'+ result.isSsEqualsToUn + ';'+ result.isStEqualsToUn + ';'+ result.travisStatus;
 		statistics_scenarios.append(loggermsg+'\n')
 	}
 

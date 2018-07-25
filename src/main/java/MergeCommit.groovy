@@ -5,7 +5,7 @@ public class MergeCommit {
 	public String parent1
 	public String parent2
 	public String ancestor
-	public String  projectName
+	public String projectName
 	public String projectURL
 	public String graph
 	public String revisionFile
