@@ -25,7 +25,10 @@ class MergeResult {
 	boolean isStEqualsToUn = true;
 	boolean sucessfullmerge= true;
 	
-	String travisStatus = "none"
+	String travisStatus 	= "NONE"
+	String travisBuildURI 	= null
+	String travisJobURI = null
+	int travisBuildTime	= 0
 	
 	public MergeResult(){
 	}

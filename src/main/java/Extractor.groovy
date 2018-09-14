@@ -1,3 +1,5 @@
+import java.text.BreakIterator;
+
 import org.eclipse.jgit.api.CleanCommand
 import org.eclipse.jgit.api.CloneCommand
 import org.eclipse.jgit.api.Git
@@ -50,6 +52,8 @@ class Extractor {
 	// signal of error execution, number max of tries 5
 	private def ERROR
 	private final int NUM_MAX_TRIES = 1
+	
+	private boolean isTravis = false
 
 	public Extractor(Project project, boolean withGitMiner){
 		//this.projectsDirectory	= "/mnt/e/Mestrado/FPFNAnalysis/projects/"
@@ -62,8 +66,8 @@ class Extractor {
 		this.project			= project
 		this.listMergeCommit 	= this.project.listMergeCommit
 		this.remoteUrl 			= this.project.url
-		this.tempdir			= this.workingDirectory + "/temp/" + this.project.name+"/git"
-		this.repositoryDir		= this.projectsDirectory + this.project.name + "/git"
+		this.tempdir			= this.workingDirectory + "/temp/" + this.project.name.replace("/","_")+"/git"
+		this.repositoryDir		= this.projectsDirectory + this.project.name.replace("/","_") + "/git"
 		this.CONFLICTS 			= 0
 		this.ERROR				= 0
 		this.setup()
@@ -74,7 +78,7 @@ class Extractor {
 			ArrayList<MergeCommit> mergeCommits   = mergesRetriever.retrieveMergeCommits()
 			project.setMergeCommits(mergeCommits)
 			Printer printer = new Printer()
-			printer.writeCSV(project.name,mergeCommits)
+			printer.writeCSV(project.name.replace("/","_"),mergeCommits)
 		}
 	}
 
@@ -87,8 +91,8 @@ class Extractor {
 
 		loadProperties()
 		this.remoteUrl 			= mergeCommit.projectURL
-		this.tempdir			= this.workingDirectory + "/temp/" + mergeCommit.projectName +"/git"
-		this.repositoryDir		= this.projectsDirectory + mergeCommit.projectName + "/git"
+		this.tempdir			= this.workingDirectory + "/temp/" + mergeCommit.projectName.replace("/","_") +"/git"
+		this.repositoryDir		= this.projectsDirectory + mergeCommit.projectName.replace("/","_") + "/git"
 		this.CONFLICTS 			= 0
 		this.ERROR				= 0
 		this.setup()
@@ -220,6 +224,7 @@ class Extractor {
 			def SHA_2 = mergeCommit.parent2
 			def ancestorSHA = this.findCommonAncestor(SHA_1, SHA_2)
 			if(ancestorSHA != null){
+				mergeCommit.project = this.project
 				mergeCommit.ancestor = ancestorSHA
 				mergeCommit.projectName	 = this.project.name
 				mergeCommit.projectURL = this.project.url
@@ -234,7 +239,7 @@ class Extractor {
 
 	def public downloadMergeScenario(MergeCommit mergeCommit) {
 		// folder of the revisions being tested
-		def allRevFolder = this.projectsDirectory + mergeCommit.projectName + "/revisions/rev_" + mergeCommit.parent1.substring(0, 7) + "_" + mergeCommit.parent2.substring(0, 7)
+		def allRevFolder = this.projectsDirectory + mergeCommit.projectName.replace("/","_") + "/revisions/rev_" + mergeCommit.parent1.substring(0, 7) + "_" + mergeCommit.parent2.substring(0, 7)
 		try{
 			// opening the working directory
 			this.git = openRepository();
@@ -318,7 +323,7 @@ class Extractor {
 
 	def private downloadAllFiles(parent1, parent2, ancestor) {
 		// folder of the revisions being tested
-		def allRevFolder = this.projectsDirectory + this.project.name + "/revisions/rev_" + parent1.substring(0, 7) + "_" + parent2.substring(0, 7)
+		def allRevFolder = this.projectsDirectory + this.project.name.replace("/","_") + "/revisions/rev_" + parent1.substring(0, 7) + "_" + parent2.substring(0, 7)
 		try{
 			// opening the working directory
 			this.git = openRepository();
@@ -394,7 +399,7 @@ class Extractor {
 
 	def private downloadOnlyConflicting(parent1, parent2) {
 		// folder of the revisions being tested
-		def allRevFolder = this.projectsDirectory + this.project.name + "/revisions/rev_" + parent1.substring(0, 7) + "_" + parent2.substring(0, 7)
+		def allRevFolder = this.projectsDirectory + this.project.name.replace("/","_") + "/revisions/rev_" + parent1.substring(0, 7) + "_" + parent2.substring(0, 7)
 		try{
 			// opening the working directory
 			this.git = openRepository();
@@ -525,14 +530,14 @@ class Extractor {
 		CloneCommand clone = new CloneCommand()
 				.setURI(remoteUrl)
 				.setDirectory(gitWorkDir)
-		if(remoteUrl.contains('bitbucket')){
-			String name = "gjcc@cin.ufpe.br"
-			String password = "ganister"
+		//if(remoteUrl.contains('bitbucket')){
+		String name = "gjcc@cin.ufpe.br"
+		String password = "ganister"
 
-			// credentials
-			CredentialsProvider cp = new UsernamePasswordCredentialsProvider(name, password)
-			clone.setCredentialsProvider(cp)
-		}
+		// credentials
+		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(name, password)
+		clone.setCredentialsProvider(cp)
+		//}
 		clone.call()
 
 		/*		Git.cloneRepository()
@@ -614,7 +619,7 @@ class Extractor {
 	java.lang.NullPointerException  {
 
 		// folder of the revisions being tested
-		def allRevFolder = this.projectsDirectory + this.project.name + "/revisions/rev_" + parent1.substring(0, 7) + "_" + parent2.substring(0, 7)
+		def allRevFolder = this.projectsDirectory + this.project.name.replace("/","_") + "/revisions/rev_" + parent1.substring(0, 7) + "_" + parent2.substring(0, 7)
 		//try{
 		// opening the working directory
 		this.git = openRepository();
@@ -825,22 +830,42 @@ class Extractor {
 		command.inputStream.eachLine {println it}
 		command.waitFor();
 
+		isTravis()
+	}
+
+	def private void isTravis() {
+		String[] filesInDir =new File(this.repositoryDir).list();
+		for ( int i=0; i<filesInDir.length; i++ ){
+			if(filesInDir[i].toLowerCase().contains(".travis.yml")){
+				this.isTravis = true;
+				break;
+			}
+		}
 	}
 
 	def public String git_push(){
-		def command = null
-		String newMergeCommitSha = ""
-		println('Push resulting merge result...')
-		command = new ProcessBuilder('git','push','origin','master','--force')
-			.directory(new File(this.repositoryDir))
-			.redirectErrorStream(true).start()
-		command.inputStream.eachLine {
-			println it
-			newMergeCommitSha += it
+		try{
+			def command = null
+			String newMergeCommitSha = ""
+			println('Push resulting merge result...')
+			command = new ProcessBuilder('git','push','origin','master','--force')
+					.directory(new File(this.repositoryDir))
+					.redirectErrorStream(true).start()
+			command.inputStream.eachLine {
+				println it
+				newMergeCommitSha += it
+			}
+			command.waitFor();
+			try{
+				newMergeCommitSha = newMergeCommitSha.split("\\.\\.\\.")[1].split(" ")[0]
+			}catch(Exception e){
+				newMergeCommitSha = newMergeCommitSha.split("\\.\\.")[1].split(" ")[0]
+			}
+			return newMergeCommitSha
+		} catch(Exception e){
+			e.printStackTrace()
 		}
-		command.waitFor();
-		newMergeCommitSha = newMergeCommitSha.split("\\.\\.\\.")[1].split(" ")[0] 
-		return newMergeCommitSha
+		return null
 	}
 
 	static void main (String[] args){

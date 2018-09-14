@@ -1,0 +1,12 @@
+Project Name;Build Conflict Type;Broken Build ID;Parent Build One;Parent Build Two;Fix Build;Resolution Pattern;Same Author
+javaparser/javaparser;"malformedProgram";89c83f2;4b45bdb;232077865;-;-;-
+searchbox-io/Jest;"unimplementedMethod";72f2116;d689657;c67b585;8269772;Method signature update in interface;true
+tananaev/traccar;"unavailableSymbolFile";516ef6a;5bf82ef;127767037;-;-;-
+tananaev/traccar;"unavailableSymbolMethod";ca06e8d;93468836;93456576;93469621;Symbol reintroduction;true
+DSpace/DSpace;"incompatibleMethodSignature";049eb50;18006409;17867814;-;-;-
+oxo42/stateless4j;"malformedProgram";26ac62c;7e636bd;6ba3bc5;29132542;Syntax update;true
+timmolter/XChange;"unavailableSymbolFile";5a0af40;66b2439;bb97095;-;-;-
+timmolter/XChange;"malformedProgram";c786aec;d8ca040;56315ff;-;-;-
+Adobe-Consulting-Services/acs-aem-commons;"unavailableSymbolFileSpecialCase";4d25d30;3ee9cdd;0d17327;-;-;-
+Adobe-Consulting-Services/acs-aem-commons;"unavailableSymbolFileSpecialCase";ec49f07;d62f03b;5f03472;-;-;-
+swagger-api/swagger-core;"malformedProgram";690429d;185372812;5437741;-;-;-

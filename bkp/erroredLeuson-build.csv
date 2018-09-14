@@ -1,0 +1,17 @@
+Project Name;Build Conflict Type;Broken Build ID;Parent Build One;Parent Build Two;Fix Build;Resolution Pattern;Same Author;Merge Commit
+CorfuDB/CorfuDB;incompatibleMethodSignature;147270257;146731270;147268879;147282906;Request update;true;d4f18457776844c32bc4f892008657c827c3ed14
+CloudSlang/cloud-slang;unavailableSymbolVariable;108796563;108795960;108776026;158196252;Method removal in interface;true;4e369761f727a25bcc1381a5ffa529b92d3f0831
+CloudSlang/cloud-slang;unavailableSymbolVariable;75952745;75948732;75923848;75953353;Request symbol update;true;7af14006e33792d058b17345bdfc18a15d3ae980
+CloudifySource/cloudify;malformedProgram;14913281;14912159;14913175;-;-;-;f36a651e47f77cef542b4619516e2bff047802d6
+FasterXML/jackson-core;duplicatedDeclaration;49277833;49277342;49277694;49277953;Duplicated element removal;true;df37ed361269fb0d9defba5e46b3e714fa908f26
+l0rdn1kk0n/wicket-bootstrap;unavailableSymbolFileSpecialCase;33711220;32203441;33700856;-;-;-;2f93a7cfabbef3932c734a05b569c8b155a51c9f
+l0rdn1kk0n/wicket-bootstrap;unavailableSymbolFileSpecialCase;11775898;11766897;11753209;11776238;Request symbol removal;true;35ff2155f0939df9d4114166354660c82f3f5728
+sanity/quickml;unimplementedMethod;53078374;51295424;52786842;false;integrator;-;68fcb293af24e6cfb74e423bb52b00aadc6e9d25
+sanity/quickml;duplicatedDeclaration;25549352;25544853;25548698;25549358;Duplicated element removal;true;1456c2527ae011496a898369e55efa2c3348178a
+datastax/java-driver;unimplementedMethod;100402057;100359289;100316921;100402991;Method implementation;false;c284142cc3d84ec503eca7147d6c430ede299d40
+ontop/ontop;unavailableSymbolFileSpecialCase;90071710;89465997;89465245;90072010;Request symbol removal;true;97763dabe550a419b1c17e50335ce14bf93f07b7
+ontop/ontop;unimplementedMethodSuperType;50878615;50833440;43860836;-;-;-;919b9c4d67463cd1187e819f07939397f53e713d
+ontop/ontop;unavailableSymbolFile;50878615;50833440;43860836;-;-;-;919b9c4d67463cd1187e819f07939397f53e713d
+ontop/ontop;duplicatedDeclaration;41367169;41347143;41344362;41344362;Duplicated element removal;true;03b0f9a8252e71a465b622f388dd43269997851f
+swagger-api/swagger-core;unavailableSymbolFile;65300089;65086520;65298512;65300277;Request symbol update;true;929da30e0fb3871463f5b933435136762d1423a9
+swagger-api/swagger-core;malformedProgram;65291397;64436476;65265579;65291418;Syntax update;true;f957f5cdaf5037d09bba4f2b6819dc61ee658b9b

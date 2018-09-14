@@ -1,0 +1,38 @@
+jwtk/jjwt;280062604;271260846;280058560;Unachieved coverage;-;-;-;-;-
+brettwooldridge/HikariCP;62022698;61160937;61885622;Failed Test;TestMetric;testMetricUsage;updated (Right);true;true - true
+square/wire;81124823;81124811;81123648;Failed Test;SerializableTest;decodeGolden;updated (Right);false;true - false
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;ObjectCommandsTest;objectEncoding;new (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;AllKindOfValuesCommandsTest;renameOldAndNewAreTheSame;new (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testClusterCountKeysInSlot;new (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testRedisClusterMaxRedirections;new (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testAskResponse;updated (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testDiscoverNodesAutomatically;updated (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testMigrateToNewNode;new (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testCloseable;new (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testThrowExceptionWithoutKey;updated (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testCalculateConnectionPerSlot;updated (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testMigrate;new (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testStableSlotWhenMigratingNodeOrImportingNodeIsNotSpecified;new (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testRecalculateSlotsWhenMoved;updated (Right);true;false - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testJedisClusterRunsWithMultithreaded;updated (Right);false;true - true
+xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;JedisClusterTest;testClusterCountKeysInSlot;old;true;false - true
+xetorthio/jedis;7ff6061;8558487;59431389;Failed Test;JedisClusterTest;testDiscoverNodesAutomatically;old;true;false - true
+xetorthio/jedis;7ff6061;8558487;59431389;Failed Test;JedisClusterTest;testMigrateToNewNode;old;true;false - true
+xetorthio/jedis;7ff6061;8558487;59431389;Failed Test;JedisClusterTest;testCloseable;old;true;false - true
+xetorthio/jedis;7ff6061;8558487;59431389;Failed Test;JedisClusterTest;testCalculateConnectionPerSlot;old;true;false - true
+xetorthio/jedis;7ff6061;8558487;59431389;Failed Test;JedisClusterTest;testMigrate;old;true;false - true
+xetorthio/jedis;7ff6061;8558487;59431389;Failed Test;JedisClusterTest;testStableSlotWhenMigratingNodeOrImportingNodeIsNotSpecified;old;true;false - true
+xetorthio/jedis;7ff6061;8558487;59431389;Failed Test;JedisClusterTest;testRecalculateSlotsWhenMoved;old;true;false - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testClusterCountKeysInSlot;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testRedisClusterMaxRedirections;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testAskResponse;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testIfPoolConfigAppliesToClusterPools;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testDiscoverNodesAutomatically;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testMigrateToNewNode;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testCloseable;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testCalculateConnectionPerSlot;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testMigrate;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testReturnConnectionOnJedisConnectionException;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testStableSlotWhenMigratingNodeOrImportingNodeIsNotSpecified;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testReturnConnectionOnRedirection;old;true;true - true
+xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testRecalculateSlotsWhenMoved;old;true;true - true

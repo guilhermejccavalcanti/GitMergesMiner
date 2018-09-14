@@ -10,6 +10,9 @@ class Project {
 	String miningUntilDate = ""
 	LinkedList<MergeCommit> listMergeCommit
 	
+	String originalName
+	String originalURL
+	
 	def setMergeCommits(mergeCommits){
 		this.listMergeCommit = mergeCommits
 	}

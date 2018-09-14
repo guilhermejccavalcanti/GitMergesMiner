@@ -1,0 +1,4 @@
+ProjectName;BuildID;Parent One;Parent Two;Type;File Name;Test Case Name;Test Case;Same Methods;Dependent Methods
+jwtk/jjwt;280062604;271260846;280058560;Unachieved coverage;-;-;-;-;-;8cfc9f5cbacd1d5b4e7a38889c867a3086fe8a14
+brettwooldridge/HikariCP;62022698;61160937;61885622;Failed Test;TestMetric;testMetricUsage;updated (Right);true;true - true;cb37a6d73088e016949bccdd22b6047d212da446
+square/wire;81124823;81124811;81123648;Failed Test;SerializableTest;decodeGolden;updated (Right);false;true - false;666482477a1bb02f65186c1d5499b8bc906bad44
