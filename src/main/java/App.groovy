@@ -22,7 +22,12 @@ import java.text.SimpleDateFormat;
 class App {
 
 	def public static run_gitmerges(){
-		new File("execution.log").createNewFile()
+		//managing execution log
+		File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
+		if(f.getParentFile().exists()) f.getParentFile().deleteDir()
+		f.getParentFile().mkdirs()
+		f.createNewFile()
+
 		Read r = new Read("projects.csv",false)
 		def projects = r.getProjects()
 		backupGitRepositories(projects)
@@ -90,7 +95,7 @@ class App {
 	}
 
 	def private static fillExecutionLog(MergeCommit lastMergeCommit){
-		def out = new File('execution.log')
+		def out = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
 		out.append (lastMergeCommit.projectName+','+lastMergeCommit.sha)
 		out.append '\n'
 	}
@@ -98,7 +103,7 @@ class App {
 	def private static ArrayList<String> restoreExecutionLog(){
 		ArrayList<String> alreadyExecutedSHAs = new ArrayList<String>()
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("execution.log"))
+			BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log'))
 			String line  = ""
 			while ((line = br.readLine()) != null)
 				alreadyExecutedSHAs.add(line)
