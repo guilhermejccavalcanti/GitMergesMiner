@@ -68,22 +68,18 @@ public class TravisFinder {
 						jobState = getState(job);
 						if(jobState.equals("ERRORED")){
 							jobState = "EXTERNAL"; //when a job is still errored here, it is external
+						} else if(jobState.equals("FAILED")){
+							if(isTestError(log)){
+								jobState = "FAILED";
+							} else {
+								jobState = "EXTERNAL";
+							}
 						} else {
 							jobState = jobState + "," + jobId;
 						}
 						jobsStatus.add(jobState);
 					}
 				}
-				//				String allstatus = jobsStatus.toString();
-				//				if(allstatus.contains("FAILED")){
-				//					status = "FAILED";
-				//				} else if(allstatus.contains("ERRORED")){
-				//					status = "ERRORED";
-				//				} else if(allstatus.contains("PASSED")){
-				//					status = "PASSED";
-				//				} else{
-				//					status = "EXTERNAL";
-				//				}
 				for(String st : jobsStatus){
 					if(st.contains("FAILED")){
 						status = "FAILED";
@@ -98,6 +94,23 @@ public class TravisFinder {
 						jobURI = "/jobs/" + st.split(",")[1];
 						break;
 					} 
+				}
+			} else if(status.equals("FAILED")){
+				for(Job firstFailedJob : build.getJobs()){
+					String jobState = status;
+					String log = getLog(firstFailedJob);
+					int jobId =  firstFailedJob.getId();
+					jobState = getState(firstFailedJob);
+					if(log!=null && jobState.equals("FAILED")){
+						if(isTestError(log)){
+							status = "FAILED";
+							jobURI = "/jobs/" + jobId;
+							break;
+						} 
+					} 
+				}
+				if(jobURI == null){
+					status = "EXTERNAL";
 				}
 			}
 		}
@@ -166,7 +179,7 @@ public class TravisFinder {
 		String log = null;
 		BufferedReader reader = null;
 		try{
-			System.out.println("Reading "+job.getUri()+" ERRORED log...");
+			System.out.println("Reading "+job.getUri()+" log...");
 			ProcessBuilder command = new ProcessBuilder("curl","-X","GET","https://api.travis-ci.org/v3/job/"+job.getId()+"/log.txt");
 			Process process = command.start();
 			log="";
@@ -243,6 +256,20 @@ public class TravisFinder {
 				//|| copyLog.matches(".*["+stringErro+"].*"+stringNoOverride+".*["+stringErro+"].*")
 				//|| copyLog.matches(".*[javac].*cannot find symbol.*[javac].*(location:)+.*") 
 				//|| copyLog.matches(".*javac.*cannot find symbol.*location.*") 
+				){
+			return true;
+		}
+		return false;
+	}
+
+	private static boolean isTestError(String log) {
+		String copyLog =log.replaceAll("\\r\\n|\\r|\\n","");
+		if (       copyLog.matches(".*There are test failures.*") 
+				|| copyLog.matches(".*There was test failures.*") 
+				|| copyLog.matches(".*Build failed to meet Clover coverage targets: The following coverage targets for null were not met.*") 
+				|| copyLog.matches(".*Failed tests:.*Tests run:.*Failures: [1-9][0-9]*.*BUILD FAILURE.*") 
+				|| copyLog.matches(".*Failed tests:.*Tests run:.*") 
+				|| copyLog.matches(".*Failures: [1-9][0-9]*.*") 
 				){
 			return true;
 		}
@@ -334,13 +361,20 @@ public class TravisFinder {
 		//isExternalError("The command has failed");
 
 		//fixERROREDStatus();
-		fillJOBSuri();
+		//fillJOBSuri();
+		//fixFAILEDStatus();
+		try {
+			findStatus("6c029cf", "guilhermejccavalcanti/neo4j-framework");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/*
 	 * SCRIPTS BELOW
 	 * for post-execution only, 
-	 * if you want to fix something wrong on the results of the original execution
+	 * only if you want to fix something wrong on the results of the original execution
 	 */
 	public static void fixERROREDStatus(){
 		try {
@@ -379,6 +413,49 @@ public class TravisFinder {
 						status = "PASSED";
 					} else{
 						status = "EXTERNAL";
+					}
+					r = r.replaceAll(buildstate, status);
+				}
+				builder.append(r+"\n");
+			}
+			BufferedWriter writer = new BufferedWriter(new FileWriter("numbers-scenarios-fix.csv"));
+			writer.write(builder.toString());
+			writer.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void fixFAILEDStatus(){
+		try {
+			StringBuilder builder = new StringBuilder();
+			BufferedReader reader;
+			reader = Files.newBufferedReader(Paths.get("numbers-scenarios.csv"));
+			List<Object> results = reader.lines().collect(Collectors.toList());
+			for(int i = 1; i < results.size(); i++){
+				String r = (String) results.get(i);
+				String[] colunas = r.split(";");
+				String buildstate = colunas[22];
+				if(buildstate.equals("FAILED")){
+					String buildid = (colunas[23].split("/"))[2];
+					String status = buildstate;
+					JSONArray jobs = getJobs(buildid);
+					for (int j = 0; j < jobs.length(); j++) {		
+						JSONObject job = jobs.getJSONObject(j);
+						int id = (Integer) job.get("id");
+						String log = getLog(id);
+						String jobState = status;
+						jobState = getState(id);
+						if(log != null && jobState.equals("FAILED")){
+							if(isTestError(log)){
+								status = "FAILED";
+								break;
+							} else {
+								status = "EXTERNAL";
+								break;
+							}
+						}
 					}
 					r = r.replaceAll(buildstate, status);
 				}
