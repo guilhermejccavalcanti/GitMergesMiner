@@ -203,7 +203,7 @@ class App {
 
 			List<String> lines = statistics.readLines();
 			for(int i = 1; i <lines.size(); i++){
-				String[] columns = lines.get(i).split(",");
+				String[] columns = lines.get(i).split(";");
 
 				ssmergeconfs += Integer.valueOf(columns[2]);
 				ssmergeloc 	 += Integer.valueOf(columns[3]);
