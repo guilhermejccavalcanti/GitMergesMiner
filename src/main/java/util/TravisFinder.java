@@ -68,16 +68,16 @@ public class TravisFinder {
 						jobState = getState(job);
 						if(jobState.equals("ERRORED")){
 							jobState = "EXTERNAL"; //when a job is still errored here, it is external
-						} else if(jobState.equals("FAILED")){
-							if(isTestError(log)){
-								jobState = "FAILED";
-							} else {
-								jobState = "EXTERNAL";
-							}
 						} else {
-							jobState = jobState + "," + jobId;
+							if(jobState.equals("FAILED")){
+								if(isTestError(log)){
+									jobState = "FAILED";
+								} else {
+									jobState = "EXTERNAL";
+								}
+							}
 						}
-						jobsStatus.add(jobState);
+						jobsStatus.add(jobState + "," + jobId);
 					}
 				}
 				for(String st : jobsStatus){
@@ -94,6 +94,9 @@ public class TravisFinder {
 						jobURI = "/jobs/" + st.split(",")[1];
 						break;
 					} 
+				}
+				if(status.equals("ERRORED") && jobURI == null){
+					status = "EXTERNAL";
 				}
 			} else if(status.equals("FAILED")){
 				for(Job firstFailedJob : build.getJobs()){
@@ -362,13 +365,14 @@ public class TravisFinder {
 
 		//fixERROREDStatus();
 		//fillJOBSuri();
-		//fixFAILEDStatus();
-		try {
-			findStatus("6c029cf", "guilhermejccavalcanti/neo4j-framework");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		fixFAILEDStatus();
+		
+		//		try {
+		//			findStatus("c2c647f", "guilhermejccavalcanti/neo4j-reco");
+		//		} catch (InterruptedException e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
 	}
 
 	/*
