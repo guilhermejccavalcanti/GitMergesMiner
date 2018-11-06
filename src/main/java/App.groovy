@@ -88,7 +88,7 @@ class App {
 		boolean success = f.getParentFile().renameTo(new File(resultsFolder))
 		boolean alreadyExecuted2ndRun = new File("conflictingJDIME").exists()
 
-		if(success && !alreadyExecuted2ndRun){
+/*		if(success && !alreadyExecuted2ndRun){
 			//configuration for 2nd run
 			is_building_jdime = !is_building_jdime
 
@@ -127,7 +127,7 @@ class App {
 				println 'ERROR: unable to store 1st run results'
 				System.exit(-1)
 			}
-		}
+		}*/
 	}
 
 	def public static run_gitmerges(){
