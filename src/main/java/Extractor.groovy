@@ -52,7 +52,7 @@ class Extractor {
 	// signal of error execution, number max of tries 5
 	private def ERROR
 	private final int NUM_MAX_TRIES = 1
-	
+
 	private boolean isTravis = false
 
 	public Extractor(Project project, boolean withGitMiner){
@@ -806,6 +806,16 @@ class Extractor {
 		return ancestor
 	}
 
+	def private void isTravis() {
+		String[] filesInDir =new File(this.repositoryDir).list();
+		for ( int i=0; i<filesInDir.length; i++ ){
+			if(filesInDir[i].toLowerCase().contains(".travis.yml")){
+				this.isTravis = true;
+				break;
+			}
+		}
+	}
+
 	def public git_merge(MergeCommit m){
 		def command = null
 
@@ -833,14 +843,31 @@ class Extractor {
 		isTravis()
 	}
 
-	def private void isTravis() {
-		String[] filesInDir =new File(this.repositoryDir).list();
-		for ( int i=0; i<filesInDir.length; i++ ){
-			if(filesInDir[i].toLowerCase().contains(".travis.yml")){
-				this.isTravis = true;
-				break;
+	def public git_diff(MergeCommit m){
+		def command = null
+		
+		println('diff left to base...')
+		command = new ProcessBuilder('git','diff','--name-only', m.parent1 ,m.ancestor)
+				.directory(new File(this.repositoryDir))
+				.redirectErrorStream(true).start()
+		command.inputStream.eachLine {
+			if(it.toLowerCase().contains(".java")){
+				m.changedLeftFiles.add(it);
 			}
 		}
+		command.waitFor();
+
+		println('diff right to base... ')
+		List<String> changedRightFiles = new ArrayList<String>()
+		command = new ProcessBuilder('git','diff','--name-only', m.parent2 ,m.ancestor)
+				.directory(new File(this.repositoryDir))
+				.redirectErrorStream(true).start()
+		command.inputStream.eachLine {
+			if(it.toLowerCase().contains(".java")){
+				m.changedRightFiles.add(it);
+			}
+		}
+		command.waitFor();
 	}
 
 	def public String git_push(){

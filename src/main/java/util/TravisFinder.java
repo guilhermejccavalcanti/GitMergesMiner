@@ -2,6 +2,7 @@ package util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,7 +27,7 @@ import fr.inria.jtravis.entities.Repository;
 public class TravisFinder {
 	private static JTravis jTravis =  JTravis.builder().build();
 
-	public static Tuple<String,String,String,Integer> findStatus(String sha, String project) throws InterruptedException{
+	public static Tuple<String,String,String,Integer> findStatus(String sha, String left, String base, String right, String project) throws InterruptedException{
 		//get correponding build and status of the new merge commit		
 		Optional<Repository> repository = jTravis.repository().fromSlug(project);
 		String status = "NOT FOUND";
@@ -61,7 +62,20 @@ public class TravisFinder {
 					String jobState = status;
 					String log = getLog(job);
 					int jobId =  job.getId();
-					if(log!=null && isCodeError(log)){
+					jobState = getState(job);
+
+					if(jobState.equals("PASSED")){
+						//already "passed"
+					} else if(log!=null && isCodeError(log)){
+						jobState = "ERRORED";
+					} else if(log!=null && isTestError(log)){
+						jobState = "FAILED";
+					} else {
+						jobState = "EXTERNAL";
+					}
+					jobsStatus.add(jobState + "," + jobId);
+
+					/*	if(log!=null && isCodeError(log)){
 						jobState = "ERRORED";
 						if(jobState!=null)jobsStatus.add(jobState + "," + jobId);
 					} else {
@@ -78,7 +92,7 @@ public class TravisFinder {
 							}
 						}
 						jobsStatus.add(jobState + "," + jobId);
-					}
+					}*/
 				}
 				for(String st : jobsStatus){
 					if(st.contains("FAILED")){
@@ -98,6 +112,7 @@ public class TravisFinder {
 				if(status.equals("ERRORED") && jobURI == null){
 					status = "EXTERNAL";
 				}
+
 			} else if(status.equals("FAILED")){
 				for(Job firstFailedJob : build.getJobs()){
 					String jobState = status;
@@ -109,15 +124,53 @@ public class TravisFinder {
 							status = "FAILED";
 							jobURI = "/jobs/" + jobId;
 							break;
-						} 
+						} else {
+							status = "EXTERNAL";
+							break;
+						}
 					} 
 				}
 				if(jobURI == null){
 					status = "EXTERNAL";
 				}
 			}
+
+			if(status.equals("FAILED") || status.equals("ERRORED")){
+				String parentStatus = isInheritedProblem(left,base,right, project.split("/")[1]); 
+				status = (parentStatus != null) ? parentStatus : status;		
+			}
 		}
 		return new Tuple<String, String, String, Integer>(status, buildURI, jobURI,(build!=null)?build.getDuration():0);
+	}
+
+	private static String isInheritedProblem(String left, String base, String right, String project) {
+		File f = new File("builds-parents.csv");
+		if(!f.exists() ) {
+			System.out.println("Parents' builds file (builds-parents.csv) does not exist! Ignoring step...");
+		} else {
+			try(BufferedReader reader = Files.newBufferedReader(Paths.get("builds-parents.csv"))){
+				List<Object> lines = reader.lines().collect(Collectors.toList());
+				for(int i = 1; i < lines.size(); i++){
+					String line = (String)lines.get(i);
+					String[] columns = line.split(";");
+					String projectName = columns[0].split("/")[1];
+					String status  = columns[1];
+					String sha = columns[2];
+					if(projectName.equals(project)){
+						if(sha.startsWith(left) && (status.equals("failed")  || status.equals("errored"))){
+							return "INHERITED-LEFT"+"-"+status;
+						} else if(sha.startsWith(base) && (status.equals("failed")  || status.equals("errored"))){
+							return "INHERITED-BASE"+"-"+status;
+						} else if(sha.startsWith(right) && (status.equals("failed")  || status.equals("errored"))){
+							return "INHERITED-RIGHT"+"-"+status;
+						}
+					}
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 	//	public static Tuple<String,String,Integer> findStatus(String sha, String project) throws InterruptedException{
@@ -352,21 +405,17 @@ public class TravisFinder {
 	}
 
 	public static void main(String[] args) {
-		//		try {
-		//			
-		//			System.out.println("https://github.com/maxcom/lorsource".split("\\.com/")[1].split("/")[1]);
-		//			TravisFinder.findStatus("6f2aeb0", "guilhermejccavalcanti/compile-testing");
-		//		} catch (InterruptedException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		}
-
-		//isExternalError("The command has failed");
+		try {
+			TravisFinder.findStatus("271cc3a5",null,null,null, "guilhermejccavalcanti/LittleProxy");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		//fixERROREDStatus();
 		//fillJOBSuri();
-		fixFAILEDStatus();
-		
+		//fixFAILEDStatus();
+
 		//		try {
 		//			findStatus("c2c647f", "guilhermejccavalcanti/neo4j-reco");
 		//		} catch (InterruptedException e) {

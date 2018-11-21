@@ -30,6 +30,9 @@ class MergeResult {
 	String travisJobURI = null
 	int travisBuildTime	= 0
 	
+	int changedFiles = 0;
+	int commonChangedFiles = 0;
+	
 	public MergeResult(){
 	}
 }

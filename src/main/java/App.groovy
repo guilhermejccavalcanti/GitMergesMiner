@@ -16,10 +16,10 @@ import util.StdOutErrLevel;
 import util.TravisFinder;
 import util.Tuple;
 
-
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+
+import javax.sql.CommonDataSource;
 
 
 class App {
@@ -88,7 +88,7 @@ class App {
 		boolean success = f.getParentFile().renameTo(new File(resultsFolder))
 		boolean alreadyExecuted2ndRun = new File("conflictingJDIME").exists()
 
-/*		if(success && !alreadyExecuted2ndRun){
+		if(success && !alreadyExecuted2ndRun){
 			//configuration for 2nd run
 			is_building_jdime = !is_building_jdime
 
@@ -127,7 +127,7 @@ class App {
 				println 'ERROR: unable to store 1st run results'
 				System.exit(-1)
 			}
-		}*/
+		}
 	}
 
 	def public static run_gitmerges(){
@@ -154,6 +154,7 @@ class App {
 			println ('Analysing ' + ((i+1)+'/'+merge_commits.size()) + ': ' +  m.sha)
 			fillExecutionLog(m)
 			Extractor e = new Extractor(m)
+			e.git_diff(m)
 			e.git_merge(m)
 
 			//compute statistics related to each scenario
@@ -175,7 +176,7 @@ class App {
 					//push to fork, build fork
 					def new_sha = e.git_push()
 					if(new_sha != null){
-						Tuple<String,String,Integer> travisResult = TravisFinder.findStatus(new_sha, result.commit.projectName)
+						Tuple<String,String,Integer> travisResult = TravisFinder.findStatus(new_sha, m.parent1, m.ancestor, m.parent2, result.commit.projectName)
 						result.travisStatus = travisResult.x
 						result.travisBuildURI = travisResult.y
 						result.travisBuildTime = travisResult.z
@@ -258,7 +259,7 @@ class App {
 		File statistics_files 	= new File(logpath+ "numbers-files.csv");
 		if(!statistics_files.exists()){(
 			new File(logpath)).mkdirs();statistics_files.createNewFile();
-			statistics_files.append('project;mergecommit;files;consecutiveLinesonly;spacingonly;samePositiononly;sameStmtonly;otheronly;consecutiveLinesAndSamePosition;consecutiveLinesAndsameStmt;otherAndsamePosition;otherAndsameStmt;spacingAndSamePosition;spacingAndSameStmt;ssmergeConf;textualConf;jdimeConfs;smergeTime;textualTime;jdimeTime;sucessfullMerge;isSsEqualsToUn;isStEqualsToUn\n')
+			statistics_files.append('project;mergecommit;leftcommit;basecommit;rightcommit;files;consecutiveLinesonly;spacingonly;samePositiononly;sameStmtonly;otheronly;consecutiveLinesAndSamePosition;consecutiveLinesAndsameStmt;otherAndsamePosition;otherAndsameStmt;spacingAndSamePosition;spacingAndSameStmt;ssmergeConf;textualConf;jdimeConfs;smergeTime;textualTime;jdimeTime;sucessfullMerge;isSsEqualsToUn;isStEqualsToUn\n')
 		} //ensuring it exists
 		/*
 		 * numbers-current-file contains numbers for each merged file. To compute numbers for each scenario,
@@ -272,7 +273,7 @@ class App {
 		for(int y = 1/*ignoring header*/; y <lines.size(); y++){
 			String[] columns = lines.get(y).split(";");
 
-			statistics_files.append(m.project.originalURL +';'+m.sha+';'+lines.get(y)+'\n')
+			statistics_files.append(m.project.originalURL +';'+m.sha +';'+m.parent1 +';'+m.ancestor +';'+m.parent2+';'+lines.get(y)+'\n')
 
 			result.consecutiveLinesonly += Integer.valueOf(columns[1]);
 			result.spacingonly 	 += Integer.valueOf(columns[2]);
@@ -295,6 +296,12 @@ class App {
 			result.isSsEqualsToUn = result.isSsEqualsToUn && Boolean.parseBoolean(columns[19]);
 			result.isStEqualsToUn = result.isStEqualsToUn && Boolean.parseBoolean(columns[20]);
 		}
+		List<String> commonChangedFiles = new ArrayList<String>(m.changedRightFiles)
+		commonChangedFiles.retainAll(m.changedLeftFiles) //twice to filter already common elements in the set
+
+		result.changedFiles = (m.changedLeftFiles.size() + m.changedRightFiles.size()) - (2*commonChangedFiles.size())
+		result.commonChangedFiles = commonChangedFiles.size()
+
 		(new AntBuilder()).delete(file:statistics_partial.getAbsolutePath(),failonerror:false)
 		return result
 	}
@@ -303,19 +310,19 @@ class App {
 		String logpath = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
 		File statistics_scenarios = new File(logpath+ "numbers-scenarios.csv");
 		if(!statistics_scenarios.exists()){
-			def header = "project;mergecommit;consecutiveLinesonly;spacingonly;samePositiononly;sameStmtonly;otheronly;consecutiveLinesAndSamePosition;consecutiveLinesAndsameStmt;otherAndsamePosition;otherAndsameStmt;spacingAndSamePosition;spacingAndSameStmt;ssmergeConf;textualConf;jdimeConfs;smergeTime;textualTime;jdimeTime;sucessfullMerge;isSsEqualsToUn;isStEqualsToUn;travisStatus;travisBuildURI;travisJobURI;travisBuildTime"
+			def header = "project;mergecommit;leftcommit;basecommit;rightcommit;consecutiveLinesonly;spacingonly;samePositiononly;sameStmtonly;otheronly;consecutiveLinesAndSamePosition;consecutiveLinesAndsameStmt;otherAndsamePosition;otherAndsameStmt;spacingAndSamePosition;spacingAndSameStmt;ssmergeConf;textualConf;jdimeConfs;smergeTime;textualTime;jdimeTime;sucessfullMerge;isSsEqualsToUn;isStEqualsToUn;travisStatus;travisBuildURI;travisJobURI;travisBuildTime;changedFiles;commonChangedFiles"
 			statistics_scenarios.append(header+'\n')
 			statistics_scenarios.createNewFile()
 		} //ensuring it exists
 
-		def loggermsg = result.commit.projectName + ';' + result.commit.sha + ';'+ result.consecutiveLinesonly + ';'+ result.spacingonly + ';'+ result.samePositiononly + ';'+ result.sameStmtonly + ';'+ result.otheronly + ';'+ result.consecutiveLinesAndSamePosition + ';'	+ result.consecutiveLinesAndsameStmt + ';'+ result.otherAndsamePosition + ';'+ result.otherAndsameStmt + ';'+ result.spacingAndSamePosition + ';'+ result.spacingAndSameStmt + ';'+ result.ssmergeConf + ';'+ result.textualConf + ';'+ result.jdimeConf + ';'+ result.ssmergetime + ';'+ result.unmergetime + ';'+ result.jdimetime + ';'+ result.sucessfullmerge+ ';'+ result.isSsEqualsToUn + ';'+ result.isStEqualsToUn + ';'+ result.travisStatus + ';'+ result.travisBuildURI + ';'+ result.travisJobURI + ';'+ result.travisBuildTime;
+		def loggermsg = result.commit.projectName + ';' + result.commit.sha + ';' + result.commit.parent1 + ';' + result.commit.ancestor + ';' + result.commit.parent2 + ';' + result.consecutiveLinesonly + ';'+ result.spacingonly + ';'+ result.samePositiononly + ';'+ result.sameStmtonly + ';'+ result.otheronly + ';'+ result.consecutiveLinesAndSamePosition + ';'	+ result.consecutiveLinesAndsameStmt + ';'+ result.otherAndsamePosition + ';'+ result.otherAndsameStmt + ';'+ result.spacingAndSamePosition + ';'+ result.spacingAndSameStmt + ';'+ result.ssmergeConf + ';'+ result.textualConf + ';'+ result.jdimeConf + ';'+ result.ssmergetime + ';'+ result.unmergetime + ';'+ result.jdimetime + ';'+ result.sucessfullmerge+ ';'+ result.isSsEqualsToUn + ';'+ result.isStEqualsToUn + ';'+ result.travisStatus + ';'+ result.travisBuildURI + ';'+ result.travisJobURI + ';'+ result.travisBuildTime  + ';'+ result.changedFiles  + ';'+ result.commonChangedFiles;
 		statistics_scenarios.append(loggermsg+'\n')
 	}
 
 	def private static filterByKnownBuilds(List<MergeCommit> mergeCommits){
 		println 'Filtering known builds...'
 		List<MergeCommit> filtered = new ArrayList<>()
-		File f = new File('builds.csv')
+		File f = new File('builds-mergecommits.csv')
 		if(!f.exists() ) {
 			println "Builds file does not exist!"
 		} else {
