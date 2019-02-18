@@ -845,7 +845,7 @@ class Extractor {
 
 	def public git_diff(MergeCommit m){
 		def command = null
-		
+
 		println('diff left to base...')
 		command = new ProcessBuilder('git','diff','--name-only', m.parent1 ,m.ancestor)
 				.directory(new File(this.repositoryDir))
@@ -875,14 +875,25 @@ class Extractor {
 			def command = null
 			String newMergeCommitSha = ""
 			println('Push resulting merge result...')
-			command = new ProcessBuilder('git','push','origin','master','--force')
-					.directory(new File(this.repositoryDir))
-					.redirectErrorStream(true).start()
+
+			//add files to commit
+			command = new ProcessBuilder('git','add','.').directory(new File(this.repositoryDir)).redirectErrorStream(true).start()
+			command.inputStream.eachLine {println it}
+			command.waitFor();
+
+			//commiting
+			command = new ProcessBuilder('git','commit','-m','\"replay merge commit\"').directory(new File(this.repositoryDir)).redirectErrorStream(true).start()
+			command.inputStream.eachLine {println it}
+			command.waitFor();
+
+			//pushing
+			command = new ProcessBuilder('git','push','origin','master','--force').directory(new File(this.repositoryDir)).redirectErrorStream(true).start()
 			command.inputStream.eachLine {
 				println it
 				newMergeCommitSha += it
 			}
 			command.waitFor();
+
 			try{
 				newMergeCommitSha = newMergeCommitSha.split("\\.\\.\\.")[1].split(" ")[0]
 			}catch(Exception e){
@@ -893,6 +904,68 @@ class Extractor {
 			e.printStackTrace()
 		}
 		return null
+	}
+
+	def static revertMergedLog(File log){
+		boolean fillSemistructuredMergeOutput = false;
+		boolean fillStructuredMergeOutput = false;
+		boolean fillLeftContent = false;
+		boolean fillBaseContent = false;
+		boolean fillRightContent = false;
+
+		List<MergedLog> mls = new ArrayList();
+		MergedLog mL = new MergedLog();
+
+		log.eachLine { String line ->
+			try{
+				if(line.contains("########################################################")){
+					fillRightContent = false
+				} else if(line.contains("Files:")){
+					mls.add(mL);
+					String[] columns = (line.split(':')[1]).split(',');
+
+					mL = new MergedLog();
+					mL.projectName = columns[0];
+					mL.mergeCommit = columns[1];
+					mL.mergedFile  = (new File(columns[2].replaceAll('\\.', '/'))).getName();
+				} else if(line.contains('Semistructured Merge Output:')){
+					fillSemistructuredMergeOutput = true;
+
+				} else if(line.contains('Structured Merge Output:')){
+					fillSemistructuredMergeOutput = false;
+					fillStructuredMergeOutput = true;
+
+				} else if(line.contains('Left Content:')){
+					fillStructuredMergeOutput = false;
+					fillLeftContent = true;
+
+				} else if(line.contains('Base Content:')){
+					fillLeftContent = false;
+					fillBaseContent = true;
+
+				} else if(line.contains('Right Content:')){
+					fillBaseContent = false;
+					fillRightContent = true;
+				} else {
+					if(fillSemistructuredMergeOutput) {
+						mL.SemistructuredMergeOutput += line + '\n';
+					} else if(fillStructuredMergeOutput){
+						mL.StructuredMergeOutput += line + '\n';
+					} else if(fillLeftContent){
+						mL.LeftContent += line + '\n';
+					} else if(fillBaseContent){
+						mL.BaseContent += line + '\n';
+					} else if(fillRightContent){
+						mL.RightContent += line + '\n';
+					} else {
+						//Skip line
+					}
+				}
+			} catch(Exception e){
+				//Skip line
+			}
+		}
+		return mls;
 	}
 
 	static void main (String[] args){

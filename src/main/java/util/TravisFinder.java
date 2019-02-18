@@ -9,7 +9,9 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -50,6 +52,9 @@ public class TravisFinder {
 						attempts++;
 						Thread.sleep(30000);//wait for 30 seconds
 					} 
+				}
+				if(attempts == 500){
+					break;
 				}
 			}
 		}
@@ -171,6 +176,57 @@ public class TravisFinder {
 			}
 		}
 		return null;
+	}
+
+	private static void tt() {
+		Map<String,String> m = new HashMap<>();
+		try(BufferedReader reader = Files.newBufferedReader(Paths.get("conflictingJDIME/numbers-scenarios.csv"))){
+			StringBuilder builder = new StringBuilder();
+			List<Object> lines = reader.lines().collect(Collectors.toList());
+			for(int i = 1; i < lines.size(); i++){
+				String line = (String)lines.get(i);
+				String[] columns = line.split(";");
+				String projectName = columns[0];
+				String status = columns[25];
+				if(status.trim().equals("PASSED")){
+					String sha = columns[1];
+					String build = (columns[26].split("/")[2]).trim();
+					m.put(sha, projectName+";"+build);
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		try(BufferedReader reader = Files.newBufferedReader(Paths.get("conflictingS3M/numbers-scenarios.csv"))){
+			StringBuilder builder = new StringBuilder();
+			List<Object> lines = reader.lines().collect(Collectors.toList());
+			for(int i = 1; i < lines.size(); i++){
+				String line = (String)lines.get(i);
+				String[] columns = line.split(";");
+				String projectName = columns[0];
+				String status = columns[25];
+				if(status.trim().equals("PASSED")){
+					String sha = columns[1];
+					String build = (columns[26].split("/")[2]).trim();
+					m.put(sha, projectName+";"+build);
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		try(BufferedReader reader = Files.newBufferedReader(Paths.get("in.in"))){
+			List<Object> lines = reader.lines().collect(Collectors.toList());
+			for(int i = 0; i < lines.size(); i++){
+				String line = (String)lines.get(i);
+				String[] columns =  m.get(line).split(";");
+				String buildid = columns[1];
+				String mergecommit = getMergeCommit(buildid);
+				String project = "https://github.com/" + columns[0] + "/commit/" + mergecommit;
+				System.out.println("=HYPERLINK(\""+ project+"\",\""+line+"\")");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	//	public static Tuple<String,String,Integer> findStatus(String sha, String project) throws InterruptedException{
@@ -332,6 +388,7 @@ public class TravisFinder {
 		return false;
 	}
 
+	@SuppressWarnings("unused")
 	private static boolean isExternalError(String log) {
 		String copyLog =log.replaceAll("\\r\\n|\\r|\\n","");
 
@@ -405,12 +462,13 @@ public class TravisFinder {
 	}
 
 	public static void main(String[] args) {
-		try {
-			TravisFinder.findStatus("271cc3a5",null,null,null, "guilhermejccavalcanti/LittleProxy");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		tt();
+		//		try {
+		//			TravisFinder.findStatus("22a8f56",null,null,null, "guilhermejccavalcanti/Singularity");
+		//		} catch (InterruptedException e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
 
 		//fixERROREDStatus();
 		//fillJOBSuri();
@@ -422,6 +480,8 @@ public class TravisFinder {
 		//			// TODO Auto-generated catch block
 		//			e.printStackTrace();
 		//		}
+
+		//tt();
 	}
 
 	/*
@@ -590,7 +650,6 @@ public class TravisFinder {
 		}
 	}
 
-
 	private static JSONArray getJobs(String buildid) {
 		JSONArray jobs = null;
 		BufferedReader reader2 = null;
@@ -619,6 +678,36 @@ public class TravisFinder {
 			}
 		}
 		return jobs;
+	}
+	
+	private static String getMergeCommit(String buildid) {
+		JSONObject commit = null;
+		BufferedReader reader2 = null;
+		try{
+			//System.out.println("Reading "+buildid+" ...");
+			ProcessBuilder command = new ProcessBuilder("curl","-X","GET","https://api.travis-ci.org/v3/build/"+buildid);
+			Process process = command.start();
+			reader2 = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String line;
+			StringBuilder sb = new StringBuilder();
+			while ((line = reader2.readLine()) != null) {
+				sb.append(line + System.getProperty("line.separator"));
+			}
+			sb.toString();
+			JSONObject jsonObj = new JSONObject(sb.toString());
+			commit = jsonObj.getJSONObject("commit");
+		}catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			if (reader2 != null) {
+				try {
+					reader2.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return commit.getString("sha");
 	}
 
 	private static String getLog(int jobid){

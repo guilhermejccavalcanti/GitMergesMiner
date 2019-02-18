@@ -1,4 +1,0 @@
-ProjectName;BuildID;Parent One;Parent Two;Type;File Name;Test Case Name;Test Case;Same Methods;Dependent Methods
-xetorthio/jedis;b557f7a;2510e34;36430405;Failed Test;ObjectCommandsTest;objectEncoding;new (Right);true;false - true
-xetorthio/jedis;7ff6061;8558487;59431389;Failed Test;JedisClusterTest;testDiscoverNodesAutomatically;old;true;false - true
-xetorthio/jedis;6cff581;129ed2f;74499479;Failed Test;JedisClusterTest;testRecalculateSlotsWhenMoved;old;true;true - true

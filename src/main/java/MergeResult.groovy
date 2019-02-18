@@ -3,6 +3,7 @@ class MergeResult {
 	
 	MergeCommit commit;
 	String projectURL;
+	String newMergeCommitSHA;
 	
 	int consecutiveLinesonly = 0;
 	int spacingonly 	 = 0;
@@ -32,6 +33,12 @@ class MergeResult {
 	
 	int changedFiles = 0;
 	int commonChangedFiles = 0;
+	int changedMethods = 0;
+	int commonChangedMethods = 0;
+	
+	int ssmergeConfNoCL = 0;
+	int ssmergeConfNoWS = 0;
+	int ssmergeConfNoCLWS = 0;
 	
 	public MergeResult(){
 	}
