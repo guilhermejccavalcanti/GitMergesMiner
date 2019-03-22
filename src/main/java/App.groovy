@@ -34,99 +34,99 @@ class App {
 
 	public static void main (String[] args){
 		//execution configuration parameters
-		def cli = new CliBuilder()
-		cli.with {
-			r longOpt: 'restore', 'do not restore git repositories'
-			s longOpt: 'jdime', 'attempt to build jdime code'
-			t longOpt: 'travis', 'do not execute Travis on merged scenario'
-			b longOpt: 'builds', 'do not filter scenarios by known builds (builds.csv)'
-			f longOpt: 'faster', 'skip second run (builds of jdime merged code)'
-		}
-		def options = cli.parse(args)
-		if (options.r) {
-			restore_repositories = false
-		}
-		if (options.s) {
-			is_building_jdime = true
-		}
-		if(options.t){
-			run_travis = false
-		}
-		if(options.b){
-			filter_known_builds = false
-		}
-		if(options.f){
-			skip_2nd_run = true
-		}
-		boolean alreadyExecuted1stRun = new File("conflictingJDIME").exists()
-		boolean changeGitConfig = !alreadyExecuted1stRun
-		if(alreadyExecuted1stRun)is_building_jdime = true;
-		//managing execution log
-		File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
-		if(!f.exists()){
-			f.getParentFile().mkdirs()
-			f.createNewFile()
-		}
-		//configuring git merge driver
-		File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
-		if(changeGitConfig){
-			if(!gitconfig.exists()) {
-				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
-			}
-			String gitconfigContents =  gitconfig.text
-			if(is_building_jdime){
-				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
-			} else {
-				gitconfig.text = gitconfigContents.replaceAll("-s", "")
-			}
-		}
-		//1st run (attempts to build non-conflicting code of the first tool)
-		run_gitmerges()
-		//storing 1st results
-		def resultsFolder = "conflictingJDIME";
-		if(is_building_jdime){
-			resultsFolder = "conflictingS3M"
-		}
-		boolean success = f.getParentFile().renameTo(new File(resultsFolder))
-		boolean alreadyExecuted2ndRun = new File("conflictingS3M").exists()
-		if(!skip_2nd_run){
-			if(success && !alreadyExecuted2ndRun){
-				//configuration for 2nd run
-				is_building_jdime = !is_building_jdime
-				restore_repositories = true;
-				//re-managing execution log
-				if(f.getParentFile().exists()) f.getParentFile().deleteDir()
-				f.getParentFile().mkdirs()
-				f.createNewFile()
-				//re-configuring git merge driver
-				if(!gitconfig.exists()) {
-					throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
-				}
-				def gitconfigContents =  gitconfig.text
-				if(is_building_jdime){
-					gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
-				} else {
-					gitconfig.text = gitconfigContents.replaceAll("-s", "")
-				}
-				//2nd run (attempts to build non-conflicting code of the second tool)
-				run_gitmerges()
-				//storing 2nd results
-				resultsFolder = "conflictingJDIME";
-				if(is_building_jdime){
-					resultsFolder = "conflictingS3M"
-				}
-				success = f.getParentFile().renameTo(new File(resultsFolder))
-				if(!success){
-					throw new RuntimeException( 'ERROR: unable to store 2nd run results')
-				}
-			} else {
-				if(!success){
-					throw new RuntimeException( 'ERROR: unable to store 1st run results')
-				}
-			}
-		}
+		//		def cli = new CliBuilder()
+		//		cli.with {
+		//			r longOpt: 'restore', 'do not restore git repositories'
+		//			s longOpt: 'jdime', 'attempt to build jdime code'
+		//			t longOpt: 'travis', 'do not execute Travis on merged scenario'
+		//			b longOpt: 'builds', 'do not filter scenarios by known builds (builds.csv)'
+		//			f longOpt: 'faster', 'skip second run (builds of jdime merged code)'
+		//		}
+		//		def options = cli.parse(args)
+		//		if (options.r) {
+		//			restore_repositories = false
+		//		}
+		//		if (options.s) {
+		//			is_building_jdime = true
+		//		}
+		//		if(options.t){
+		//			run_travis = false
+		//		}
+		//		if(options.b){
+		//			filter_known_builds = false
+		//		}
+		//		if(options.f){
+		//			skip_2nd_run = true
+		//		}
+		//		boolean alreadyExecuted1stRun = new File("conflictingJDIME").exists()
+		//		boolean changeGitConfig = !alreadyExecuted1stRun
+		//		if(alreadyExecuted1stRun)is_building_jdime = true;
+		//		//managing execution log
+		//		File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
+		//		if(!f.exists()){
+		//			f.getParentFile().mkdirs()
+		//			f.createNewFile()
+		//		}
+		//		//configuring git merge driver
+		//		File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
+		//		if(changeGitConfig){
+		//			if(!gitconfig.exists()) {
+		//				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
+		//			}
+		//			String gitconfigContents =  gitconfig.text
+		//			if(is_building_jdime){
+		//				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
+		//			} else {
+		//				gitconfig.text = gitconfigContents.replaceAll("-s", "")
+		//			}
+		//		}
+		//		//1st run (attempts to build non-conflicting code of the first tool)
+		//		run_gitmerges()
+		//		//storing 1st results
+		//		def resultsFolder = "conflictingJDIME";
+		//		if(is_building_jdime){
+		//			resultsFolder = "conflictingS3M"
+		//		}
+		//		boolean success = f.getParentFile().renameTo(new File(resultsFolder))
+		//		boolean alreadyExecuted2ndRun = new File("conflictingS3M").exists()
+		//		if(!skip_2nd_run){
+		//			if(success && !alreadyExecuted2ndRun){
+		//				//configuration for 2nd run
+		//				is_building_jdime = !is_building_jdime
+		//				restore_repositories = true;
+		//				//re-managing execution log
+		//				if(f.getParentFile().exists()) f.getParentFile().deleteDir()
+		//				f.getParentFile().mkdirs()
+		//				f.createNewFile()
+		//				//re-configuring git merge driver
+		//				if(!gitconfig.exists()) {
+		//					throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
+		//				}
+		//				def gitconfigContents =  gitconfig.text
+		//				if(is_building_jdime){
+		//					gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
+		//				} else {
+		//					gitconfig.text = gitconfigContents.replaceAll("-s", "")
+		//				}
+		//				//2nd run (attempts to build non-conflicting code of the second tool)
+		//				run_gitmerges()
+		//				//storing 2nd results
+		//				resultsFolder = "conflictingJDIME";
+		//				if(is_building_jdime){
+		//					resultsFolder = "conflictingS3M"
+		//				}
+		//				success = f.getParentFile().renameTo(new File(resultsFolder))
+		//				if(!success){
+		//					throw new RuntimeException( 'ERROR: unable to store 2nd run results')
+		//				}
+		//			} else {
+		//				if(!success){
+		//					throw new RuntimeException( 'ERROR: unable to store 1st run results')
+		//				}
+		//			}
+		//		}
 		computeProjectStatistics()
-		computeManualAnalysisFiles()
+		//		computeManualAnalysisFiles()
 		println 'DONE!'
 
 	}
@@ -383,6 +383,7 @@ class App {
 
 				result.numberOfScenarios++;
 				result.conflictingScenarios = (ssmergeConf > 0 || jdimeConf > 0) ? result.conflictingScenarios + 1 : result.conflictingScenarios;
+				result.conflictingScenariosNoWS = ((ssmergeConf - (WS)) > 0 || jdimeConf > 0) ? result.conflictingScenariosNoWS + 1 : result.conflictingScenariosNoWS;
 				result.conflictingScenariosNoCLWS = ((ssmergeConf - (CL + WS)) > 0 || jdimeConf > 0) ? result.conflictingScenariosNoCLWS + 1 : result.conflictingScenariosNoCLWS;
 
 				result.scenariosWithCL = (CL > 0) ? (result.scenariosWithCL + 1) : result.scenariosWithCL;
@@ -396,7 +397,9 @@ class App {
 				result.scenariosOnlyWithJdimeConf = (ssmergeConf == 0 && jdimeConf > 0) ? (result.scenariosOnlyWithJdimeConf + 1) : result.scenariosOnlyWithJdimeConf;
 
 				result.scenariosOnlyWithSsmergeConfNoCLWS = ((ssmergeConf - (CL + WS))> 0 && jdimeConf == 0) ? (result.scenariosOnlyWithSsmergeConfNoCLWS + 1) : result.scenariosOnlyWithSsmergeConfNoCLWS;
+				result.scenariosOnlyWithSsmergeConfNoWS = ((ssmergeConf - (WS))> 0 && jdimeConf == 0) ? (result.scenariosOnlyWithSsmergeConfNoWS + 1) : result.scenariosOnlyWithSsmergeConfNoWS;
 				result.scenariosOnlyWithJdimeConfNoCLWS = ((ssmergeConf - (CL + WS)) <= 0 && jdimeConf > 0) ? (result.scenariosOnlyWithJdimeConfNoCLWS + 1) : result.scenariosOnlyWithJdimeConfNoCLWS;
+				result.scenariosOnlyWithJdimeConfNoWS = ((ssmergeConf - (WS)) <= 0 && jdimeConf > 0) ? (result.scenariosOnlyWithJdimeConfNoWS + 1) : result.scenariosOnlyWithJdimeConfNoWS;
 
 				result.consecutiveLinesonly += CL;
 				result.spacingonly += WS;
@@ -454,16 +457,39 @@ class App {
 						String[] columns = lines.get(y).split(";");
 						String project = columns[0];
 						ProjecResult result = projectsStastitics.get(project)
+
+						int CL = Integer.valueOf(columns[5]);
+						int WS = Integer.valueOf(columns[6]);
+						int ssmergeConf = Integer.valueOf(columns[16]);
+
 						if(result == null){
 							throw new RuntimeException('ERROR: missing projects results for conflictingJDIME/numbers-scenarios.csv')
 						} else {
 							String travisStatus = columns[25];
 							if(travisStatus.equals("PASSED")){
 								result.travisPASSEDjdime++;
+								if((ssmergeConf - (WS)) > 0){
+									result.travisPASSEDjdimeNoWS++;
+								}
+								if((ssmergeConf - (CL + WS)) > 0){
+									result.travisPASSEDjdimeNoCLWS++;
+								}
 							} else if(travisStatus.equals("FAILED")){
 								result.travisFAILEDjdime++;
+								if((ssmergeConf - (WS)) > 0){
+									result.travisFAILEDjdimeNoWS++;
+								}
+								if((ssmergeConf - (CL + WS)) > 0){
+									result.travisFAILEDjdimeNoCLWS++;
+								}
 							} else if(travisStatus.equals("ERRORED")){
 								result.travisERROREDjdime++
+								if((ssmergeConf - (WS)) > 0){
+									result.travisERROREDjdimeNoWS++;
+								}
+								if((ssmergeConf - (CL + WS)) > 0){
+									result.travisERROREDjdimeNoCLWS++;
+								}
 							} else {
 								if(!travisStatus.equals("NONE")) result.travisBuildDiscarded++
 							}
@@ -532,12 +558,12 @@ class App {
 	def private static logProjectStatistics(ProjecResult result) {
 		File statistics_scenarios = new File("numbers-projects.csv");
 		if(!statistics_scenarios.exists()){
-			def header = "projectName;numberOfScenarios;conflictingScenarios;conflictingScenariosNoCLWS;scenariosWithCommonChangedFiles;scenariosWithCommonChangedMethods;scenariosWithSsmergeConf;scenariosWithTextualConf;scenariosWithJdimeConf;scenariosWithCL;scenariosWithWS;consecutiveLinesConf;spacingConf;ssmergeConf;jdimeConf;textualConf;ssmergetime;textualtime;jdimetime;travisBuildTime;travisBuildDiscarded;travisPASSEDssmerge;travisFAILEDssmerge;travisERROREDssmerge;travisPASSEDjdime;travisFAILEDjdime;travisERROREDjdime;changedFiles;commonChangedFiles;changedMethods;commonChangedMethods;ssmergeConfNoCL;ssmergeConfNoWS;ssmergeConfNoCLWS;scenariosWithSsmergeConfNoCL;scenariosWithSsmergeConfNoWS;scenariosWithSsmergeConfNoCLWS;scenariosOnlyWithSsmergeConf;scenariosOnlyWithTextualConf;scenariosOnlyWithJdimeConf;scenariosOnlyWithSsmergeConfNoCLWS;scenariosOnlyWithJdimeConfNoCLWS"
+			def header = "projectName;numberOfScenarios;conflictingScenarios;conflictingScenariosNoWS;conflictingScenariosNoCLWS;scenariosWithCommonChangedFiles;scenariosWithCommonChangedMethods;scenariosWithSsmergeConf;scenariosWithTextualConf;scenariosWithJdimeConf;scenariosWithCL;scenariosWithWS;consecutiveLinesConf;spacingConf;ssmergeConf;jdimeConf;textualConf;ssmergetime;textualtime;jdimetime;travisBuildTime;travisBuildDiscarded;travisPASSEDssmerge;travisFAILEDssmerge;travisERROREDssmerge;travisPASSEDjdime;travisFAILEDjdime;travisERROREDjdime;changedFiles;commonChangedFiles;changedMethods;commonChangedMethods;ssmergeConfNoCL;ssmergeConfNoWS;ssmergeConfNoCLWS;scenariosWithSsmergeConfNoCL;scenariosWithSsmergeConfNoWS;scenariosWithSsmergeConfNoCLWS;scenariosOnlyWithSsmergeConf;scenariosOnlyWithTextualConf;scenariosOnlyWithJdimeConf;scenariosOnlyWithSsmergeConfNoCLWS;scenariosOnlyWithJdimeConfNoCLWS;scenariosOnlyWithSsmergeConfNoWS;scenariosOnlyWithJdimeConfNoWS;travisPASSEDjdimeNoWS;travisFAILEDjdimeNoWS;travisERROREDjdimeNoWS;travisPASSEDjdimeNoCLWS;travisFAILEDjdimeNoCLWS;travisERROREDjdimeNoCLWS"
 			statistics_scenarios.append(header+'\n')
 			statistics_scenarios.createNewFile()
 		} //ensuring it exists
 
-		def loggermsg = result.projectName + ';' +result.numberOfScenarios + ';' +result.conflictingScenarios + ';' +result.conflictingScenariosNoCLWS + ';' +result.scenariosWithCommonChangedFiles + ';' +result.scenariosWithCommonChangedMethods + ";" + result.scenariosWithSsmergeConf + ";" + result.scenariosWithTextualConf + ";" + result.scenariosWithJdimeConf + ';' +result.scenariosWithCL + ';' +result.scenariosWithWS + ';' +result.consecutiveLinesonly+ ';' +result.spacingonly+ ';' +result.ssmergeConf+ ';' +result.jdimeConf+ ';' +result.textualConf+ ';' +result.ssmergetime+ ';' +result.unmergetime+ ';' +result.jdimetime+ ';' +result.travisBuildTime+ ';' +result.travisBuildDiscarded+ ';' +result.travisPASSEDssmerge+ ';' +result.travisFAILEDssmerge+ ';' +result.travisERROREDssmerge+ ';' +result.travisPASSEDjdime+ ';' +result.travisFAILEDjdime+ ';' +result.travisERROREDjdime+ ';' +result.changedFiles+ ';' +result.commonChangedFiles+ ';' +result.changedMethods+ ';' +result.commonChangedMethods + ';'+ result.ssmergeConfNoCL+ ';' +result.ssmergeConfNoWS+ ';' +result.ssmergeConfNoCLWS + ';'+ result.scenariosWithSsmergeConfNoCL+ ';' +result.scenariosWithSsmergeConfNoWS+ ';' +result.scenariosWithSsmergeConfNoCLWS + ";" + result.scenariosOnlyWithSsmergeConf + ";" + result.scenariosOnlyWithTextualConf + ";" + result.scenariosOnlyWithJdimeConf + ";" + result.scenariosOnlyWithSsmergeConfNoCLWS + ";" + result.scenariosOnlyWithJdimeConfNoCLWS;
+		def loggermsg = result.projectName + ';' +result.numberOfScenarios + ';' +result.conflictingScenarios + ';' +result.conflictingScenariosNoWS + ';' +result.conflictingScenariosNoCLWS + ';' +result.scenariosWithCommonChangedFiles + ';' +result.scenariosWithCommonChangedMethods + ";" + result.scenariosWithSsmergeConf + ";" + result.scenariosWithTextualConf + ";" + result.scenariosWithJdimeConf + ';' +result.scenariosWithCL + ';' +result.scenariosWithWS + ';' +result.consecutiveLinesonly+ ';' +result.spacingonly+ ';' +result.ssmergeConf+ ';' +result.jdimeConf+ ';' +result.textualConf+ ';' +result.ssmergetime+ ';' +result.unmergetime+ ';' +result.jdimetime+ ';' +result.travisBuildTime+ ';' +result.travisBuildDiscarded+ ';' +result.travisPASSEDssmerge+ ';' +result.travisFAILEDssmerge+ ';' +result.travisERROREDssmerge+ ';' +result.travisPASSEDjdime+ ';' +result.travisFAILEDjdime+ ';' +result.travisERROREDjdime+ ';' +result.changedFiles+ ';' +result.commonChangedFiles+ ';' +result.changedMethods+ ';' +result.commonChangedMethods + ';'+ result.ssmergeConfNoCL+ ';' +result.ssmergeConfNoWS+ ';' +result.ssmergeConfNoCLWS + ';'+ result.scenariosWithSsmergeConfNoCL+ ';' +result.scenariosWithSsmergeConfNoWS+ ';' +result.scenariosWithSsmergeConfNoCLWS + ";" + result.scenariosOnlyWithSsmergeConf + ";" + result.scenariosOnlyWithTextualConf + ";" + result.scenariosOnlyWithJdimeConf + ";" + result.scenariosOnlyWithSsmergeConfNoCLWS + ";" + result.scenariosOnlyWithJdimeConfNoCLWS + ";" + result.scenariosOnlyWithSsmergeConfNoWS + ";" + result.scenariosOnlyWithJdimeConfNoWS+ ';' +result.travisPASSEDjdimeNoWS+ ';' +result.travisFAILEDjdimeNoWS+ ';' +result.travisERROREDjdimeNoWS + ';' +result.travisPASSEDjdimeNoCLWS+ ';' +result.travisFAILEDjdimeNoCLWS+ ';' +result.travisERROREDjdimeNoCLWS;
 		statistics_scenarios.append(loggermsg+'\n')
 	}
 
