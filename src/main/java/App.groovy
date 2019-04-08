@@ -26,108 +26,70 @@ import javax.sql.CommonDataSource;
 class App {
 
 	static boolean restore_repositories = true;
-	static boolean is_building_jdime  = false
-	static boolean run_travis = true;
-	static boolean filter_known_builds = true;
-	static boolean skip_2nd_run = false;
+	static boolean mine_local = false;
+	static boolean mine_web = false;
 
 
 	public static void main (String[] args){
-		//execution configuration parameters
-		//		def cli = new CliBuilder()
-		//		cli.with {
-		//			r longOpt: 'restore', 'do not restore git repositories'
-		//			s longOpt: 'jdime', 'attempt to build jdime code'
-		//			t longOpt: 'travis', 'do not execute Travis on merged scenario'
-		//			b longOpt: 'builds', 'do not filter scenarios by known builds (builds.csv)'
-		//			f longOpt: 'faster', 'skip second run (builds of jdime merged code)'
-		//		}
-		//		def options = cli.parse(args)
-		//		if (options.r) {
-		//			restore_repositories = false
-		//		}
-		//		if (options.s) {
-		//			is_building_jdime = true
-		//		}
-		//		if(options.t){
-		//			run_travis = false
-		//		}
-		//		if(options.b){
-		//			filter_known_builds = false
-		//		}
-		//		if(options.f){
-		//			skip_2nd_run = true
-		//		}
-		//		boolean alreadyExecuted1stRun = new File("conflictingJDIME").exists()
-		//		boolean changeGitConfig = !alreadyExecuted1stRun
-		//		if(alreadyExecuted1stRun)is_building_jdime = true;
-		//		//managing execution log
-		//		File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
-		//		if(!f.exists()){
-		//			f.getParentFile().mkdirs()
-		//			f.createNewFile()
-		//		}
-		//		//configuring git merge driver
-		//		File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
-		//		if(changeGitConfig){
-		//			if(!gitconfig.exists()) {
-		//				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
-		//			}
-		//			String gitconfigContents =  gitconfig.text
-		//			if(is_building_jdime){
-		//				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
-		//			} else {
-		//				gitconfig.text = gitconfigContents.replaceAll("-s", "")
-		//			}
-		//		}
-		//		//1st run (attempts to build non-conflicting code of the first tool)
-		//		run_gitmerges()
-		//		//storing 1st results
-		//		def resultsFolder = "conflictingJDIME";
-		//		if(is_building_jdime){
-		//			resultsFolder = "conflictingS3M"
-		//		}
-		//		boolean success = f.getParentFile().renameTo(new File(resultsFolder))
-		//		boolean alreadyExecuted2ndRun = new File("conflictingS3M").exists()
-		//		if(!skip_2nd_run){
-		//			if(success && !alreadyExecuted2ndRun){
-		//				//configuration for 2nd run
-		//				is_building_jdime = !is_building_jdime
-		//				restore_repositories = true;
-		//				//re-managing execution log
-		//				if(f.getParentFile().exists()) f.getParentFile().deleteDir()
-		//				f.getParentFile().mkdirs()
-		//				f.createNewFile()
-		//				//re-configuring git merge driver
-		//				if(!gitconfig.exists()) {
-		//					throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
-		//				}
-		//				def gitconfigContents =  gitconfig.text
-		//				if(is_building_jdime){
-		//					gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
-		//				} else {
-		//					gitconfig.text = gitconfigContents.replaceAll("-s", "")
-		//				}
-		//				//2nd run (attempts to build non-conflicting code of the second tool)
-		//				run_gitmerges()
-		//				//storing 2nd results
-		//				resultsFolder = "conflictingJDIME";
-		//				if(is_building_jdime){
-		//					resultsFolder = "conflictingS3M"
-		//				}
-		//				success = f.getParentFile().renameTo(new File(resultsFolder))
-		//				if(!success){
-		//					throw new RuntimeException( 'ERROR: unable to store 2nd run results')
-		//				}
-		//			} else {
-		//				if(!success){
-		//					throw new RuntimeException( 'ERROR: unable to store 1st run results')
-		//				}
-		//			}
-		//		}
+//		//execution configuration parameters
+//		def cli = new CliBuilder()
+//		cli.with {
+//			l longOpt: 'local', 'mine local repositories'
+//			w longOpt: 'web', 'mine remote repositories'
+//			r longOpt: 'remote', 'do not restore repositories'
+//		}
+//
+//		def options = cli.parse(args)
+//		if (options.l) {
+//			println 'Mining local repositories...'
+//			mine_local = true
+//			mine_web = false
+//		}
+//		if (options.w) {
+//			println 'Mining remote repositories...'
+//			mine_web = true
+//			mine_local = false
+//		}
+//		if (options.r) {
+//			restore_repositories = false
+//		}
+//
+//		if(!mine_local && !mine_web) {
+//			println  'ERROR: choose a mining option -l (local) or -w(remote)'
+//		} else {
+//			//managing execution log
+//			File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
+//			if(!f.exists()){
+//				f.getParentFile().mkdirs()
+//				f.createNewFile()
+//			}
+//
+//			//configuring git merge driver
+//			File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
+//			if(!gitconfig.exists()) {
+//				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
+//			}
+//			String gitconfigContents =  gitconfig.text
+//			if(!gitconfig.text.contains("-c false")){
+//				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -c false")
+//			}
+//
+//			//running git merges
+//			run_gitmerges()
+//
+//			//storing results
+//			def resultsFolder = "results";
+//			boolean success = f.getParentFile().renameTo(new File(resultsFolder))
+//			if(!success){
+//				throw new RuntimeException( 'ERROR: unable to store 1st run results')
+//			}
+//
+//			computeProjectStatistics()
+//			println 'DONE!'
+//		}
+		
 		computeProjectStatistics()
-		//		computeManualAnalysisFiles()
-		println 'DONE!'
+		
 
 	}
 
@@ -136,6 +98,9 @@ class App {
 		def projects = r.getProjects()
 		if(restore_repositories){
 			restoreGitRepositories(projects)
+		}
+		if(mine_local){
+			backupGitRepositories(projects)
 		}
 
 		//fill merge scenarios info (base,left,right)
@@ -147,9 +112,6 @@ class App {
 
 		//reproduce the 'git merge' command for each merge scenario
 		LinkedList<MergeCommit> merge_commits = fillMergeCommitsListForHorizontalExecution(projects)
-		if(filter_known_builds){
-			filterByKnownBuilds(merge_commits)
-		}
 		for(int i=0; i<merge_commits.size();i++){
 			MergeCommit m = merge_commits.get(i);
 			println ('Analysing ' + ((i+1)+'/'+merge_commits.size()) + ': ' +  m.sha)
@@ -161,31 +123,6 @@ class App {
 			//compute statistics related to each scenario
 			MergeResult result = computeScenarioStatistics(m)
 
-			if(result.sucessfullmerge && e.isTravis && run_travis){
-				//travis only necessary when tools differ
-				boolean shouldPush = false;
-				if(is_building_jdime){
-					if(result.ssmergeConf > 0 && result.jdimeConf == 0) {
-						shouldPush = true;
-					}
-				} else {
-					if(result.ssmergeConf == 0 && result.jdimeConf>0) {
-						shouldPush = true;
-					}
-				}
-				if(shouldPush){
-					//push to fork, build fork
-					def new_sha = e.git_push()
-					if(new_sha != null){
-						Tuple<String,String,Integer> travisResult = TravisFinder.findStatus(new_sha, m.parent1, m.ancestor, m.parent2, result.commit.projectName)
-						result.travisStatus = travisResult.x
-						result.travisBuildURI = travisResult.y
-						result.travisBuildTime = travisResult.z
-						result.travisJobURI = travisResult.w
-						result.newMergeCommitSHA = new_sha
-					}
-				}
-			}
 			//log statistics related to each scenario
 			logScenarioStatistics(result)
 		}
@@ -239,45 +176,6 @@ class App {
 		out.append '\n'
 	}
 
-	def private static filterByKnownBuilds(List<MergeCommit> mergeCommits){
-		println 'Filtering known builds...'
-		List<MergeCommit> filtered = new ArrayList<>()
-		File f = new File('builds-mergecommits.csv')
-		if(!f.exists() ) {
-			println "Builds file does not exist!"
-		} else {
-			//1. group builds by project
-			HashMap<String,List<String>> buildsByProject = new HashMap();
-			f.eachLine {line ->
-				try{
-					String[] a = line.split(';')
-					String pname = a[0]
-					List<String> builds = buildsByProject.get(pname)
-					if(builds == null) {
-						builds = new ArrayList<>()
-						builds.add(line)
-						buildsByProject.put(pname, builds)
-					}else {
-						builds.add(line)
-					}
-				}catch(Exception e){}
-			}
-			//2. search builds
-			for(MergeCommit m : mergeCommits){
-				List<String> builds = buildsByProject.get(m.project.originalName)
-				if(builds != null){
-					builds.each {entry ->
-						if(entry.contains(m.sha)){
-							filtered.add(m)
-						}
-					}
-				}
-			}
-		}
-		mergeCommits.clear()
-		mergeCommits.addAll(filtered)
-	}
-
 	def private static ArrayList<String> restoreExecutionLog(){
 		ArrayList<String> alreadyExecutedSHAs = new ArrayList<String>()
 		try {
@@ -296,73 +194,53 @@ class App {
 
 		//retrieving statistics
 		String logpath  = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
-		File statistics_partial = new File(logpath+ "numbers-current-file.csv");
-		File statistics_files 	= new File(logpath+ "numbers-files.csv");
+		File statistics_partial = new File(logpath+ "jfstmerge.statistics");
+		File statistics_files = new File(logpath+ "jfstmerge.statistics.files");
 		if(!statistics_files.exists()){(
 			new File(logpath)).mkdirs();statistics_files.createNewFile();
-			statistics_files.append('project;mergecommit;leftcommit;basecommit;rightcommit;files;consecutiveLinesonly;spacingonly;samePositiononly;sameStmtonly;otheronly;consecutiveLinesAndSamePosition;consecutiveLinesAndsameStmt;otherAndsamePosition;otherAndsameStmt;spacingAndSamePosition;spacingAndSameStmt;ssmergeConf;textualConf;jdimeConfs;smergeTime;textualTime;jdimeTime;sucessfullMerge;isSsEqualsToUn;isStEqualsToUn;changedFiles;commonChangedFiles\n')
+			statistics_files.append('project;mergecommit;leftcommit;basecommit;rightcommit;files;ssmergeconfs;ssmergeloc;ssmergerenamingconfs;ssmergedeletionconfs;ssmergeinnerdeletionconfs;ssmergetaeconfs;ssmergenereoconfs;ssmergeinitlblocksconfs;ssmergeacidentalconfs;unmergeconfs;unmergeloc;unmergetime;ssmergetime;unmergeduplicateddeclarationerrors;unmergeorderingconfs;equalconfs\n')
 		} //ensuring it exists
 		/*
-		 * numbers-current-file contains numbers for each merged file. To compute numbers for each scenario,
-		 * we read the numbers-current-file, and then we delete this file. Thus, every time a merge scenario is merged
-		 * the numbers-current-file is empty. To have overall number for all files, regardless merge scenarios, we append
-		 * numbers-current-file content in the numbers-files before deleting numbers-current-file.
+		 * jfstmerge.statistics contains numbers for each merged file. To compute numbers for each scenario,
+		 * we read jfstmerge.statistics, and then we delete this file. Thus, every time a merge scenario is merged
+		 * the jfstmerge.statistics is empty. To have overall number for all files, regardless merge scenarios, we append
+		 * jfstmerge.statistics content in the jfstmerge.statistics.files before deleting jfstmerge.statistics.
 		 */
 
 		List<String> lines = new ArrayList<String>();
 		if(statistics_partial.exists()){lines = statistics_partial.readLines();}
 		for(int y = 1/*ignoring header*/; y <lines.size(); y++){
-			String[] columns = lines.get(y).split(";");
+			String[] columns = lines.get(y).split(",");
+			statistics_files.append(m.project.url +';'+m.sha +';'+m.parent1 +';'+m.ancestor +';'+m.parent2+';'+ (String.join(";", Arrays.copyOfRange(columns, 3, columns.length))) +'\n')
 
-			statistics_files.append(m.project.originalURL +';'+m.sha +';'+m.parent1 +';'+m.ancestor +';'+m.parent2+';'+lines.get(y)+'\n')
+			result.ssmergeconfs += Integer.valueOf(columns[4]);
+			result.ssmergeloc += Integer.valueOf(columns[5]);
+			result.ssmergerenamingconfs+= Integer.valueOf(columns[6]);
+			result.ssmergedeletionconfs+= Integer.valueOf(columns[7]);
+			result.ssmergeinnerdeletionconfs+= Integer.valueOf(columns[8]);
+			result.ssmergetaeconfs+= Integer.valueOf(columns[9]);
+			result.ssmergenereoconfs+= Integer.valueOf(columns[10]);
+			result.ssmergeinitlblocksconfs+= Integer.valueOf(columns[11]);
+			result.ssmergeacidentalconfs+= Integer.valueOf(columns[12]);
+			result.unmergeconfs+= Integer.valueOf(columns[13]);
+			result.unmergeloc+= Integer.valueOf(columns[14]);
+			result.unmergetime+= Integer.valueOf(columns[15]);
+			result.ssmergetime+= Integer.valueOf(columns[16]);
+			result.unmergeduplicateddeclarationerrors+= Integer.valueOf(columns[17]);
+			result.unmergeorderingconfs+= Integer.valueOf(columns[18]);
+			result.equalconfs+= Integer.valueOf(columns[19]);
 
-			result.consecutiveLinesonly += Integer.valueOf(columns[1]);
-			result.spacingonly 	 += Integer.valueOf(columns[2]);
-			result.samePositiononly += Integer.valueOf(columns[3]);
-			result.sameStmtonly 	 += Integer.valueOf(columns[4]);
-			result.otheronly 		 += Integer.valueOf(columns[5]);
-			result.consecutiveLinesAndSamePosition += Integer.valueOf(columns[6]);
-			result.consecutiveLinesAndsameStmt 	+= Integer.valueOf(columns[7]);
-			result.otherAndsamePosition 	+= Integer.valueOf(columns[8]);
-			result.otherAndsameStmt 		+= Integer.valueOf(columns[9]);
-			result.spacingAndSamePosition 	+= Integer.valueOf(columns[10]);
-			result.spacingAndSameStmt += Integer.valueOf(columns[11]);
-			result.ssmergeConf += Integer.valueOf(columns[12]);
-			result.textualConf += Integer.valueOf(columns[13]);
-			result.jdimeConf   += Integer.valueOf(columns[14]);
-			result.ssmergetime += Long.parseLong(columns[15]);
-			result.unmergetime += Long.parseLong(columns[16]);
-			result.jdimetime   += Long.parseLong(columns[17]);
-			result.sucessfullmerge= result.sucessfullmerge&& Boolean.parseBoolean(columns[18]);
-			result.isSsEqualsToUn = result.isSsEqualsToUn && Boolean.parseBoolean(columns[19]);
-			result.isStEqualsToUn = result.isStEqualsToUn && Boolean.parseBoolean(columns[20]);
-			result.changedMethods += Integer.valueOf(columns[21]);
-			result.commonChangedMethods += Integer.valueOf(columns[22]);
-
-			result.ssmergeConfNoCL = result.ssmergeConf - result.consecutiveLinesonly;
-			result.ssmergeConfNoCL = (result.ssmergeConfNoCL < 0) ? 0 : result.ssmergeConfNoCL;
-			result.ssmergeConfNoWS = result.ssmergeConf - result.spacingonly;
-			result.ssmergeConfNoWS = (result.ssmergeConfNoWS < 0) ? 0 : result.ssmergeConfNoWS;
-			result.ssmergeConfNoCLWS = result.ssmergeConf - (result.spacingonly + result.consecutiveLinesonly);
-			result.ssmergeConfNoCLWS = (result.ssmergeConfNoCLWS < 0) ? 0 : result.ssmergeConfNoCLWS;
 		}
-
-		Set<String> changedFiles = new HashSet<String>(m.changedRightFiles);
-		changedFiles.addAll(m.changedLeftFiles); //Set to avoid duplicates
-		List<String> commonChangedFiles = new ArrayList<String>(m.changedRightFiles)
-		commonChangedFiles.retainAll(m.changedLeftFiles) //twice to filter already common elements in the set
-
-		result.changedFiles = changedFiles.size()
-		//result.changedFiles = (m.changedLeftFiles.size() + m.changedRightFiles.size()) - (2*commonChangedFiles.size())
-		result.commonChangedFiles = commonChangedFiles.size()
 
 		(new AntBuilder()).delete(file:statistics_partial.getAbsolutePath(),failonerror:false)
 		return result
 	}
 
 	def private static computeProjectStatistics(){
+		List<String> diverginScenarios = new ArrayList<String>();
+
 		Map<String, ProjecResult> projectsStastitics = new HashMap<>()
-		File scenarios = new File("conflictingJDIME/numbers-scenarios.csv")
+		File scenarios = new File("results/numbers-scenarios.csv")
 		List<String> lines = new ArrayList<String>()
 		if(scenarios.exists()){
 			lines = scenarios.readLines();
@@ -375,129 +253,60 @@ class App {
 					result.projectName = project
 					projectsStastitics.put(project, result)
 				}
-				int CL = Integer.valueOf(columns[5]);
-				int WS = Integer.valueOf(columns[6]);
-				int ssmergeConf = Integer.valueOf(columns[16]);
-				int textualConf = Integer.valueOf(columns[17]);
-				int jdimeConf = Integer.valueOf(columns[18]);
+
+				int ssmergeConf = Integer.valueOf(columns[5]);
+				int textualConf = Integer.valueOf(columns[14]);
+				int ssmergerenamingconfs = Integer.valueOf(columns[7]);
+				int ssmergedeletionconfs = Integer.valueOf(columns[8]);
+				int ssmergeinnerdeletionconfs= Integer.valueOf(columns[9]);
+				int ssmergetaeconfs= Integer.valueOf(columns[10]);
+				int ssmergenereoconfs= Integer.valueOf(columns[11]);
+				int ssmergeinitlblocksconfs= Integer.valueOf(columns[12]);
+				int ssmergeacidentalconfs= Integer.valueOf(columns[13]);
+				int unmergeduplicateddeclarationerrors= Integer.valueOf(columns[18]);
+				int unmergeorderingconfs= Integer.valueOf(columns[19]);
+
+				result.ssmergeconfs += ssmergeConf;
+				result.ssmergeloc += textualConf;
+				result.ssmergerenamingconfs+= ssmergerenamingconfs
+				result.ssmergedeletionconfs+= ssmergedeletionconfs
+				result.ssmergeinnerdeletionconfs+= ssmergeinnerdeletionconfs
+				result.ssmergetaeconfs+= ssmergetaeconfs
+				result.ssmergenereoconfs+= ssmergenereoconfs
+				result.ssmergeinitlblocksconfs+= ssmergeinitlblocksconfs
+				result.ssmergeacidentalconfs+= ssmergeacidentalconfs
+				
+				result.unmergeconfs+= Integer.valueOf(columns[14]);
+				result.unmergeloc+= Integer.valueOf(columns[15]);
+				result.unmergetime+= Long.parseLong(columns[16]);
+				result.ssmergetime+= Long.parseLong(columns[17]);
+				
+				result.unmergeduplicateddeclarationerrors+= unmergeduplicateddeclarationerrors
+				result.unmergeorderingconfs+= unmergeorderingconfs
+				
+				result.equalconfs+= Integer.valueOf(columns[20]);
 
 				result.numberOfScenarios++;
-				result.conflictingScenarios = (ssmergeConf > 0 || jdimeConf > 0) ? result.conflictingScenarios + 1 : result.conflictingScenarios;
-				result.conflictingScenariosNoWS = ((ssmergeConf - (WS)) > 0 || jdimeConf > 0) ? result.conflictingScenariosNoWS + 1 : result.conflictingScenariosNoWS;
-				result.conflictingScenariosNoCLWS = ((ssmergeConf - (CL + WS)) > 0 || jdimeConf > 0) ? result.conflictingScenariosNoCLWS + 1 : result.conflictingScenariosNoCLWS;
+				result.conflictingScenarios = (ssmergeConf > 0 || textualConf > 0) ? result.conflictingScenarios + 1 : result.conflictingScenarios;
 
-				result.scenariosWithCL = (CL > 0) ? (result.scenariosWithCL + 1) : result.scenariosWithCL;
-				result.scenariosWithWS = (WS > 0) ? (result.scenariosWithWS + 1) : result.scenariosWithWS;
 				result.scenariosWithSsmergeConf = (ssmergeConf > 0) ? (result.scenariosWithSsmergeConf + 1) : result.scenariosWithSsmergeConf;
 				result.scenariosWithTextualConf = (textualConf > 0) ? (result.scenariosWithTextualConf + 1) : result.scenariosWithTextualConf;
-				result.scenariosWithJdimeConf = (jdimeConf > 0) ? (result.scenariosWithJdimeConf + 1) : result.scenariosWithJdimeConf;
 
-				result.scenariosOnlyWithSsmergeConf = (ssmergeConf > 0 && jdimeConf == 0) ? (result.scenariosOnlyWithSsmergeConf + 1) : result.scenariosOnlyWithSsmergeConf;
-				result.scenariosOnlyWithTextualConf = (textualConf > 0 && jdimeConf == 0 && ssmergeConf == 0) ? (result.scenariosOnlyWithTextualConf + 1) : result.scenariosOnlyWithTextualConf;
-				result.scenariosOnlyWithJdimeConf = (ssmergeConf == 0 && jdimeConf > 0) ? (result.scenariosOnlyWithJdimeConf + 1) : result.scenariosOnlyWithJdimeConf;
+				result.scenariosOnlyWithSsmergeConf = (ssmergeConf > 0 && textualConf == 0) ? (result.scenariosOnlyWithSsmergeConf + 1) : result.scenariosOnlyWithSsmergeConf;
+				result.scenariosOnlyWithTextualConf = (textualConf > 0 && ssmergeConf == 0) ? (result.scenariosOnlyWithTextualConf + 1) : result.scenariosOnlyWithTextualConf;
 
-				result.scenariosOnlyWithSsmergeConfNoCLWS = ((ssmergeConf - (CL + WS))> 0 && jdimeConf == 0) ? (result.scenariosOnlyWithSsmergeConfNoCLWS + 1) : result.scenariosOnlyWithSsmergeConfNoCLWS;
-				result.scenariosOnlyWithSsmergeConfNoWS = ((ssmergeConf - (WS))> 0 && jdimeConf == 0) ? (result.scenariosOnlyWithSsmergeConfNoWS + 1) : result.scenariosOnlyWithSsmergeConfNoWS;
-				result.scenariosOnlyWithJdimeConfNoCLWS = ((ssmergeConf - (CL + WS)) <= 0 && jdimeConf > 0) ? (result.scenariosOnlyWithJdimeConfNoCLWS + 1) : result.scenariosOnlyWithJdimeConfNoCLWS;
-				result.scenariosOnlyWithJdimeConfNoWS = ((ssmergeConf - (WS)) <= 0 && jdimeConf > 0) ? (result.scenariosOnlyWithJdimeConfNoWS + 1) : result.scenariosOnlyWithJdimeConfNoWS;
+				result.scenariosWithRenamingConfs = (ssmergerenamingconfs > 0) ? (result.scenariosWithRenamingConfs + 1) : result.scenariosWithRenamingConfs;
+				result.scenariosWithDeletionConfs = (ssmergedeletionconfs > 0) ? (result.scenariosWithDeletionConfs + 1) : result.scenariosWithDeletionConfs;
+				result.scenariosWithTaeConfs = (ssmergetaeconfs > 0) ? (result.scenariosWithTaeConfs + 1) : result.scenariosWithTaeConfs;
+				result.scenariosWithNereoConfs = (ssmergenereoconfs > 0) ? (result.scenariosWithNereoConfs + 1) : result.scenariosWithNereoConfs;
+				result.scenariosWithInitBlocksConfs = (ssmergeinitlblocksconfs > 0) ? (result.scenariosWithInitBlocksConfs + 1) : result.scenariosWithInitBlocksConfs;
+				result.scenariosWithAcidentalConfs = (ssmergeacidentalconfs > 0) ? (result.scenariosWithAcidentalConfs + 1) : result.scenariosWithAcidentalConfs;
+				
+				result.scenariosWithOrderingConfs = (unmergeorderingconfs > 0) ? (result.scenariosWithOrderingConfs + 1) : result.scenariosWithOrderingConfs;
+				result.scenariosWithDuplicatedDeclarations = (unmergeduplicateddeclarationerrors > 0) ? (result.scenariosWithDuplicatedDeclarations + 1) : result.scenariosWithDuplicatedDeclarations;
 
-				result.consecutiveLinesonly += CL;
-				result.spacingonly += WS;
-				result.ssmergeConf += ssmergeConf;
-				result.textualConf += textualConf;
-				result.jdimeConf   += jdimeConf;
-				result.ssmergetime += Long.parseLong(columns[19]);
-				result.unmergetime += Long.parseLong(columns[20]);
-				result.jdimetime   += Long.parseLong(columns[21]);
-
-				String travisStatus = columns[25];
-				if(travisStatus.equals("PASSED")){
-					result.travisPASSEDssmerge++;
-				} else if(travisStatus.equals("FAILED")){
-					result.travisFAILEDssmerge++;
-				} else if(travisStatus.equals("ERRORED")){
-					result.travisERROREDssmerge++
-				} else {
-					if(!travisStatus.equals("NONE")) result.travisBuildDiscarded++
-				}
-
-				result.travisBuildTime += Long.parseLong(columns[28]);
-
-				int commonChangedFiles = Integer.valueOf(columns[30]);
-				int commonChagendMethods = Integer.valueOf(columns[32]);
-
-				result.changedFiles += Integer.valueOf(columns[29]);
-				result.commonChangedFiles += commonChangedFiles;
-				result.changedMethods += Integer.valueOf(columns[31]);
-				result.commonChangedMethods += commonChagendMethods;
-
-				result.ssmergeConfNoCL = result.ssmergeConf - result.consecutiveLinesonly;
-				result.ssmergeConfNoCL = (result.ssmergeConfNoCL < 0) ? 0 : result.ssmergeConfNoCL;
-				result.ssmergeConfNoWS = result.ssmergeConf - result.spacingonly;
-				result.ssmergeConfNoWS = (result.ssmergeConfNoWS < 0) ? 0 : result.ssmergeConfNoWS;
-				result.ssmergeConfNoCLWS = result.ssmergeConf - (result.spacingonly + result.consecutiveLinesonly);
-				result.ssmergeConfNoCLWS = (result.ssmergeConfNoCLWS < 0) ? 0 : result.ssmergeConfNoCLWS;
-
-				result.scenariosWithSsmergeConfNoCL = ((ssmergeConf - CL) > 0) ? (result.scenariosWithSsmergeConfNoCL + 1) : result.scenariosWithSsmergeConfNoCL;
-				result.scenariosWithSsmergeConfNoWS = ((ssmergeConf - WS) > 0) ? (result.scenariosWithSsmergeConfNoWS + 1) : result.scenariosWithSsmergeConfNoWS;
-				result.scenariosWithSsmergeConfNoCLWS = ((ssmergeConf - (CL + WS)) > 0) ? (result.scenariosWithSsmergeConfNoCLWS + 1) : result.scenariosWithSsmergeConfNoCLWS;
-
-				result.scenariosWithCommonChangedFiles = (commonChangedFiles > 0) ? result.scenariosWithCommonChangedFiles + 1 : result.scenariosWithCommonChangedFiles;
-				result.scenariosWithCommonChangedMethods = (commonChagendMethods > 0) ? result.scenariosWithCommonChangedMethods + 1 : result.scenariosWithCommonChangedMethods;
-
-			}
-
-			//getting builds info for jdime output
-			if(!skip_2nd_run){
-				scenarios = new File("conflictingS3M/numbers-scenarios.csv")
-				lines = new ArrayList<String>()
-				if(scenarios.exists()){
-					lines = scenarios.readLines();
-					for(int y = 1/*ignoring header*/; y <lines.size(); y++){
-						String[] columns = lines.get(y).split(";");
-						String project = columns[0];
-						ProjecResult result = projectsStastitics.get(project)
-
-						int CL = Integer.valueOf(columns[5]);
-						int WS = Integer.valueOf(columns[6]);
-						int ssmergeConf = Integer.valueOf(columns[16]);
-
-						if(result == null){
-							throw new RuntimeException('ERROR: missing projects results for conflictingJDIME/numbers-scenarios.csv')
-						} else {
-							String travisStatus = columns[25];
-							if(travisStatus.equals("PASSED")){
-								result.travisPASSEDjdime++;
-								if((ssmergeConf - (WS)) > 0){
-									result.travisPASSEDjdimeNoWS++;
-								}
-								if((ssmergeConf - (CL + WS)) > 0){
-									result.travisPASSEDjdimeNoCLWS++;
-								}
-							} else if(travisStatus.equals("FAILED")){
-								result.travisFAILEDjdime++;
-								if((ssmergeConf - (WS)) > 0){
-									result.travisFAILEDjdimeNoWS++;
-								}
-								if((ssmergeConf - (CL + WS)) > 0){
-									result.travisFAILEDjdimeNoCLWS++;
-								}
-							} else if(travisStatus.equals("ERRORED")){
-								result.travisERROREDjdime++
-								if((ssmergeConf - (WS)) > 0){
-									result.travisERROREDjdimeNoWS++;
-								}
-								if((ssmergeConf - (CL + WS)) > 0){
-									result.travisERROREDjdimeNoCLWS++;
-								}
-							} else {
-								if(!travisStatus.equals("NONE")) result.travisBuildDiscarded++
-							}
-							result.travisBuildTime += Long.parseLong(columns[28]);
-						}
-					}
-				}else {
-					throw new RuntimeException( 'ERROR: unable to find conflictingS3M/numbers-scenarios.csv to compute projects results')
+				if((ssmergeConf > 0 && textualConf == 0) || (textualConf > 0 && ssmergeConf == 0)){
+					diverginScenarios.add((String.join(";", Arrays.copyOfRange(columns, 0, 5))) + ";" + ssmergeConf + ";" + textualConf )
 				}
 			}
 		} else {
@@ -508,172 +317,54 @@ class App {
 		for(ProjecResult p : projectsStastitics.values()){
 			logProjectStatistics(p)
 		}
-	}
 
-	private static computeManualAnalysisFiles() {
-		println 'Generating manual analysis files...'
-		List<String> sheet = new ArrayList<>();
-		List<String> lines = new ArrayList<>();
-
-		List<MergedLog> mls = Extractor.revertMergedLog(new File('conflictingJDIME/confsjdime.txt'));
-		File scenarios = new File("conflictingJDIME/numbers-scenarios.csv")
-		if(scenarios.exists()){
-			lines = scenarios.readLines();
-			lines = lines.findAll {String l ->l.contains('PASSED')}
-			sheet.addAll(processComputedResults(lines, mls))
-		}
-
-		mls = Extractor.revertMergedLog(new File('conflictingS3M/confsjfstmerge.txt'));
-		scenarios = new File("conflictingS3M/numbers-scenarios.csv")
-		if(scenarios.exists()){
-			lines = scenarios.readLines();
-			lines = lines.findAll {String l ->l.contains('PASSED')}
-			sheet.addAll(processComputedResults(lines, mls))
-		}
-
-		File manualAnalysisFile = new File("manualAnalysis.csv");
-		if(!manualAnalysisFile.exists()){
-			def header = 'Merge Scenario Identifier;Project;Conflicting Merged File;Summary Conflict-related Left Changes;Summary Conflict-related Right Changes;Summary Semistructured Merge Result;Summary Structured Merge Result;Conflicting Tool;Merge Conflict Classification;Justificative';
-			manualAnalysisFile.append(header+'\n')
-			manualAnalysisFile.createNewFile()
-		} //ensuring it exists
-		sheet.each {String s ->
-			manualAnalysisFile.append(s+'\n')
-		}
+		//printing diverging scenarios
+		logDivergingScenarios(diverginScenarios)
 	}
 
 	def private static logScenarioStatistics(MergeResult result) {
 		String logpath = System.getProperty("user.home")+ File.separator + ".jfstmerge" + File.separator;
 		File statistics_scenarios = new File(logpath+ "numbers-scenarios.csv");
 		if(!statistics_scenarios.exists()){
-			def header = "project;mergecommit;leftcommit;basecommit;rightcommit;consecutiveLinesConf;spacingConf;samePositiononly;sameStmtonly;otheronly;consecutiveLinesAndSamePosition;consecutiveLinesAndsameStmt;otherAndsamePosition;otherAndsameStmt;spacingAndSamePosition;spacingAndSameStmt;ssmergeConf;textualConf;jdimeConfs;smergeTime;textualTime;jdimeTime;sucessfullMerge;isSsEqualsToUn;isStEqualsToUn;travisStatus;travisBuildURI;travisJobURI;travisBuildTime;changedFiles;commonChangedFiles;changedMethods;commonChangedMethods;ssmergeConfNoCL;ssmergeConfNoWS;ssmergeConfNoCLWS"
-			statistics_scenarios.append(header+'\n')
+			def header = 'project;mergecommit;leftcommit;basecommit;rightcommit;ssmergeconfs;ssmergeloc;ssmergerenamingconfs;ssmergedeletionconfs;ssmergeinnerdeletionconfs;ssmergetaeconfs;ssmergenereoconfs;ssmergeinitlblocksconfs;ssmergeacidentalconfs;unmergeconfs;unmergeloc;unmergetime;ssmergetime;unmergeduplicateddeclarationerrors;unmergeorderingconfs;equalconfs\n'
 			statistics_scenarios.createNewFile()
+			statistics_scenarios.append(header)
 		} //ensuring it exists
 
-		def loggermsg = result.commit.projectName + ';' + result.commit.sha + ';' + result.commit.parent1 + ';' + result.commit.ancestor + ';' + result.commit.parent2 + ';' + result.consecutiveLinesonly + ';'+ result.spacingonly + ';'+ result.samePositiononly + ';'+ result.sameStmtonly + ';'+ result.otheronly + ';'+ result.consecutiveLinesAndSamePosition + ';'	+ result.consecutiveLinesAndsameStmt + ';'+ result.otherAndsamePosition + ';'+ result.otherAndsameStmt + ';'+ result.spacingAndSamePosition + ';'+ result.spacingAndSameStmt + ';'+ result.ssmergeConf + ';'+ result.textualConf + ';'+ result.jdimeConf + ';'+ result.ssmergetime + ';'+ result.unmergetime + ';'+ result.jdimetime + ';'+ result.sucessfullmerge+ ';'+ result.isSsEqualsToUn + ';'+ result.isStEqualsToUn + ';'+ result.travisStatus + ';'+ result.travisBuildURI + ';'+ result.travisJobURI + ';'+ result.travisBuildTime  + ';'+ result.changedFiles  + ';'+ result.commonChangedFiles + ';'+ result.changedMethods + ';'+ result.commonChangedMethods + ';'+ result.ssmergeConfNoCL+ ';' +result.ssmergeConfNoWS+ ';' +result.ssmergeConfNoCLWS;
+		def loggermsg = result.commit.projectURL + ';' + result.commit.sha + ';' + result.commit.parent1 + ';' + result.commit.ancestor + ';' + result.commit.parent2 + ';'+ result.ssmergeconfs+ ';' + result.ssmergeloc+ ';' + result.ssmergerenamingconfs+ ';' + result.ssmergedeletionconfs+ ';' + result.ssmergeinnerdeletionconfs+ ';' + result.ssmergetaeconfs+ ';' + result.ssmergenereoconfs+ ';' + result.ssmergeinitlblocksconfs+ ';' + result.ssmergeacidentalconfs+ ';' + result.unmergeconfs+ ';' + result.unmergeloc+ ';' + result.unmergetime+ ';' + result.ssmergetime+ ';' + result.unmergeduplicateddeclarationerrors+ ';' + result.unmergeorderingconfs+ ';' + result.equalconfs
 		statistics_scenarios.append(loggermsg+'\n')
 	}
 
 	def private static logProjectStatistics(ProjecResult result) {
 		File statistics_scenarios = new File("numbers-projects.csv");
 		if(!statistics_scenarios.exists()){
-			def header = "projectName;numberOfScenarios;conflictingScenarios;conflictingScenariosNoWS;conflictingScenariosNoCLWS;scenariosWithCommonChangedFiles;scenariosWithCommonChangedMethods;scenariosWithSsmergeConf;scenariosWithTextualConf;scenariosWithJdimeConf;scenariosWithCL;scenariosWithWS;consecutiveLinesConf;spacingConf;ssmergeConf;jdimeConf;textualConf;ssmergetime;textualtime;jdimetime;travisBuildTime;travisBuildDiscarded;travisPASSEDssmerge;travisFAILEDssmerge;travisERROREDssmerge;travisPASSEDjdime;travisFAILEDjdime;travisERROREDjdime;changedFiles;commonChangedFiles;changedMethods;commonChangedMethods;ssmergeConfNoCL;ssmergeConfNoWS;ssmergeConfNoCLWS;scenariosWithSsmergeConfNoCL;scenariosWithSsmergeConfNoWS;scenariosWithSsmergeConfNoCLWS;scenariosOnlyWithSsmergeConf;scenariosOnlyWithTextualConf;scenariosOnlyWithJdimeConf;scenariosOnlyWithSsmergeConfNoCLWS;scenariosOnlyWithJdimeConfNoCLWS;scenariosOnlyWithSsmergeConfNoWS;scenariosOnlyWithJdimeConfNoWS;travisPASSEDjdimeNoWS;travisFAILEDjdimeNoWS;travisERROREDjdimeNoWS;travisPASSEDjdimeNoCLWS;travisFAILEDjdimeNoCLWS;travisERROREDjdimeNoCLWS"
+			def header = 'projectName;numberOfScenarios;conflictingScenarios;ssmergeconfs;ssmergeloc;ssmergerenamingconfs;ssmergedeletionconfs;ssmergeinnerdeletionconfs;ssmergetaeconfs;ssmergenereoconfs;ssmergeinitlblocksconfs;ssmergeacidentalconfs;unmergeconfs;unmergeloc;unmergetime;ssmergetime;unmergeduplicateddeclarationerrors;unmergeorderingconfs;equalconfs;scenariosWithSsmergeConf;scenariosWithTextualConf;scenariosOnlyWithSsmergeConf;scenariosOnlyWithTextualConf;scenariosWithRenamingConfs;scenariosWithDeletionConfs;scenariosWithTaeConfs;scenariosWithNereoConfs;scenariosWithInitBlocksConfs;scenariosWithAcidentalConfs;scenariosWithOrderingConfs;scenariosWithDuplicatedDeclarations'
 			statistics_scenarios.append(header+'\n')
 			statistics_scenarios.createNewFile()
 		} //ensuring it exists
 
-		def loggermsg = result.projectName + ';' +result.numberOfScenarios + ';' +result.conflictingScenarios + ';' +result.conflictingScenariosNoWS + ';' +result.conflictingScenariosNoCLWS + ';' +result.scenariosWithCommonChangedFiles + ';' +result.scenariosWithCommonChangedMethods + ";" + result.scenariosWithSsmergeConf + ";" + result.scenariosWithTextualConf + ";" + result.scenariosWithJdimeConf + ';' +result.scenariosWithCL + ';' +result.scenariosWithWS + ';' +result.consecutiveLinesonly+ ';' +result.spacingonly+ ';' +result.ssmergeConf+ ';' +result.jdimeConf+ ';' +result.textualConf+ ';' +result.ssmergetime+ ';' +result.unmergetime+ ';' +result.jdimetime+ ';' +result.travisBuildTime+ ';' +result.travisBuildDiscarded+ ';' +result.travisPASSEDssmerge+ ';' +result.travisFAILEDssmerge+ ';' +result.travisERROREDssmerge+ ';' +result.travisPASSEDjdime+ ';' +result.travisFAILEDjdime+ ';' +result.travisERROREDjdime+ ';' +result.changedFiles+ ';' +result.commonChangedFiles+ ';' +result.changedMethods+ ';' +result.commonChangedMethods + ';'+ result.ssmergeConfNoCL+ ';' +result.ssmergeConfNoWS+ ';' +result.ssmergeConfNoCLWS + ';'+ result.scenariosWithSsmergeConfNoCL+ ';' +result.scenariosWithSsmergeConfNoWS+ ';' +result.scenariosWithSsmergeConfNoCLWS + ";" + result.scenariosOnlyWithSsmergeConf + ";" + result.scenariosOnlyWithTextualConf + ";" + result.scenariosOnlyWithJdimeConf + ";" + result.scenariosOnlyWithSsmergeConfNoCLWS + ";" + result.scenariosOnlyWithJdimeConfNoCLWS + ";" + result.scenariosOnlyWithSsmergeConfNoWS + ";" + result.scenariosOnlyWithJdimeConfNoWS+ ';' +result.travisPASSEDjdimeNoWS+ ';' +result.travisFAILEDjdimeNoWS+ ';' +result.travisERROREDjdimeNoWS + ';' +result.travisPASSEDjdimeNoCLWS+ ';' +result.travisFAILEDjdimeNoCLWS+ ';' +result.travisERROREDjdimeNoCLWS;
+		def loggermsg = result.projectName+ ';' + result.numberOfScenarios+ ';' + result.conflictingScenarios+ ';' + result.ssmergeconfs+ ';' + result.ssmergeloc+ ';' + result.ssmergerenamingconfs+ ';' + result.ssmergedeletionconfs+ ';' + result.ssmergeinnerdeletionconfs+ ';' + result.ssmergetaeconfs+ ';' + result.ssmergenereoconfs+ ';' + result.ssmergeinitlblocksconfs+ ';' + result.ssmergeacidentalconfs+ ';' + result.unmergeconfs+ ';' + result.unmergeloc+ ';' + result.unmergetime+ ';' + result.ssmergetime+ ';' + result.unmergeduplicateddeclarationerrors+ ';' + result.unmergeorderingconfs+ ';' + result.equalconfs+ ';' + result.scenariosWithSsmergeConf+ ';' + result.scenariosWithTextualConf+ ';' + result.scenariosOnlyWithSsmergeConf+ ';' + result.scenariosOnlyWithTextualConf + ';' + result.scenariosWithRenamingConfs+';'+result.scenariosWithDeletionConfs+';'+result.scenariosWithTaeConfs+';'+result.scenariosWithNereoConfs+';'+result.scenariosWithInitBlocksConfs+';'+result.scenariosWithAcidentalConfs+';'+result.scenariosWithOrderingConfs+';'+result.scenariosWithDuplicatedDeclarations
 		statistics_scenarios.append(loggermsg+'\n')
 	}
 
-	def private static processComputedResults(List lines, List mls) {
-		List<String> sheetLines = new ArrayList<>();
-		for(int y = 0; y <lines.size(); y++){
-			String[] columns = lines.get(y).split(";");
-			String project = columns[0];
-			String mergeCommit = columns[1]
+	def private static logDivergingScenarios(List<String> divergingScenarios) {
+		File diverging_scenarios = new File("diverging-scenarios.csv")
+		if(!diverging_scenarios.exists()){
+			def header = 'project;mergecommit;leftcommit;basecommit;rightcommit;ssmergeconfs;unmergeconfs'
+			diverging_scenarios.append(header+'\n')
+			diverging_scenarios.createNewFile()
+		} //ensuring it exists
 
-			int CL = Integer.valueOf(columns[5]);
-			int WS = Integer.valueOf(columns[6]);
-
-			int ssmergeConf = Integer.valueOf(columns[16]);
-			int textualConf = Integer.valueOf(columns[17]);
-			int jdimeConf = Integer.valueOf(columns[18]);
-
-			int ssmergeConfNoCL = ssmergeConf - CL;
-			int ssmergeConfNoWS = ssmergeConf - WS;
-			int ssmergeConfNoCLWS = ssmergeConf - (CL + WS);
-
-			String travisStatus = columns[25];
-			if(travisStatus.equals("PASSED")){
-				MergedLog mL = mls.find{
-					it.mergeCommit.trim() == mergeCommit.trim()
-				}
-				if(mL != null){
-					// create files with merged content
-					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.BaseContent, '_base');
-					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.LeftContent, '_left');
-					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.RightContent,'_right');
-					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.SemistructuredMergeOutput, '_semistructured');
-					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.StructuredMergeOutput, '_structured');
-
-					//fill sheet's entry
-					StringBuilder builder = new StringBuilder();
-					builder.append(mL.mergeCommit);
-					builder.append(';');
-					builder.append('https://github.com/spgroup/s3m/blob/master/svj/manualAnalysis/' + mL.projectName);
-					builder.append(';');
-					builder.append('https://github.com/spgroup/s3m/blob/master/svj/manualAnalysis/' + mL.mergeCommit + '/' + mL.mergedFile);
-					builder.append(';');
-					builder.append(';');
-					builder.append(';');
-					builder.append(';');
-					builder.append(';');
-					builder.append(jdimeConf > 0 ? 'Structured Merge' : 'Semistructured Merge');
-					builder.append(';');
-					sheetLines.add(builder.toString());
-				}
-			}
+		for(String loggermsg : divergingScenarios){
+			diverging_scenarios.append(loggermsg+'\n')
 		}
-		return sheetLines;
 	}
 
-
-
-	def private static File writeManualAnalysisFile(String mergecommit, String filename, String content, String suffix) {
-		File mLfile = new File('manualAnalysis/'+ mergecommit + '/' + filename);
-		mLfile.mkdirs();
-		mLfile = new File(mLfile.getAbsolutePath() + '/' + filename + suffix + '.java');
-		mLfile.append(content);
-	}
-
-	static void m(){
-		Map<String, String> oldmap = new LinkedHashMap<>();
-		(new File('conflictingS3M/numbers-scenarios.csv')).eachLine { String line ->
-			String[] columns = line.split(';');
-			String key = columns[0] + columns[1];
-			oldmap.put(key,line);
+	def private static backupGitRepositories(ArrayList<Project> projects){
+		projects.each {
+			Extractor e = new Extractor(it,true)
+			e.backupRepository(it)
 		}
-
-		Map<String, String> newmap = new LinkedHashMap<>();
-		int j = 1;
-		(new File('numbers-scenarios.csv')).eachLine { String line ->
-			String[] columns = line.split(';');
-			String key = columns[0] + columns[1];
-			newmap.put(key,line);
-		}
-
-		String result = "";
-		List<String> oldkeys = new ArrayList<>(oldmap.keySet());
-		for(int i = 0; i < oldkeys.size(); i++){
-			String key = oldkeys.get(i);
-			String oldline = oldmap.get(key);
-			String newline = newmap.get(key);
-			if(newline != null){
-				result = result + newline + '\n';
-			} else {
-				result = result + oldline + '\n';
-			}
-		}
-
-		def out = new File('numbers-scenarios-new.csv')
-		out.write result;
-	}
-
-	static void n(){
-		Map<String, String> oldmap = new LinkedHashMap<>();
-		(new File('builds-mergecommits.csv')).eachLine { String line ->
-			String[] columns = line.split(';');
-			String key = columns[3];
-			oldmap.put(key,columns[0]);
-		}
-
-		Map<String, String> newmap = new LinkedHashMap<>();
-		int j = 1;
-		(new File('in.in')).eachLine { String line ->
-			String value = oldmap.get(line)
-			println value
-		}
+		println('Backup finished!\n')
 	}
 }

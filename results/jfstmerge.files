@@ -1,0 +1,8240 @@
+20190324_125140,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b10804
+public class CaseStudy{
+	
+	int x;
+	int z;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+	}
+	
+}
+!@#$%
+20190324_125140,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a10804
+public class CaseStudy{
+	
+	int x;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+	}
+	
+}
+!@#$%
+20190324_125140,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c10804
+public class CaseStudy{
+	
+	int x;
+	int y;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+	}
+	
+}
+!@#$%
+20190324_125144,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b00312
+public class CaseStudy{
+	
+	int x;
+	int z;
+	int y;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+	}
+	
+	public void c(){
+		
+		int r;
+	}
+	
+}
+!@#$%
+20190324_125144,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a00312
+public class CaseStudy{
+	
+	int x;
+	int z;
+	int y;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+	}
+	
+}
+!@#$%
+20190324_125144,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c00312
+public class CaseStudy{
+	
+	int x;
+	int z;
+	int y;
+	int w;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+	}
+	
+}
+!@#$%
+20190324_125147,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b00140
+public class CaseStudy{
+	
+	int x;
+	int z;
+	int a;
+	int w;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125147,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a00140
+public class CaseStudy{
+	
+	int x;
+	int z;
+	int y;
+	int w;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125147,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c00140
+public class CaseStudy{
+	
+	int x;
+	int z;
+	int y;
+	int b;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125151,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b16512
+public class CaseStudy{
+	
+	int x;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125151,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a16512
+public class CaseStudy{
+	
+	int x;
+	int z;
+	int a;
+	int b;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125151,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c16512
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int b;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125154,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b18128
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125154,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a18128
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125154,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c18128
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125158,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b16012
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+		int y;
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125158,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a16012
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125158,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c16012
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+		int x;
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125205,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b08080
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+		int y;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125205,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a08080
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125205,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c08080
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+		int x;
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125209,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b11752
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	String foo = "ano";
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125209,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a11752
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	String foo = null;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125209,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c11752
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	String foo = "amo";
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125212,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b15344
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = "ano";
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125212,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a15344
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = "ano";
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125212,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c15344
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = null;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125216,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b09636
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = null;
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125216,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a09636
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = "ano";
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125216,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c09636
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = "ano";
+	
+	public void a(){
+		int a;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125219,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b00124
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = "ano";
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125219,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a00124
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = "ano";
+	
+	public void a(){
+		int x;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int y;
+		aa = aa + bb;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125219,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c00124
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		String n = "ano";
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125222,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b13512
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125222,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a13512
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125222,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c13512
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125226,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b02160
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125226,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a02160
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125226,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c02160
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125229,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b17084
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a2;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n2;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125229,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a17084
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125229,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c17084
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a1;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n1;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125233,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b18112
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+
+		int a2;
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125233,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a18112
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+
+		int a2;
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125233,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c18112
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a2;
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125235,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b13052
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125235,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a13052
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a2;
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125235,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c13052
+public class CaseStudy{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+			int a2;
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125239,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b02568
+public class CaseStudy extends C {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125239,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a02568
+public class CaseStudy extends A{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125239,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c02568
+public class CaseStudy extends B{
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125242,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b14464
+
+public class CaseStudy extends A {
+
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125242,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a14464
+
+public class CaseStudy extends A {
+
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125242,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c14464
+
+public class CaseStudy extends A {
+
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p1;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125245,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b13624
+
+public class CaseStudy extends A {
+
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		int b;
+		 int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125245,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a13624
+
+public class CaseStudy extends A {
+
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125245,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c13624
+
+public class CaseStudy extends A {
+
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+
+		 int b;
+		int c;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125248,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b00600
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125248,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a00600
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+			"second part";
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125248,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c00600
+
+public class CaseStudy extends A {
+
+	String  test = "first part" +
+			"second part";
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125252,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b10892
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+    void m(){
+        
+    }
+	
+}
+!@#$%
+20190324_125252,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a10892
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125252,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c10892
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	void m(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+	
+}
+!@#$%
+20190324_125255,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b08108
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	void m(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 2;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+    void m(){
+        
+    }
+	
+}
+!@#$%
+20190324_125255,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a08108
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	void m(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+    void m(){
+        
+    }
+	
+}
+!@#$%
+20190324_125255,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c08108
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	void m(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+    void m(){
+        
+    }
+	
+}
+!@#$%
+20190324_125258,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b05560
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	void m(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 2;
+		x = x + 1;
+		int z = 3;
+	}
+
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+    void m(){
+        
+    }
+    void same(){}
+	
+}
+!@#$%
+20190324_125258,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a05560
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public CaseStudy(){
+		
+	}
+	
+	void m(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 2;
+		x = x + 1;
+		int z = 3;
+	}
+
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+    void m(){
+        
+    }
+	
+}
+!@#$%
+20190324_125258,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c05560
+
+public class CaseStudy extends A {
+
+	String test = "first part" +
+        "second part";
+
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	void same(){}
+	public CaseStudy(){
+		
+	}
+	
+	void m(){
+		
+	}
+	
+	public void a(){
+
+		int a3;
+
+			int a2;
+
+
+		int a1;
+		 int c;
+		 int b;
+		int y;
+		int m;
+
+		int n2;
+
+		int n1;
+
+	}
+
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 2;
+		x = x + 1;
+		int z = 3;
+	}
+
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q1;
+		int p1;
+
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    
+    public CaseStudy(){
+        int x= 0;
+    }
+	
+    void m(){
+        
+    }
+	
+}
+!@#$%
+20190324_125305,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b07524
+public class C {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amoa";
+		m = m + "omao";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob"   ;
+
+		int y;
+
+		int x;
+        
+        int z;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125305,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a07524
+public class C {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+        
+        int z;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125305,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c07524
+public class C {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		int i = 1;
+		//comment
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+        
+        int w;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125308,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b17376
+public class A {
+	
+	private
+	int test
+	= 2;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	public String foo = null;
+	
+	public void a(){
+		int a;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amob";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125308,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a17376
+public class A {
+	
+	public
+	int test
+	= 2;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amo";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125308,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c17376
+public class A {
+	
+	public
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	private String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+	}
+	
+	public void amo(){
+		
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	
+	
+}
+!@#$%
+20190324_125312,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b05368
+public class C {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amoa";
+		m = m + "omao";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		int i = 1;
+		//comment
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob"   ;
+
+		int y;
+
+		int x;
+        
+        int w2;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125312,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a05368
+public class C {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amoa";
+		m = m + "omao";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		int i = 1;
+		//comment
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob"   ;
+
+		int y;
+
+		int x;
+        
+        int w;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125312,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c05368
+public class C {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amoa";
+		m = m + "omao";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+		int i = 1;
+		//comment
+	}
+	
+	public void mo(){
+		int meme = 89;
+		this.mob();
+	}
+	
+	public void mob(){
+		
+		String m = "mobi"   ;
+
+		int y;
+
+		int x;
+        
+        int w;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125315,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b18020
+  enum TransferKind {
+    CHUNKED() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize)
+          throws IOException {
+        response.setChunkedBody(content, chunkSize);
+        //comment2
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+        connection.setChunkedStreamingMode(5);
+      }
+    },
+    FIXED_LENGTH() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize) {
+        response.setBody(content);
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+        connection.setFixedLengthStreamingMode(contentLength);
+      }
+    },
+    END_OF_STREAM() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize) {
+        response.setBody(content);
+        response.setSocketPolicy(DISCONNECT_AT_END);
+        for (Iterator<String> h = response.getHeaders().iterator(); h.hasNext(); ) {
+          if (h.next().startsWith("Content-Length:")) {
+            h.remove();
+            break;
+          }
+        }
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+      }
+    };
+  }
+!@#$%
+20190324_125315,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a18020
+  enum TransferKind {
+    CHUNKED() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize)
+          throws IOException {
+        response.setChunkedBody(content, chunkSize);
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+        connection.setChunkedStreamingMode(5);
+      }
+    },
+    FIXED_LENGTH() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize) {
+        response.setBody(content);
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+        connection.setFixedLengthStreamingMode(contentLength);
+      }
+    },
+    END_OF_STREAM() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize) {
+        response.setBody(content);
+        response.setSocketPolicy(DISCONNECT_AT_END);
+        for (Iterator<String> h = response.getHeaders().iterator(); h.hasNext(); ) {
+          if (h.next().startsWith("Content-Length:")) {
+            h.remove();
+            break;
+          }
+        }
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+      }
+    };
+  }
+!@#$%
+20190324_125315,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c18020
+  enum TransferKind {
+    CHUNKED() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize)
+          throws IOException {
+        response.setChunkedBody(content, chunkSize);
+        //comment1
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+        connection.setChunkedStreamingMode(5);
+      }
+    },
+    FIXED_LENGTH() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize) {
+        response.setBody(content);
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+        connection.setFixedLengthStreamingMode(contentLength);
+      }
+    },
+    END_OF_STREAM() {
+      @Override void setBody(MockResponse response, Buffer content, int chunkSize) {
+        response.setBody(content);
+        response.setSocketPolicy(DISCONNECT_AT_END);
+        for (Iterator<String> h = response.getHeaders().iterator(); h.hasNext(); ) {
+          if (h.next().startsWith("Content-Length:")) {
+            h.remove();
+            break;
+          }
+        }
+      }
+      @Override void setForRequest(HttpURLConnection connection, int contentLength) {
+      }
+    };
+  }
+!@#$%
+20190324_125319,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b01048
+ class A extends C{
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+
+	public String foo = null;
+
+	
+	public void a(){
+		int a;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+	}
+	
+	public void amo(){
+
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	
+	
+}
+!@#$%
+20190324_125319,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a01048
+ class A {
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+
+	public String foo = null;
+
+	
+	public void a(){
+		int a;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+	}
+	
+	public void amo(){
+
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	
+	
+}
+!@#$%
+20190324_125319,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c01048
+ class A extends B{
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+
+	public String foo = null;
+
+	
+	public void a(){
+		int a;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+	}
+	
+	public void amo(){
+
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	
+	
+}
+!@#$%
+20190324_125325,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b07096
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+        String x = " x ";
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	
+	
+}
+!@#$%
+20190324_125325,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a07096
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	
+	
+}
+!@#$%
+20190324_125325,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c07096
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a2;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	
+	
+}
+!@#$%
+20190324_125329,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b02544
+public class B {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amoa";
+		int h = 9;
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+    public int xexe(int x){
+        return x;
+    }
+	
+}
+!@#$%
+20190324_125329,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a02544
+public class B {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amoa";
+		int h = 9;
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	
+}
+!@#$%
+20190324_125329,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c02544
+public class B {
+	
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+	String foo = null;
+	
+	public void a(){
+		int a;
+		int b;
+		int c;
+		int y;
+		int m;
+		int n;
+	}
+	
+	public void amo(){
+		
+		String m = "amoa";
+		int h = 9;
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 3;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return aa;
+	}
+	
+	public void xaxa(){
+		int x = 1;
+	}
+	
+}
+!@#$%
+20190324_125332,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b03388
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a2;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+        String x = " x ";
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c = 1;
+		
+		return bb;
+	}
+    public void mama(){
+        int x = 256;
+    }
+	
+}
+!@#$%
+20190324_125332,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a03388
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a2;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+        String x = " x ";
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 1;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	
+	
+}
+!@#$%
+20190324_125332,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c03388
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a2;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+        String x = " x ";
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 2;
+		int bb = 2;
+		int x;
+		int c;
+		
+		return bb;
+	}
+	public int xexe(int x){
+		return x;
+	}
+	
+}
+!@#$%
+20190324_125336,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b16916
+interface Converter<F, T, C> {
+    T convert(F from);
+}
+!@#$%
+20190324_125336,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a16916
+interface Converter<F, T> {
+    T convert(F from);
+}
+!@#$%
+20190324_125336,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c16916
+interface Converter<A, F, T> {
+    T convert(F from);
+}
+!@#$%
+20190324_125341,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_b05024
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a2;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+        String x = "xxx";
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 2;
+		int bb = 2;
+		int x;
+		int c = 1;
+		
+		return bb;
+	}
+
+    public void mama(){
+        int x = 256;
+    }
+
+	public int xexe(int x){
+		return x;
+	}
+
+	
+}
+!@#$%
+20190324_125341,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_a05024
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a2;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+        String x = " x ";
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 2;
+		int bb = 2;
+		int x;
+		int c = 1;
+		
+		return bb;
+	}
+
+    public void mama(){
+        int x = 256;
+    }
+
+	public int xexe(int x){
+		return x;
+	}
+
+	
+}
+!@#$%
+20190324_125341,C:\Users\Guilherme\Desktop\ISI\projects\TGM\git\.merge_file_c05024
+class A extends C{
+
+	
+	private
+	int test
+	= 1;
+	int aa;
+	int z;
+	int c;
+	int b;
+	int a;
+	int bb;
+	//adding ... u0000 and u07FF in order to test sed commands
+    //teste
+	public String foo = null;
+
+	
+	public void a(){
+		int a2 = 2;
+		int bc;
+		int c;
+		int y;
+		int m;
+		int n;
+		this.amo();
+        String x = " x ";
+	}
+	
+	public void amo(){
+        //maisum
+		String m = "amoa";
+		m = m + "oma";
+		int x = 1;
+		x = x + 1;
+		int z = 2;
+	}
+	
+	public void mo(){
+		int meme = 89;
+	}
+	
+	public void mob(){
+		
+		String m = "mob";
+
+		int y;
+
+		int x;
+
+	}
+	
+	public void b(){
+		
+		int p;
+		int q;
+		int r;
+		p = 0;
+		q = p +1;
+	}
+	
+	public void bc(){
+		int x;
+		x = 1;
+	}
+	
+	public void c(){
+		
+		int r = 0;
+		String c = "c: " + r;
+
+		int y;
+
+
+	}
+	
+	public void cme(){
+		
+		String m = "";
+        this.me();
+		
+	}
+	
+	public int me(){
+		int aa = 2;
+		int bb = 2;
+		int x;
+		int c = 1;
+		
+		return bb;
+	}
+
+    public void mama(){
+        int x = 256;
+    }
+
+	public int xexe(int x){
+		return x;
+	}
+
+	
+}
+!@#$%

@@ -56,18 +56,23 @@ class Extractor {
 	private boolean isTravis = false
 
 	public Extractor(Project project, boolean withGitMiner){
-		//this.projectsDirectory	= "/mnt/e/Mestrado/FPFNAnalysis/projects/"
-		//this.projectsDirectory	= "/home/local/CIN/gjcc/fpfnanalysis/projects/"
-		//this.projectsDirectory	= "E:/Mestrado/FPFNAnalysis/projects/"
-		//this.tempdir			= this.projectsDirectory + "temp/" +this.project.name+"/git"
-		//this.tempdir			= "/home/local/CIN/gjcc/fpfnanalysis/temp/" +this.project.name+"/git"
-
 		loadProperties()
 		this.project			= project
 		this.listMergeCommit 	= this.project.listMergeCommit
 		this.remoteUrl 			= this.project.url
 		this.tempdir			= this.workingDirectory + "/temp/" + this.project.name.replace("/","_")+"/git"
 		this.repositoryDir		= this.projectsDirectory + this.project.name.replace("/","_") + "/git"
+
+		if(App.isMine_local()){
+			if(new File(this.project.url).exists()){
+				this.repositoryDir	= this.project.url
+			} else {
+				println 'The path informed ' + this.project.url + ' is not a valid git repository'
+				System.exit(-1)
+			}
+		}
+
+
 		this.CONFLICTS 			= 0
 		this.ERROR				= 0
 		this.setup()
@@ -83,16 +88,20 @@ class Extractor {
 	}
 
 	public Extractor(MergeCommit mergeCommit){
-		//this.projectsDirectory	= "E:/Mestrado/FPFNAnalysis/projects/"
-		//this.projectsDirectory	= "/mnt/e/Mestrado/FPFNAnalysis/projects/"
-		//this.projectsDirectory	= "/home/local/CIN/gjcc/fpfnanalysis/projects/"
-		//this.tempdir			= this.projectsDirectory + "temp/" + mergeCommit.projectName +"/git"
-		//this.tempdir			= "/home/local/CIN/gjcc/fpfnanalysis/temp/" + mergeCommit.projectName +"/git"
-
 		loadProperties()
 		this.remoteUrl 			= mergeCommit.projectURL
 		this.tempdir			= this.workingDirectory + "/temp/" + mergeCommit.projectName.replace("/","_") +"/git"
 		this.repositoryDir		= this.projectsDirectory + mergeCommit.projectName.replace("/","_") + "/git"
+
+		if(App.isMine_local()){
+			if(new File(mergeCommit.projectURL).exists()){
+				this.repositoryDir	= this.project.url
+			} else {
+				println 'The path informed ' + this.project.url + ' is not a valid git repository'
+				System.exit(-1)
+			}
+		}
+
 		this.CONFLICTS 			= 0
 		this.ERROR				= 0
 		this.setup()
@@ -319,6 +328,14 @@ class Extractor {
 		String workingFolder = (new File(this.repositoryDir)).getParent()
 		new AntBuilder().delete(dir:workingFolder,failonerror:false)
 		new AntBuilder().copy(todir:this.repositoryDir) {fileset(dir:this.tempdir , defaultExcludes: false){}}
+	}
+
+	def public backupRepository(Project p){
+		println "Backup Git repository " + this.remoteUrl +"..."
+		def local = this.workingDirectory + 'repositories' + File.separator + p.name
+		new AntBuilder().delete(dir:local,failonerror:false)
+		new AntBuilder().copy(todir:local) {fileset(dir:this.repositoryDir , defaultExcludes: false){}}
+		p.url = local
 	}
 
 	def private downloadAllFiles(parent1, parent2, ancestor) {
