@@ -34,99 +34,99 @@ class App {
 
 	public static void main (String[] args){
 		//execution configuration parameters
-		//		def cli = new CliBuilder()
-		//		cli.with {
-		//			r longOpt: 'restore', 'do not restore git repositories'
-		//			s longOpt: 'jdime', 'attempt to build jdime code'
-		//			t longOpt: 'travis', 'do not execute Travis on merged scenario'
-		//			b longOpt: 'builds', 'do not filter scenarios by known builds (builds.csv)'
-		//			f longOpt: 'faster', 'skip second run (builds of jdime merged code)'
-		//		}
-		//		def options = cli.parse(args)
-		//		if (options.r) {
-		//			restore_repositories = false
-		//		}
-		//		if (options.s) {
-		//			is_building_jdime = true
-		//		}
-		//		if(options.t){
-		//			run_travis = false
-		//		}
-		//		if(options.b){
-		//			filter_known_builds = false
-		//		}
-		//		if(options.f){
-		//			skip_2nd_run = true
-		//		}
-		//		boolean alreadyExecuted1stRun = new File("conflictingJDIME").exists()
-		//		boolean changeGitConfig = !alreadyExecuted1stRun
-		//		if(alreadyExecuted1stRun)is_building_jdime = true;
-		//		//managing execution log
-		//		File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
-		//		if(!f.exists()){
-		//			f.getParentFile().mkdirs()
-		//			f.createNewFile()
-		//		}
-		//		//configuring git merge driver
-		//		File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
-		//		if(changeGitConfig){
-		//			if(!gitconfig.exists()) {
-		//				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
-		//			}
-		//			String gitconfigContents =  gitconfig.text
-		//			if(is_building_jdime){
-		//				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
-		//			} else {
-		//				gitconfig.text = gitconfigContents.replaceAll("-s", "")
-		//			}
-		//		}
-		//		//1st run (attempts to build non-conflicting code of the first tool)
-		//		run_gitmerges()
-		//		//storing 1st results
-		//		def resultsFolder = "conflictingJDIME";
-		//		if(is_building_jdime){
-		//			resultsFolder = "conflictingS3M"
-		//		}
-		//		boolean success = f.getParentFile().renameTo(new File(resultsFolder))
-		//		boolean alreadyExecuted2ndRun = new File("conflictingS3M").exists()
-		//		if(!skip_2nd_run){
-		//			if(success && !alreadyExecuted2ndRun){
-		//				//configuration for 2nd run
-		//				is_building_jdime = !is_building_jdime
-		//				restore_repositories = true;
-		//				//re-managing execution log
-		//				if(f.getParentFile().exists()) f.getParentFile().deleteDir()
-		//				f.getParentFile().mkdirs()
-		//				f.createNewFile()
-		//				//re-configuring git merge driver
-		//				if(!gitconfig.exists()) {
-		//					throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
-		//				}
-		//				def gitconfigContents =  gitconfig.text
-		//				if(is_building_jdime){
-		//					gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
-		//				} else {
-		//					gitconfig.text = gitconfigContents.replaceAll("-s", "")
-		//				}
-		//				//2nd run (attempts to build non-conflicting code of the second tool)
-		//				run_gitmerges()
-		//				//storing 2nd results
-		//				resultsFolder = "conflictingJDIME";
-		//				if(is_building_jdime){
-		//					resultsFolder = "conflictingS3M"
-		//				}
-		//				success = f.getParentFile().renameTo(new File(resultsFolder))
-		//				if(!success){
-		//					throw new RuntimeException( 'ERROR: unable to store 2nd run results')
-		//				}
-		//			} else {
-		//				if(!success){
-		//					throw new RuntimeException( 'ERROR: unable to store 1st run results')
-		//				}
-		//			}
-		//		}
+		def cli = new CliBuilder()
+		cli.with {
+			r longOpt: 'restore', 'do not restore git repositories'
+			s longOpt: 'jdime', 'attempt to build jdime code'
+			t longOpt: 'travis', 'do not execute Travis on merged scenario'
+			b longOpt: 'builds', 'do not filter scenarios by known builds (builds.csv)'
+			f longOpt: 'faster', 'skip second run (builds of jdime merged code)'
+		}
+		def options = cli.parse(args)
+		if (options.r) {
+			restore_repositories = false
+		}
+		if (options.s) {
+			is_building_jdime = true
+		}
+		if(options.t){
+			run_travis = false
+		}
+		if(options.b){
+			filter_known_builds = false
+		}
+		if(options.f){
+			skip_2nd_run = true
+		}
+		boolean alreadyExecuted1stRun = new File("conflictingJDIME").exists()
+		boolean changeGitConfig = !alreadyExecuted1stRun
+		if(alreadyExecuted1stRun)is_building_jdime = true;
+		//managing execution log
+		File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
+		if(!f.exists()){
+			f.getParentFile().mkdirs()
+			f.createNewFile()
+		}
+		//configuring git merge driver
+		File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
+		if(changeGitConfig){
+			if(!gitconfig.exists()) {
+				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
+			}
+			String gitconfigContents =  gitconfig.text
+			if(is_building_jdime){
+				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
+			} else {
+				gitconfig.text = gitconfigContents.replaceAll("-s", "")
+			}
+		}
+		//1st run (attempts to build non-conflicting code of the first tool)
+		run_gitmerges()
+		//storing 1st results
+		def resultsFolder = "conflictingJDIME";
+		if(is_building_jdime){
+			resultsFolder = "conflictingS3M"
+		}
+		boolean success = f.getParentFile().renameTo(new File(resultsFolder))
+		boolean alreadyExecuted2ndRun = new File("conflictingS3M").exists()
+		if(!skip_2nd_run){
+			if(success && !alreadyExecuted2ndRun){
+				//configuration for 2nd run
+				is_building_jdime = !is_building_jdime
+				restore_repositories = true;
+				//re-managing execution log
+				if(f.getParentFile().exists()) f.getParentFile().deleteDir()
+				f.getParentFile().mkdirs()
+				f.createNewFile()
+				//re-configuring git merge driver
+				if(!gitconfig.exists()) {
+					throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
+				}
+				def gitconfigContents =  gitconfig.text
+				if(is_building_jdime){
+					gitconfig.text = gitconfigContents.replaceAll("-g", "-g -s")
+				} else {
+					gitconfig.text = gitconfigContents.replaceAll("-s", "")
+				}
+				//2nd run (attempts to build non-conflicting code of the second tool)
+				run_gitmerges()
+				//storing 2nd results
+				resultsFolder = "conflictingJDIME";
+				if(is_building_jdime){
+					resultsFolder = "conflictingS3M"
+				}
+				success = f.getParentFile().renameTo(new File(resultsFolder))
+				if(!success){
+					throw new RuntimeException( 'ERROR: unable to store 2nd run results')
+				}
+			} else {
+				if(!success){
+					throw new RuntimeException( 'ERROR: unable to store 1st run results')
+				}
+			}
+		}
 		computeProjectStatistics()
-		//		computeManualAnalysisFiles()
+		computeManualAnalysisFiles()
 		println 'DONE!'
 
 	}
