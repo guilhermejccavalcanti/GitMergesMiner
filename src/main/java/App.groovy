@@ -31,66 +31,64 @@ class App {
 
 
 	public static void main (String[] args){
-//		//execution configuration parameters
-//		def cli = new CliBuilder()
-//		cli.with {
-//			l longOpt: 'local', 'mine local repositories'
-//			w longOpt: 'web', 'mine remote repositories'
-//			r longOpt: 'remote', 'do not restore repositories'
-//		}
-//
-//		def options = cli.parse(args)
-//		if (options.l) {
-//			println 'Mining local repositories...'
-//			mine_local = true
-//			mine_web = false
-//		}
-//		if (options.w) {
-//			println 'Mining remote repositories...'
-//			mine_web = true
-//			mine_local = false
-//		}
-//		if (options.r) {
-//			restore_repositories = false
-//		}
-//
-//		if(!mine_local && !mine_web) {
-//			println  'ERROR: choose a mining option -l (local) or -w(remote)'
-//		} else {
-//			//managing execution log
-//			File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
-//			if(!f.exists()){
-//				f.getParentFile().mkdirs()
-//				f.createNewFile()
-//			}
-//
-//			//configuring git merge driver
-//			File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
-//			if(!gitconfig.exists()) {
-//				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
-//			}
-//			String gitconfigContents =  gitconfig.text
-//			if(!gitconfig.text.contains("-c false")){
-//				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -c false")
-//			}
-//
-//			//running git merges
-//			run_gitmerges()
-//
-//			//storing results
-//			def resultsFolder = "results";
-//			boolean success = f.getParentFile().renameTo(new File(resultsFolder))
-//			if(!success){
-//				throw new RuntimeException( 'ERROR: unable to store 1st run results')
-//			}
-//
-//			computeProjectStatistics()
-//			println 'DONE!'
-//		}
-		
-		computeProjectStatistics()
-		
+		//execution configuration parameters
+		def cli = new CliBuilder()
+		cli.with {
+			l longOpt: 'local', 'mine local repositories'
+			w longOpt: 'web', 'mine remote repositories'
+			r longOpt: 'remote', 'do not restore repositories'
+		}
 
+		def options = cli.parse(args)
+		if (options.l) {
+			println 'Mining local repositories...'
+			mine_local = true
+			mine_web = false
+		}
+		if (options.w) {
+			println 'Mining remote repositories...'
+			mine_web = true
+			mine_local = false
+		}
+		if (options.r) {
+			restore_repositories = false
+		}
+
+		if(!mine_local && !mine_web) {
+			println  'ERROR: choose a mining option -l (local) or -w(remote)'
+		} else {
+			//managing execution log
+			File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
+			if(!f.exists()){
+				f.getParentFile().mkdirs()
+				f.createNewFile()
+			}
+
+			//configuring git merge driver
+			File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
+			if(!gitconfig.exists()) {
+				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
+			}
+			String gitconfigContents =  gitconfig.text
+			if(!gitconfig.text.contains("-c false")){
+				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -c false")
+			}
+
+			//running git merges
+			run_gitmerges()
+
+			//storing results
+			def resultsFolder = "results";
+			(new File(resultsFolder)).deleteDir() //deleting old files
+			boolean success = f.getParentFile().renameTo(new File(resultsFolder))
+			if(!success){
+				throw new RuntimeException( 'ERROR: unable to store 1st run results')
+			}
+
+			computeProjectStatistics()
+			println 'DONE!'
+		}
+		//computeProjectStatistics()
 	}
 
 	def public static run_gitmerges(){
@@ -275,15 +273,15 @@ class App {
 				result.ssmergenereoconfs+= ssmergenereoconfs
 				result.ssmergeinitlblocksconfs+= ssmergeinitlblocksconfs
 				result.ssmergeacidentalconfs+= ssmergeacidentalconfs
-				
+
 				result.unmergeconfs+= Integer.valueOf(columns[14]);
 				result.unmergeloc+= Integer.valueOf(columns[15]);
 				result.unmergetime+= Long.parseLong(columns[16]);
 				result.ssmergetime+= Long.parseLong(columns[17]);
-				
+
 				result.unmergeduplicateddeclarationerrors+= unmergeduplicateddeclarationerrors
 				result.unmergeorderingconfs+= unmergeorderingconfs
-				
+
 				result.equalconfs+= Integer.valueOf(columns[20]);
 
 				result.numberOfScenarios++;
@@ -301,7 +299,7 @@ class App {
 				result.scenariosWithNereoConfs = (ssmergenereoconfs > 0) ? (result.scenariosWithNereoConfs + 1) : result.scenariosWithNereoConfs;
 				result.scenariosWithInitBlocksConfs = (ssmergeinitlblocksconfs > 0) ? (result.scenariosWithInitBlocksConfs + 1) : result.scenariosWithInitBlocksConfs;
 				result.scenariosWithAcidentalConfs = (ssmergeacidentalconfs > 0) ? (result.scenariosWithAcidentalConfs + 1) : result.scenariosWithAcidentalConfs;
-				
+
 				result.scenariosWithOrderingConfs = (unmergeorderingconfs > 0) ? (result.scenariosWithOrderingConfs + 1) : result.scenariosWithOrderingConfs;
 				result.scenariosWithDuplicatedDeclarations = (unmergeduplicateddeclarationerrors > 0) ? (result.scenariosWithDuplicatedDeclarations + 1) : result.scenariosWithDuplicatedDeclarations;
 
