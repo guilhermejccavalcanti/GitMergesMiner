@@ -82,13 +82,16 @@ class App {
 			(new File(resultsFolder)).deleteDir() //deleting old files
 			boolean success = f.getParentFile().renameTo(new File(resultsFolder))
 			if(!success){
-				throw new RuntimeException( 'ERROR: unable to store 1st run results')
+				throw new RuntimeException( 'ERROR: unable to store run results')
 			}
 
 			computeProjectStatistics()
+			
+			if(gitconfig.text.contains("-c false")){
+				gitconfig.text = gitconfigContents.replaceAll("-c false", "")
+			}
 			println 'DONE!'
 		}
-		//computeProjectStatistics()
 	}
 
 	def public static run_gitmerges(){
@@ -97,14 +100,11 @@ class App {
 		if(restore_repositories){
 			restoreGitRepositories(projects)
 		}
-		if(mine_local){
-			backupGitRepositories(projects)
-		}
 
 		//fill merge scenarios info (base,left,right)
 		projects.each {
-			Extractor e = new Extractor(it,false)
-			e.fillAncestors()
+			Extractor.init(it,false)
+			Extractor.fillAncestors()
 			println('Project ' + it.name + " read")
 		}
 
@@ -114,9 +114,9 @@ class App {
 			MergeCommit m = merge_commits.get(i);
 			println ('Analysing ' + ((i+1)+'/'+merge_commits.size()) + ': ' +  m.sha)
 			fillExecutionLog(m)
-			Extractor e = new Extractor(m)
-			e.git_diff(m)
-			e.git_merge(m)
+			Extractor.init(m.project, true)
+			Extractor.git_diff(m)
+			Extractor.git_merge(m)
 
 			//compute statistics related to each scenario
 			MergeResult result = computeScenarioStatistics(m)
@@ -129,8 +129,8 @@ class App {
 
 	def private static restoreGitRepositories(ArrayList<Project> projects){
 		projects.each {
-			Extractor e = new Extractor(it,true)
-			e.restoreWorkingFolder()
+			Extractor.init(it,true)
+			Extractor.restoreWorkingFolder()
 		}
 		println('Restore finished!\n')
 	}
@@ -208,25 +208,41 @@ class App {
 		List<String> lines = new ArrayList<String>();
 		if(statistics_partial.exists()){lines = statistics_partial.readLines();}
 		for(int y = 1/*ignoring header*/; y <lines.size(); y++){
-			String[] columns = lines.get(y).split(",");
+			String[] columns = lines.get(y).split(";");
 			statistics_files.append(m.project.url +';'+m.sha +';'+m.parent1 +';'+m.ancestor +';'+m.parent2+';'+ (String.join(";", Arrays.copyOfRange(columns, 3, columns.length))) +'\n')
 
-			result.ssmergeconfs += Integer.valueOf(columns[4]);
-			result.ssmergeloc += Integer.valueOf(columns[5]);
-			result.ssmergerenamingconfs+= Integer.valueOf(columns[6]);
-			result.ssmergedeletionconfs+= Integer.valueOf(columns[7]);
-			result.ssmergeinnerdeletionconfs+= Integer.valueOf(columns[8]);
-			result.ssmergetaeconfs+= Integer.valueOf(columns[9]);
-			result.ssmergenereoconfs+= Integer.valueOf(columns[10]);
-			result.ssmergeinitlblocksconfs+= Integer.valueOf(columns[11]);
-			result.ssmergeacidentalconfs+= Integer.valueOf(columns[12]);
-			result.unmergeconfs+= Integer.valueOf(columns[13]);
-			result.unmergeloc+= Integer.valueOf(columns[14]);
-			result.unmergetime+= Integer.valueOf(columns[15]);
-			result.ssmergetime+= Integer.valueOf(columns[16]);
-			result.unmergeduplicateddeclarationerrors+= Integer.valueOf(columns[17]);
-			result.unmergeorderingconfs+= Integer.valueOf(columns[18]);
-			result.equalconfs+= Integer.valueOf(columns[19]);
+			//			result.ssmergeconfs += Integer.valueOf(columns[4]);
+			//			result.ssmergeloc += Integer.valueOf(columns[5]);
+			//			result.ssmergerenamingconfs+= Integer.valueOf(columns[6]);
+			//			result.ssmergedeletionconfs+= Integer.valueOf(columns[7]);
+			//			result.ssmergeinnerdeletionconfs+= Integer.valueOf(columns[8]);
+			//			result.ssmergetaeconfs+= Integer.valueOf(columns[9]);
+			//			result.ssmergenereoconfs+= Integer.valueOf(columns[10]);
+			//			result.ssmergeinitlblocksconfs+= Integer.valueOf(columns[11]);
+			//			result.ssmergeacidentalconfs+= Integer.valueOf(columns[12]);
+			//			result.unmergeconfs+= Integer.valueOf(columns[13]);
+			//			result.unmergeloc+= Integer.valueOf(columns[14]);
+			//			result.unmergetime+= Integer.valueOf(columns[15]);
+			//			result.ssmergetime+= Integer.valueOf(columns[16]);
+			//			result.unmergeduplicateddeclarationerrors+= Integer.valueOf(columns[17]);
+			//			result.unmergeorderingconfs+= Integer.valueOf(columns[18]);
+			//			result.equalconfs+= Integer.valueOf(columns[19]);
+
+			result.ssmergeconfs += Integer.parseInt(columns[2]);
+			result.ssmergeloc 	 += Integer.parseInt(columns[3]);
+			result.ssmergerenamingconfs += Integer.parseInt(columns[4]);
+			result.ssmergedeletionconfs += Integer.parseInt(columns[5]);
+			result.ssmergetaeconfs   += Integer.parseInt(columns[7]);
+			result.ssmergenereoconfs += Integer.parseInt(columns[8]);
+			result.ssmergeinitlblocksconfs += Integer.parseInt(columns[9]);
+			result.ssmergeacidentalconfs 	+= Integer.parseInt(columns[10]);
+			result.unmergeconfs += Integer.parseInt(columns[11]);
+			result.unmergeloc 	 += Integer.parseInt(columns[12]);
+			result.unmergetime  += Long.parseLong(columns[13]);
+			result.ssmergetime  += Long.parseLong((columns[14]));
+			result.unmergeduplicateddeclarationerrors += Integer.parseInt(columns[15]);
+			result.unmergeorderingconfs += Integer.parseInt(columns[16]);
+			result.equalconfs 	 += Integer.parseInt(columns[17]);
 
 		}
 
@@ -308,7 +324,7 @@ class App {
 				}
 			}
 		} else {
-			throw new RuntimeException( 'ERROR: unable to find conflictingJDIME/numbers-scenarios.csv to compute projects results')
+			throw new RuntimeException( 'ERROR: unable to find results/numbers-scenarios.csv to compute projects results')
 		}
 
 		//priting project statistics
@@ -334,7 +350,7 @@ class App {
 	}
 
 	def private static logProjectStatistics(ProjecResult result) {
-		File statistics_scenarios = new File("numbers-projects.csv");
+		File statistics_scenarios = new File("results/numbers-projects.csv");
 		if(!statistics_scenarios.exists()){
 			def header = 'projectName;numberOfScenarios;conflictingScenarios;ssmergeconfs;ssmergeloc;ssmergerenamingconfs;ssmergedeletionconfs;ssmergeinnerdeletionconfs;ssmergetaeconfs;ssmergenereoconfs;ssmergeinitlblocksconfs;ssmergeacidentalconfs;unmergeconfs;unmergeloc;unmergetime;ssmergetime;unmergeduplicateddeclarationerrors;unmergeorderingconfs;equalconfs;scenariosWithSsmergeConf;scenariosWithTextualConf;scenariosOnlyWithSsmergeConf;scenariosOnlyWithTextualConf;scenariosWithRenamingConfs;scenariosWithDeletionConfs;scenariosWithTaeConfs;scenariosWithNereoConfs;scenariosWithInitBlocksConfs;scenariosWithAcidentalConfs;scenariosWithOrderingConfs;scenariosWithDuplicatedDeclarations'
 			statistics_scenarios.append(header+'\n')
@@ -346,7 +362,7 @@ class App {
 	}
 
 	def private static logDivergingScenarios(List<String> divergingScenarios) {
-		File diverging_scenarios = new File("diverging-scenarios.csv")
+		File diverging_scenarios = new File("results/diverging-scenarios.csv")
 		if(!diverging_scenarios.exists()){
 			def header = 'project;mergecommit;leftcommit;basecommit;rightcommit;ssmergeconfs;unmergeconfs'
 			diverging_scenarios.append(header+'\n')
@@ -360,8 +376,8 @@ class App {
 
 	def private static backupGitRepositories(ArrayList<Project> projects){
 		projects.each {
-			Extractor e = new Extractor(it,true)
-			e.backupRepository(it)
+			Extractor.init(it,true)
+			Extractor.backupRepository(it)
 		}
 		println('Backup finished!\n')
 	}
