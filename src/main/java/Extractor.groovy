@@ -448,13 +448,13 @@ class Extractor {
 					String[] columns = (line.split(':')[1]).split(',');
 
 					mL = new MergedLog();
-					mL.projectName = columns[0];
-					mL.mergeCommit = columns[1];
+					mL.projectName = columns[0].trim();
+					mL.mergeCommit = columns[1].trim();
 					mL.mergedFile  = (new File(columns[2].replaceAll('\\.', '/'))).getName();
 				} else if(line.contains('Semistructured Merge Output:')){
 					fillSemistructuredMergeOutput = true;
 
-				} else if(line.contains('Structured Merge Output:')){
+				} else if(line.contains('Unstructured Merge Output:')){
 					fillSemistructuredMergeOutput = false;
 					fillStructuredMergeOutput = true;
 

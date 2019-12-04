@@ -31,67 +31,64 @@ class App {
 
 
 	public static void main (String[] args){
-		//execution configuration parameters
-		def cli = new CliBuilder()
-		cli.with {
-			l longOpt: 'local', 'mine local repositories'
-			w longOpt: 'web', 'mine remote repositories'
-			r longOpt: 'remote', 'do not restore repositories'
-		}
-
-		def options = cli.parse(args)
-		if (options.l) {
-			println 'Mining local repositories...'
-			mine_local = true
-			mine_web = false
-		}
-		if (options.w) {
-			println 'Mining remote repositories...'
-			mine_web = true
-			mine_local = false
-		}
-		if (options.r) {
-			restore_repositories = false
-		}
-
-		if(!mine_local && !mine_web) {
-			println  'ERROR: choose a mining option -l (local) or -w(remote)'
-		} else {
-			//managing execution log
-			File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
-			if(!f.exists()){
-				f.getParentFile().mkdirs()
-				f.createNewFile()
-			}
-
-			//configuring git merge driver
-			File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
-			if(!gitconfig.exists()) {
-				throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
-			}
-			String gitconfigContents =  gitconfig.text
-			if(!gitconfig.text.contains("-c false")){
-				gitconfig.text = gitconfigContents.replaceAll("-g", "-g -c false")
-			}
-
-			//running git merges
-			run_gitmerges()
-
-			//storing results
-			def resultsFolder = "results";
-			(new File(resultsFolder)).deleteDir() //deleting old files
-			boolean success = f.getParentFile().renameTo(new File(resultsFolder))
-			if(!success){
-				throw new RuntimeException( 'ERROR: unable to store run results')
-			}
-
-			computeProjectStatistics()
-			
-			if(gitconfig.text.contains("-c false")){
-				gitconfig.text = gitconfigContents.replaceAll("-c false", "")
-			}
-			println 'DONE!'
-		}
+		/*
+		 //execution configuration parameters
+		 def cli = new CliBuilder()
+		 cli.with {
+		 l longOpt: 'local', 'mine local repositories'
+		 w longOpt: 'web', 'mine remote repositories'
+		 r longOpt: 'remote', 'do not restore repositories'
+		 }
+		 def options = cli.parse(args)
+		 if (options.l) {
+		 println 'Mining local repositories...'
+		 mine_local = true
+		 mine_web = false
+		 }
+		 if (options.w) {
+		 println 'Mining remote repositories...'
+		 mine_web = true
+		 mine_local = false
+		 }
+		 if (options.r) {
+		 restore_repositories = false
+		 }
+		 if(!mine_local && !mine_web) {
+		 println  'ERROR: choose a mining option -l (local) or -w(remote)'
+		 } else {
+		 //managing execution log
+		 File f = new File(System.getProperty("user.home") + File.separator + ".jfstmerge" + File.separator + 'execution.log')
+		 if(!f.exists()){
+		 f.getParentFile().mkdirs()
+		 f.createNewFile()
+		 }
+		 //configuring git merge driver
+		 File gitconfig = new File(System.getProperty("user.home") + File.separator + ".gitconfig")
+		 if(!gitconfig.exists()) {
+		 throw new RuntimeException( 'ERROR: .gitconfig not found on ' + gitconfig.getParent() + '. S3M tool not installed?')
+		 }
+		 String gitconfigContents =  gitconfig.text
+		 if(!gitconfig.text.contains("-c false")){
+		 gitconfig.text = gitconfigContents.replaceAll("-g", "-g -c false")
+		 }
+		 //running git merges
+		 run_gitmerges()
+		 //storing results
+		 def resultsFolder = "results";
+		 (new File(resultsFolder)).deleteDir() //deleting old files
+		 boolean success = f.getParentFile().renameTo(new File(resultsFolder))
+		 if(!success){
+		 throw new RuntimeException( 'ERROR: unable to store run results')
+		 }
+		 computeProjectStatistics()
+		 if(gitconfig.text.contains("-c false")){
+		 gitconfig.text = gitconfigContents.replaceAll("-c false", "")
+		 }
+		 println 'DONE!'
+		 }*/
+		//computeManualAnalysisFiles("fpss")
+		//computeManualAnalysisFiles("fpun")
+		//computeManualAnalysisFiles("fnss")
 	}
 
 	def public static run_gitmerges(){
@@ -334,6 +331,120 @@ class App {
 
 		//printing diverging scenarios
 		logDivergingScenarios(diverginScenarios)
+	}
+
+	def private static computeManualAnalysisFiles(String metric) {
+		println 'Generating manual analysis files for ' + metric + ' builds...'
+		List<String> sheet = new ArrayList<>();
+		List<String> lines = new ArrayList<>();
+
+		File log;
+		if(metric.equals("fpss")){
+			log = new File('results/conflicts.semistructured')
+		} else {
+			log = new File('results/conflicts.unstructured')
+		}
+
+		List<MergedLog> mls = Extractor.revertMergedLog(log);
+		File scenarios = new File("results/numbers-scenarios.csv")
+		if(scenarios.exists()){
+			lines = scenarios.readLines();
+			sheet.addAll(processComputedResults(lines, mls, metric))
+		}
+
+		File manualAnalysisFile = new File("manualAnalysis_"+metric+".csv");
+		if(!manualAnalysisFile.exists()){
+			def header = 'Merge Scenario Identifier;Project;Conflicting Merged File;Tool Analysed;Comments About Resolution Effort';
+			if(metric.equals("fnss")){
+				header = 'Merge Scenario Identifier;Project;Conflicting Merged File;Summary Conflict-related Left Changes;Summary Conflict-related Right Changes;Tool Analysed;Merge Conflict Classification;Justificative';
+				// Alguns conflitos do não-estruturado são classificados como falsos negativos acidentais. O objetivo é analisar esse conflitos e classificá-los como verdadeiro positivo, ou falso negativo.
+				//Para isso, recomendo ignorar os conflitos comuns/equivalentes entre as duas ferramentas nos arquivos, e analisar só o restante no arquivo integrado pelo não-estruturado.
+			}
+			manualAnalysisFile.append(header+'\n')
+			manualAnalysisFile.createNewFile()
+		} //ensuring it exists
+		sheet.each {String s ->
+			manualAnalysisFile.append(s+'\n')
+		}
+	}
+
+	def private static processComputedResults(List lines, List mls, String metric) {
+		List<String> sheetLines = new ArrayList<>();
+		for(int y = 1; y <lines.size(); y++){
+			String[] columns = lines.get(y).split(";");
+			String project = columns[0];
+			String mergeCommit = columns[1]
+
+			int ssmergeConf = Integer.valueOf(columns[5]);
+			int ssmergerenamingconfs = Integer.valueOf(columns[7]);
+			int ssmergeacidentalconfs = Integer.valueOf(columns[13]);
+
+			int textualConf = Integer.valueOf(columns[14]);
+			int textualorderingconfs = Integer.valueOf(columns[19]);
+
+			int equalconfs = Integer.valueOf(columns[20]);
+
+			boolean condition = false;
+			if(metric.equals("fpss")){
+				condition = ssmergerenamingconfs > 0;
+			} else if(metric.equals("fpun")){
+				condition = (textualorderingconfs > 0) && (textualorderingconfs > equalconfs);
+			} else if(metric.equals("fnss")){
+				condition = (ssmergeacidentalconfs > 0) /*&& (ssmergerenamingconfs==0) && (ssmergeacidentalconfs > equalconfs)*/;
+			}
+
+			if(condition){
+				MergedLog mL = mls.find{
+					it.mergeCommit.trim() == mergeCommit.trim()
+				}
+				if(mL != null){
+					// create files with merged content
+					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.BaseContent, '_base',metric);
+					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.LeftContent, '_left',metric);
+					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.RightContent,'_right',metric);
+					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.SemistructuredMergeOutput, '_semistructured',metric);
+					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.StructuredMergeOutput, '_unstructured',metric);
+
+					//fill sheet's entry
+					StringBuilder builder = new StringBuilder();
+					if(metric.equals("fnss")){
+						builder.append(mL.mergeCommit);
+						builder.append(';');
+						builder.append(mL.projectName);
+						builder.append(';');
+						builder.append('https://github.com/spgroup/s3m/blob/master/isi/manualAnalysis_' +metric+'/' + mL.mergeCommit + '/' + mL.mergedFile);
+						builder.append(';');
+						builder.append(';');
+						builder.append(';');
+						builder.append('Unstructured Merge');
+						builder.append(';');
+						builder.append(';');
+					} else {
+						builder.append(mL.mergeCommit);
+						builder.append(';');
+						builder.append(mL.projectName);
+						builder.append(';');
+						builder.append('https://github.com/spgroup/s3m/blob/master/isi/manualAnalysis_' +metric+'/' + mL.mergeCommit + '/' + mL.mergedFile);
+						builder.append(';');
+						if(metric.equals("fpss")){
+							builder.append("Semistructured Merge");
+						} else {
+							builder.append("Unstructured Merge");
+						}
+						builder.append(';');
+					}
+					sheetLines.add(builder.toString());
+				}
+			}
+		}
+		return sheetLines;
+	}
+
+	def private static File writeManualAnalysisFile(String mergecommit, String filename, String content, String suffix, String metric) {
+		File mLfile = new File('manualAnalysis_' +metric+'/'+ mergecommit + '/' + filename);
+		mLfile.mkdirs();
+		mLfile = new File(mLfile.getAbsolutePath() + '/' + filename + suffix + '.java');
+		mLfile.append(content);
 	}
 
 	def private static logScenarioStatistics(MergeResult result) {
