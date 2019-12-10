@@ -451,6 +451,8 @@ class Extractor {
 					mL.projectName = columns[0].trim();
 					mL.mergeCommit = columns[1].trim();
 					mL.mergedFile  = (new File(columns[2].replaceAll('\\.', '/'))).getName();
+					
+					println 'Reading log for file ' + mL.mergedFile + ' in scenario ' + mL.mergeCommit 
 				} else if(line.contains('Semistructured Merge Output:')){
 					fillSemistructuredMergeOutput = true;
 

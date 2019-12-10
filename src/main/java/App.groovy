@@ -88,7 +88,9 @@ class App {
 		 }*/
 		//computeManualAnalysisFiles("fpss")
 		//computeManualAnalysisFiles("fpun")
-		//computeManualAnalysisFiles("fnss")
+		computeManualAnalysisFiles("fnss")
+
+		println 'funfou!'
 	}
 
 	def public static run_gitmerges(){
@@ -356,7 +358,8 @@ class App {
 		if(!manualAnalysisFile.exists()){
 			def header = 'Merge Scenario Identifier;Project;Conflicting Merged File;Tool Analysed;Comments About Resolution Effort';
 			if(metric.equals("fnss")){
-				header = 'Merge Scenario Identifier;Project;Conflicting Merged File;Summary Conflict-related Left Changes;Summary Conflict-related Right Changes;Tool Analysed;Merge Conflict Classification;Justificative';
+				//header = 'Merge Scenario Identifier;Project;Conflicting Merged File;Summary Conflict-related Left Changes;Summary Conflict-related Right Changes;Tool Analysed;Merge Conflict Classification;Justificative';
+				header = 'Merge Scenario Identifier;Project;Conflicting Merged File;Summary Conflict-related Left Changes;Summary Conflict-related Right Changes;Unstructured Merge Conflict Classification;Semistructured Merge Conflict Classification;Justificative';
 				// Alguns conflitos do não-estruturado são classificados como falsos negativos acidentais. O objetivo é analisar esse conflitos e classificá-los como verdadeiro positivo, ou falso negativo.
 				//Para isso, recomendo ignorar os conflitos comuns/equivalentes entre as duas ferramentas nos arquivos, e analisar só o restante no arquivo integrado pelo não-estruturado.
 			}
@@ -408,17 +411,21 @@ class App {
 					//fill sheet's entry
 					StringBuilder builder = new StringBuilder();
 					if(metric.equals("fnss")){
-						builder.append(mL.mergeCommit);
-						builder.append(';');
-						builder.append(mL.projectName);
-						builder.append(';');
-						builder.append('https://github.com/spgroup/s3m/blob/master/isi/manualAnalysis_' +metric+'/' + mL.mergeCommit + '/' + mL.mergedFile);
-						builder.append(';');
-						builder.append(';');
-						builder.append(';');
-						builder.append('Unstructured Merge');
-						builder.append(';');
-						builder.append(';');
+						int numberOfEntries = (textualConf >= ssmergeConf) ? textualConf : ssmergeConf
+						for(int i = 0; i < numberOfEntries; i++){
+							builder.append(mL.mergeCommit);
+							builder.append(';');
+							builder.append(mL.projectName);
+							builder.append(';');
+							builder.append('https://github.com/spgroup/s3m/blob/master/isi/manualAnalysis_' +metric+'/' + mL.mergeCommit + '/' + mL.mergedFile);
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+						}
 					} else {
 						builder.append(mL.mergeCommit);
 						builder.append(';');
@@ -434,6 +441,8 @@ class App {
 						builder.append(';');
 					}
 					sheetLines.add(builder.toString());
+					
+					println 'Files for scenario ' + mL.mergeCommit + ' generated'
 				}
 			}
 		}
