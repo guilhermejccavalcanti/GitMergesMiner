@@ -425,6 +425,7 @@ class App {
 							builder.append(';');
 							builder.append(';');
 							builder.append(';');
+							builder.append('\n');
 						}
 					} else {
 						builder.append(mL.mergeCommit);
