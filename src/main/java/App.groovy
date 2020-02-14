@@ -407,18 +407,39 @@ class App {
 					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.RightContent,'_right',metric);
 					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.SemistructuredMergeOutput, '_semistructured',metric);
 					writeManualAnalysisFile(mL.mergeCommit, mL.mergedFile, mL.StructuredMergeOutput, '_unstructured',metric);
+					
+					//getting merge conflicts
+					List<MergeConflict> ssconfs = Extractor.extractMergeConflicts(mL.SemistructuredMergeOutput)
+					List<MergeConflict> txtconfs= Extractor.extractMergeConflicts(mL.StructuredMergeOutput)
 
 					//fill sheet's entry
 					StringBuilder builder = new StringBuilder();
 					if(metric.equals("fnss")){
 						int numberOfEntries = (textualConf >= ssmergeConf) ? textualConf : ssmergeConf
-						for(int i = 0; i < numberOfEntries; i++){
+						for(int i = 0; i < txtconfs.size(); i++){
 							builder.append(mL.mergeCommit);
 							builder.append(';');
 							builder.append(mL.projectName);
 							builder.append(';');
 							builder.append('https://github.com/spgroup/s3m/blob/master/isi/manualAnalysis_' +metric+'/' + mL.mergeCommit + '/' + mL.mergedFile);
 							builder.append(';');
+							builder.append('https://github.com/spgroup/s3m/blob/master/isi/manualAnalysis_' +metric+'/' + mL.mergeCommit + '/' + mL.mergedFile + '/' + mL.mergedFile + '_unstructured.java#L' + txtconfs.get(i).startLOC);
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+							builder.append(';');
+							builder.append('\n');
+						}
+						for(int i = 0; i < ssconfs.size(); i++){
+							builder.append(mL.mergeCommit);
+							builder.append(';');
+							builder.append(mL.projectName);
+							builder.append(';');
+							builder.append('https://github.com/spgroup/s3m/blob/master/isi/manualAnalysis_' +metric+'/' + mL.mergeCommit + '/' + mL.mergedFile);
+							builder.append(';');
+							builder.append('https://github.com/spgroup/s3m/blob/master/isi/manualAnalysis_' +metric+'/' + mL.mergeCommit + '/' + mL.mergedFile + '/' + mL.mergedFile + '_semistructured.java#L' + ssconfs.get(i).startLOC);
 							builder.append(';');
 							builder.append(';');
 							builder.append(';');

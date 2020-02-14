@@ -561,5 +561,68 @@ class Extractor {
 		git.getRepository().close()
 		return basecommit
 	}
+	
+	/**
+	 * Extracts the merge conflicts of a string representation of merged code.
+	 * @param mergedCode
+	 * @return list o merge conflicts
+	 */
+	def public static List<MergeConflict> extractMergeConflicts(String mergedCode) {
+		List<MergeConflict> mergeConflicts = new ArrayList<MergeConflict>();
 
+		StringBuilder leftConflictingContent = new StringBuilder();
+		StringBuilder baseConflictingContent = new StringBuilder();
+		StringBuilder rightConflictingContent = new StringBuilder();
+
+		ConflictArea conflictArea = ConflictArea.None;
+
+		int lineCounter = 0;
+		int startLOC = 0;
+		int endLOC = 0;
+
+		mergedCode.eachLine { String line ->
+			lineCounter++;
+
+			/* See the following conditionals as a state machine. */
+			if(line.contains(MergeConflict.MINE_CONFLICT_MARKER) && conflictArea == ConflictArea.None) {
+				startLOC = lineCounter;
+				conflictArea = ConflictArea.Left;
+			}
+			
+			else if(line.contains(MergeConflict.BASE_CONFLICT_MARKER) && conflictArea == ConflictArea.Left) {
+				conflictArea = ConflictArea.Base;
+			}
+			
+			else if(line.contains(MergeConflict.CHANGE_CONFLICT_MARKER) && (conflictArea == ConflictArea.Base || conflictArea == ConflictArea.Left)) {
+				conflictArea = ConflictArea.Right;
+			}
+			
+			else if(line.contains(MergeConflict.YOURS_CONFLICT_MARKER) && conflictArea == ConflictArea.Right) {
+				endLOC = lineCounter;
+				mergeConflicts.add(new MergeConflict(leftConflictingContent.toString(), baseConflictingContent.toString(), rightConflictingContent.toString(), startLOC, endLOC));
+				conflictArea = ConflictArea.None;
+			}
+			
+			else {
+				switch (conflictArea) {
+					case ConflictArea.Left:
+						leftConflictingContent.append(line).append('\n');
+						break;
+					case ConflictArea.Base:
+						baseConflictingContent.append(line).append('\n');
+						break;
+					case ConflictArea.Right:
+						rightConflictingContent.append(line).append('\n');
+						break;
+					default: // not in conflict area
+						break;
+				}
+			}
+		}
+		return mergeConflicts;
+	}
+	
+	private static enum ConflictArea {
+		None, Left, Base, Right
+	}
 }
